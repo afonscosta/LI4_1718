@@ -1,0 +1,70 @@
+Requisitos de utilizador:
+
+(site do cliente)
+- acesso a um catálogo com todos os produtos
+- acesso a um catálogo dos serviços disponíveis (subscrições e entregas ocasionais)
+	* descrição dos serviços
+		$ bronze - o nível mais baixo, consiste em entregas entre as 6h e as 7h da manhã, todos os dias úteis e tem um custo semanal de 2€.
+		$ prata - o nível intermédio, dá possibilidade ao cliente de receber os seus produtos duas vezes por dia, uma de manhã, entre as 6h e as 7h, e outra ao final do dia, entre as 19h e as 20h, com um custo semanal de 3,5€.
+		$ ouro - o último nível, oferece ao cliente liberdade para escolher um intervalo de uma hora, duas vezes por dia, para poder receber os seus produtos em casa, todos os dias úteis, respeitando o horário de entregas, isto é, das 6h às 22h. Por um preço semanal de 5€ até 10 entregas, e com um custo adicional de 0,5€ por cada entrega extra.
+
+		$ Se achar que não precisa de receber estes produtos duas vezes por dia, então pode optar por receber só ao final do dia em alguns dias e noutros só de manhã ou até as duas vezes, mas tal como já ficou definido não irá obter um desconto por isso e terá de pagar o mesmo preço.
+- formulário para uma entrega ocasional ( dia, hora, morada, NIF)
+	* perguntar se os dados de faturação são os já presentes na conta
+	* perguntar se quer utilizar os dados da conta para a entrega
+- consulta das entregas confirmadas/pendentes
+- pagamento online de subscrições e entregas ocasionais
+- registo do cliente
+	* formulário para registo de um cliente no sistema
+- autenticação
+- cancelar encomendas
+	* se os artigos já se encontram confecionados, não é efetuado o reembolso
+	* caso contrário, o montante é devolvido na plataforma
+- alterar os dados pessoais da conta
+- consulta dos dados pessoais
+- alteração dos dados referentes a uma subscrição
+- consulta de contactos da empresa
+- Consulta da história da empresa
+- subscrição do serviço bronze/prata/ouro
+	* formulário para a subscrição de um serviço
+		$ perguntar se quer utilizar os dados da conta para a entrega
+		$ perguntar se os dados de faturação são os já presentes na conta
+- adicionar produto ao carrinho
+- consulta do carrinho
+	* mostrar preço por produto e quantidade
+	* confirmação da encomenda
+	* eliminar produtos
+
+(notificações)
+- confirmação via email/sms da viabilidade da entrega ocasional
+- confirmação via email/sms do pagamento de uma entrega ocasional
+
+(estafeta)
+- registo de pagamento ao estafeta de subscrições e entregas ocasionais
+- emissão de fatura após o pagamento do serviço, via email e da sua referência via sms
+- consultar o percurso do dia
+- inicializar percurso de entregas
+	* acesso a informação do cliente no momento da entrega (morada, nome, observações)
+	* finalizar entrega
+		$ registo do estado de finalização de entrega (caixinha com o motivo)
+
+(padeiro)
+- consultar a produção do dia
+- finalizar produção
+
+(francisca)
+- consultar as vendas da plataforma
+- consultar estado de encomendas 
+- consultar o percurso do estafeta (estimativa)
+- validar as encomendas ocasionais
+- consultar os dados dos clientes (dados pessoais)
+- consultar dados das diversas subscrições
+
+Definir o dia limite de pagamento: domingo às 23:59
+
+Trabalho futuro:
+- várias subscrições na mesma conta
+- notificações
+- implementação de um sistema de promoções/pontos
+- diferentes estados de encomenda
+- ter acesso à localização dos estafetas que se encontram na rua
