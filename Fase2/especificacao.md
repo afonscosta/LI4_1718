@@ -16,9 +16,7 @@
 - Agendamento
 - Realização
 - Cobrança e Recebimento
-- Conta (?)
-- Manutenção (?)
-- Empresa (?)
+- Manutenção
 
 ---
 
@@ -110,6 +108,10 @@
 
 3. consulta das entregas confirmadas/pendentes
 
+- consulta dos dados pessoais & alterar os dados pessoais da conta
+
+- consulta de contactos da empresa & Consulta da história da empresa (info da empresa)
+
 - consultar a produção do dia (padeiro)
 - consultar as vendas da plataforma
 - consultar estado de encomendas 
@@ -149,17 +151,13 @@
 	* finalizar entrega
 		$ registo do estado de finalização de entrega (caixinha com o motivo)
 
+---
+
 # Cobrança e Recebimento
 - pagamento online de subscrições e entregas ocasionais
 - confirmação via email/sms do pagamento de uma entrega ocasional
 - registo de pagamento ao estafeta de subscrições e entregas ocasionais
 - emissão de fatura após o pagamento do serviço, via email e da sua referência via sms
-
----
-
-# Conta
-- consulta dos dados pessoais
-- alterar os dados pessoais da conta
 
 ---
 
@@ -171,31 +169,3 @@
 - Remoção de subscrições.
 - Alteração de subscrições.
 
----
-
-# Empresa (Informação estática no site)
-- consulta de contactos da empresa
-- Consulta da história da empresa
-
-
-
-
-
-
-
-
-
-
-
-# RASCUNHOS
-
-	1. Os produtos devem aparecer em formato de grelha com 2/3 colunas e com um número ilimitado de linhas. *TALVEZ SEJA TRATADO PELO BOOTSTRAP*
-		+----+----+				+----+----+----+
-		| P1 | P2 |				| P1 | P2 | P3 |
-		+----+----+				+----+----+----+
-		| P3 | P4 |				| P4 | P5 | P6 |
-		+----+----+		 OU		+----+----+----+	ESCOLHER!
-		| P5 | P6 |				| P7 | P8 | P9 |
-		+----+----+				+----+----+----+
-		| .. | .. |				| .. | .. | .. |
-		+----+----+				+----+----+----+
