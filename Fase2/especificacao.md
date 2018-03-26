@@ -112,6 +112,8 @@
 
 - consulta de contactos da empresa & Consulta da história da empresa (info da empresa)
 
+- página de como funciona
+
 - consultar a produção do dia (padeiro)
 - consultar as vendas da plataforma
 - consultar estado de encomendas 
