@@ -144,8 +144,19 @@
 ---
 
 # Realização
-- finalizar produção (padeiro)
-- consultar o percurso do dia
+
+1. O padeiro deve poder aceder a uma lista de encomendas que terá de confeitar.
+	1. A lista deve conter o nome do produto, quantidade e observações/qualidades especiais, bem como a data e hora prevista de entrega de cada encomenda.
+	2. Caso a confeção de uma encomenda tenha sido completa, o padeiro deve poder remover/arquivar a respetiva entrada da lista.
+	
+2. O estafeta poderá consultar a rota que tomará no dia em questão (na semana em questão?).
+	1. O estafeta poderá visualizar o percurso no mapa.
+	2. O estafeta poderá visualizar as direções do percurso como um conjunto de diretivas ou no mapa.
+	
+3. O estafeta deve marcar o seu percurso como inicializado ao partir da padaria.
+	1. O estafeta deve ter acesso ao nome de cada cliente do percurso e a sua morada, bem como um contacto, caso o estafeta não receba resposta inicial do cliente no momento de entrega.
+	2. No momento de entrega, o estafeta preencherá um formulário no qual especificará se a entrega foi bem sucedida, bem como quaisquer observações relativas à mesma. (talvez se reescreva melhor)
+
 - inicializar percurso de entregas
 	* acesso a informação do cliente no momento da entrega (morada, nome, observações)
 	* finalizar entrega
