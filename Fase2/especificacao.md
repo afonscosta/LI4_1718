@@ -147,7 +147,6 @@
 
 1. O padeiro deve poder marcar como confecionadas as encomendas quando estas estiverem completas.
 	1. A BD é atualizada para refletir o facto de que a encomenda está pronta a ser entregue.
-	//1. Alterada a info da encomenda para dizer que está pronta a ser entregue.
 	
 2. O estafeta poderá consultar a rota que tomará no dia em questão.
 	1. O estafeta poderá visualizar as direções do percurso como um conjunto de diretivas ou no mapa.
@@ -161,9 +160,12 @@
 	4. A opção "Finalizar roteiro" apenas se disponibilizará quando todas as entregas estiverem marcadas como finalizadas (quer seja por sucesso ou por caso de incapacidade de entrega).
 
 4. O estafeta deve ter acesso ao nome de cada cliente do percurso e a sua morada, bem como um contacto, caso o estafeta não receba resposta inicial do cliente no momento de entrega.
+	1. Acesso à informação do cliente será restrita ao dia em questão enquanto o roteiro estiver em curso e apenas quando o cliente em questão for o seguinte no roteiro.
+	2. No momento em que a entrega de um dado cliente for completa, o acesso à sua informação será revogado.
 
 5. No momento de entrega, o estafeta preencherá um pequeno formulário no qual especificará se a entrega foi bem sucedida. Adicionalmente, poderá acrescentar observações relativas à mesma.
-	1. 
+	1. Caso a entrega seja bem sucedida, especificar-se-á o método de pagamento.
+	2. Caso contrário, informar-se-á que a entrega não pôde ser feita e porquê.
 
 ---
 
