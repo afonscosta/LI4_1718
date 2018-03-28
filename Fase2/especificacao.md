@@ -145,22 +145,19 @@
 
 # Realização
 
-1. O padeiro deve poder aceder a uma lista de encomendas que terá de confeitar.
-	1. A lista deve conter o nome do produto, quantidade e observações/qualidades especiais, bem como a data e hora prevista de entrega de cada encomenda.
-	2. Caso a confeção de uma encomenda tenha sido completa, o padeiro deve poder remover/arquivar a respetiva entrada da lista.
+1. A padeiro deve poder marcar como confecionadas as encomendas quando estas estiverem completas.
+	1. Alterada a info da encomenda para dizer que está pronta a ser entregue.
 	
-2. O estafeta poderá consultar a rota que tomará no dia em questão (na semana em questão?).
-	1. O estafeta poderá visualizar o percurso no mapa.
-	2. O estafeta poderá visualizar as direções do percurso como um conjunto de diretivas ou no mapa.
+2. O estafeta poderá consultar a rota que tomará no dia em questão.
+	1. O estafeta poderá visualizar as direções do percurso como um conjunto de diretivas ou no mapa.
+	2. rota eficiente que passa por todos os clientes com subscrição
+	3. entregas ocasionais como é que são inseridas na rota.
 	
 3. O estafeta deve marcar o seu percurso como inicializado ao partir da padaria.
-	1. O estafeta deve ter acesso ao nome de cada cliente do percurso e a sua morada, bem como um contacto, caso o estafeta não receba resposta inicial do cliente no momento de entrega.
-	2. No momento de entrega, o estafeta preencherá um pequeno formulário no qual especificará se a entrega foi bem sucedida, bem como quaisquer observações relativas à mesma. (talvez se reescreva melhor)
 
-- inicializar percurso de entregas
-	* acesso a informação do cliente no momento da entrega (morada, nome, observações)
-	* finalizar entrega
-		$ registo do estado de finalização de entrega (caixinha com o motivo)
+4. O estafeta deve ter acesso ao nome de cada cliente do percurso e a sua morada, bem como um contacto, caso o estafeta não receba resposta inicial do cliente no momento de entrega.
+
+5. No momento de entrega, o estafeta preencherá um pequeno formulário no qual especificará se a entrega foi bem sucedida. Adicionalmente, poderá acrescentar observações relativas à mesma. 
 
 ---
 
@@ -179,34 +176,25 @@
 1. O cliente poderá alterar a sua subscrição a qualquer momento.
 	1. O cliente poderá mudar entre subscrição *bronze, prata* e *ouro* consoante os seus desejos.
 	2. A alteração tomará efeito apenas na semana seguinte.
-	3. Caso mude de subscrição *ouro* para outra e de volta para *ouro*, as preferências da subscrição não serão guardadas.
+	3. Caso sejam realizadas alterações numa subscrição, estas apenas ficam vigentes enquanto o serviço estiver ativo. A partir do momento em que o cliente o cancela, as suas preferências não serão guardadas.
 	
 2. O cliente poderá cancelar a sua subscrição a qualquer momento.
-	1. A seleção desta opção deverá abrir um popup que informa o cliente de que perderá os benefícios da subscrição e pergunta se tem a certeza que o deseja fazer.
-	2. Caso confirme, será pedida a palavra passe do utilizador para finalizar o pedido. (sim? não? talvez?)
-	3. O cliente terá a opção de cancelar as encomendas desta semana caso deseje. Caso contrário, o serviço deixará de ter efeito a partir da semana seguinte.
+	1. A seleção desta opção deverá abrir um popup que informa o cliente de que perderá os benefícios da subscrição, sendo necessária a aprovação do cliente para que a ação seja consumada.
+	2. O cliente terá a opção de cancelar as encomendas desta semana caso deseje. Caso contrário, o serviço deixará de ter efeito a partir da semana seguinte.
 
 
-## Funcionário
-1. A Sra. Francisca poderá inserir novos produtos para venda na plataforma.
+## Administrador
+1. O administrador deve poder inserir novos produtos para venda na plataforma.
 	1. A informação do produto a inserir inclui nome, descrição, preço, imagem, ingredientes e informação nutricional.
 	2. A informação será guardada num objeto *produto* e como tal não será imediatemente guardada na BD.
-	3. Todas as alterações poderão ser pré-visualizadas ao ser inseridas.
-	4. Ao finalizar a inserção, o objeto será inserido na BD e o novo produto será acessível na plataforma.
+	3. Os produtos adicionados serão apresentados em formato de lista como forma de verificação dos dados introduzidos.
+	4. Ao submeter os novos produtos, estes serão registados na BD, ficando de imediato acessíveis.
 
-2. A Sra. Francisca poderá alterar informação relativa a produtos existentes para venda na plataforma.
+2. O administrador deve poder alterar informação relativa a produtos existentes para venda na plataforma.
 	1. A informação relativa ao produto que pretende alterar é carregada da BD para um objeto *produto* local.
-	2. A Sra. Francisca poderá mudar qualquer informação que considere relevante.
-	3. Ao finalizar as alterações, o objeto atualizará a BD e a apresentação do produto na plataforma.
+	2. O administrador poderá mudar qualquer informação que considere relevante.
+	3. Ao submeter as alterações, as mudanças são registadas na BD e, consequentemente, na apresentação do produto na plataforma.
 
-3. A Sra. Francisca poderá remover produtos de venda da plataforma.
-	1. A seleção desta opção deverá abrir um popup que informa a Sra. Francisca de que a informação relativa ao produto será apagada permanentemente e pergunta se tem a certeza que o deseja fazer.
-	2. Caso confirme, será pedida a sua palavra passe para finalizar o pedido. (sim? não? talvez?)
-
-- Inserção de novos produtos.
-- Remoção de produtos.
-- Alteração de produtos.
-- Inserção de novas modalidades de subscrição.
-- Remoção de subscrições.
-- Alteração de subscrições.
+3. O administrador deve poder remover produtos de venda da plataforma.
+	1. A seleção desta opção deverá abrir um popup, que informa o administrador de que a informação relativa ao produto será apagada permanentemente, questionando se tem a certeza que o deseja fazer.
 
