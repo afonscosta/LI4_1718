@@ -119,53 +119,38 @@
 - consultar os dados dos clientes (dados pessoais)
 - consultar dados das diversas subscrições
 
+---
 
-Requisição (LIRA)
+# Requisição
 1. O cliente deve ter disponível para preencher um formulário onde possa especificar todos os dados necessários para requisitar uma entrega ocasional (ou outro tipo de entregas).
     1. Este formulário é apresentado para ser preenchido no momento em que um cliente se regista mas pode ser acedido em qualquer momento.
     2. Os dados do formulário podem ser alterados a qualquer momento.
 	3. O cliente pode requisitar uma entrega ocasional a qualquer momento do dia.
     4. Os dados que têm de ser especificados para uma entrega ocasional são: o dia e a hora a que a entrega deve ser feita, a morada onde deve ser entregue, o NIF para faturação e os produtos que devem ser entregues.
-    5. O cliente, caso tenha sessão iniciada, deve conseguir escolher usar os seus dados da faturação ou inserir novos.
-    6. O cliente, caso tenha sessão iniciada, deve conseguir escolher usar a sua morada ou inserir outra.
-    7. A encomenda tem de ser feita com pelo menos 1h00 de antecedencia.
-    8. A qualquer momento, antes de a encomenda ser confirmada pela Sra Francisca, a encomenda pode ser anulada.
+    5. O cliente deve conseguir escolher usar os seus dados da faturação ou inserir novos.
+    6. O cliente deve conseguir escolher usar a sua morada ou inserir outra para a realização da entrega.
+    7. A entrega ocasional tem de ser feita com pelo menos 1h00 de antecedência.
+    8. A qualquer momento, antes de a entrega ocasional ser confirmada pelo administrador, a encomenda pode ser anulada.
 3. O cliente pode a qualquer momento assinar uma subscrição de qualquer tipo.
 	1. O cliente tem de estar registado no sistema.
-	2. No momento de  fazer uma nova subscrição o cliente escolhe uma das três opções disponíveis.
-	3. No formulário de inscrição numa subscrição, o cliente escolhe se quer usar a mesma morada que está associada à sua conta ou uma nova.
-	4. No formulário de inscrição numa subscrição, o cliente escolhe se quer usar a mesma informação para faturação que está associada à sua conta ou uma nova.
-	5. O cliente pode escolher assinar uma ou mais subscrições.
-4. O cliente tem um carrinho de compras para poder realizar uma encomenda ocasional.
-	1. O cliente pode fazer checkout ao seu carrinho sempre que quiser, desde que o mesmo não esteja vazio.
-
-
-
-(- formulário para uma entrega ocasional ( dia, hora, morada, NIF)
-	* perguntar se os dados de faturação são os já presentes na conta
-	* perguntar se quer utilizar os dados da conta para a entrega
-- alteração dos dados referentes a uma subscrição
-- subscrição do serviço bronze/prata/ouro
-	* formulário para a subscrição de um serviço
-- Checkout do carrinho)
+	2. No momento de fazer uma nova subscrição o cliente escolhe uma das três opções disponíveis.
+	3. No formulário de inscrição numa subscrição, o cliente escolhe se quer usar a morada que está associada à sua conta ou uma nova, para a realização da entrega.
+	4. No formulário de inscrição numa subscrição, o cliente escolhe se quer usar a informação para faturação que está associada à sua conta ou uma nova.
+	5. Após a subscrição de um serviço este só entre em vigor na semana seguinte.
+4. [COLOCAR COISAS DO CARRINHO DA PESQUISA]
 
 ---
 
-# Agendamento (LIRA)
-1. O cliente que tenha uma subscrição ativa pode a qualquer momento agendar os produtos que deseja receber na semana seguinte. É considerado "domingo" como primeiro dia da semana.
-    1. O agendamento pode ser feito até às 23h59min de sábado. 
-    2. O cliente pode agendar, nas horas estipuladas pela sua subscrição, a entrega de qualquer produto que seja fabricado pela empresa BreadSpread nas quantidades que desejar.
-    3. Em qualquer momento o cliente pode cancelar a sua encomenda. Caso os artigos ainda não tenham sido produzidos o cliente será reembolsado com saldo na plataforma, no valor da mesma, caso contrário, será reembolsado "se os produtos forem vendidos na loja".
+# Agendamento 
+1. O cliente que tenha uma subscrição ativa pode a qualquer momento agendar os produtos que deseja receber na semana seguinte. É considerado "segunda" como primeiro dia da semana.
+    1. O agendamento das entregas e respetivo pagamento tem ser feito até às 23h59min de domingo.
+    2. O cliente pode agendar, nas horas estipuladas pela sua subscrição, a entrega de qualquer produto que seja fabricado pela empresa Bread Spread nas quantidades que desejar.
+    3. Em qualquer momento o cliente pode cancelar a sua encomenda. Caso os artigos ainda não tenham sido produzidos o cliente será reembolsado com saldo na plataforma, no valor da mesma.
 2. O cliente recebe via email/sms assim que a sua encomenda é confirmada.
-	1. SAME
-3. 
-
-
-(- cancelar encomendas
-	* se os artigos já se encontram confecionados, não é efetuado o reembolso
-	* caso contrário, o montante é devolvido na plataforma
-- confirmação via email/sms da viabilidade da entrega ocasional
-- validar as encomendas ocasionais)
+3. Todas as entregas ocasionais devem ser validadas pelo administrador.
+	1. Uma entrega ocasional quando requisitada deve surgir num estado pendente.
+	2. O administrador consoante a disponibilidade para a produção dos artigos para a data especificada, confirma ou não o pedido.
+	3. Caso a encomenda seja aceite, esta passa a confirmada.
 
 ---
 
