@@ -182,16 +182,27 @@
 	3. Caso mude de subscrição *ouro* para outra e de volta para *ouro*, as preferências da subscrição não serão guardadas.
 	
 2. O cliente poderá cancelar a sua subscrição a qualquer momento.
+	1. A seleção desta opção deverá abrir um popup que informa o cliente de que perderá os benefícios da subscrição e pergunta se tem a certeza que o deseja fazer.
+	2. Caso confirme, será pedida a palavra passe do utilizador para finalizar o pedido. (sim? não? talvez?)
+	3. O cliente terá a opção de cancelar as encomendas desta semana caso deseje. Caso contrário, o serviço deixará de ter efeito a partir da semana seguinte.
+
 
 ## Funcionário
 1. A Sra. Francisca poderá inserir novos produtos para venda na plataforma.
 	1. A informação do produto a inserir inclui nome, descrição, preço, imagem, ingredientes e informação nutricional.
-	2. 
+	2. A informação será guardada num objeto *produto* e como tal não será imediatemente guardada na BD.
+	3. Todas as alterações poderão ser pré-visualizadas ao ser inseridas.
+	4. Ao finalizar a inserção, o objeto será inserido na BD e o novo produto será acessível na plataforma.
 
-2. A Sra. Francisca poderá alterar infomração relativa a produtos existentes para venda na plataforma.
-
+2. A Sra. Francisca poderá alterar informação relativa a produtos existentes para venda na plataforma.
+	1. A informação relativa ao produto que pretende alterar é carregada da BD para um objeto *produto* local.
+	2. A Sra. Francisca poderá mudar qualquer informação que considere relevante.
+	3. Ao finalizar as alterações, o objeto atualizará a BD e a apresentação do produto na plataforma.
 
 3. A Sra. Francisca poderá remover produtos de venda da plataforma.
+	1. A seleção desta opção deverá abrir um popup que informa a Sra. Francisca de que a informação relativa ao produto será apagada permanentemente e pergunta se tem a certeza que o deseja fazer.
+	2. Caso confirme, será pedida a sua palavra passe para finalizar o pedido. (sim? não? talvez?)
+
 - Inserção de novos produtos.
 - Remoção de produtos.
 - Alteração de produtos.
