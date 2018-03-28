@@ -62,9 +62,3 @@ Requisitos de utilizador:
 
 Definir o dia limite de pagamento: domingo às 23:59
 
-Trabalho futuro:
-- várias subscrições na mesma conta
-- notificações
-- implementação de um sistema de promoções/pontos
-- diferentes estados de encomenda
-- ter acesso à localização dos estafetas que se encontram na rua
