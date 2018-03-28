@@ -106,20 +106,44 @@
 	4. Toda e qualquer alteração ao estado do carrinho terá uma atualização imediata no objeto encomenda correspondente aquela sessão.
 	5. Ao finalizar a compra o cliente indica que a informação presente no carrinho pode ser registada e como tal o objeto "encomenda" inserido na BD de forma a consolidar a ação do cliente.
 
-3. consulta das entregas confirmadas/pendentes
+3. O cliente deve poder consultar as encomendas que realizou, quer estas estejam confirmadas ou pendentes.
+	1. Cada encomenda deve apresentar o seu código identificador, o estado (confirmada/pendente), a data de entrega, artigos solicitados.
+	2. A informação das encomendas é carregada diretamente da BD e mostrada ao utilizador em formato de lista.
+	3. A lista só é atualizada se o cliente recarregar a página.
 
-- consulta dos dados pessoais & alterar os dados pessoais da conta
+4. O cliente deve poder consultar os dados da sua conta pessoal e, consequentemente, poder altera-los.
+	1. A informação pessoal aparece em formato formulário para que o cliente possa alterar.
+	2. Após a alteração o cliente deve confirmar a ação carregando no botão para o efeito. Deste modo, os dados modificados são propagados e registados de imediato na BD.
 
-- consulta de contactos da empresa & Consulta da história da empresa (info da empresa)
+5. O cliente deve poder consultar informação da empresa, como a sua história e contactos.
+	1. A informação da empresa apenas pode ser alterada pelo administrador.
+	2. Os dados são carregados da BD em texto e apresentados no site ao cliente quando este os solicita.
 
-- página de como funciona
+6. O cliente deve poder consultar uma página com todos os passos descrevendo o funcionamento dos serviços.
+	1. A informação apenas pode ser alterada pelo administrador.
+	2. Os dados são carregados da BD em texto e apresentados no site ao cliente quando este os solicita.
 
-- consultar a produção do dia (padeiro)
-- consultar as vendas da plataforma
-- consultar estado de encomendas 
-- consultar o percurso do estafeta (estimativa)
-- consultar os dados dos clientes (dados pessoais)
-- consultar dados das diversas subscrições
+## Padeiro
+7. O padeiro deve poder consultar a produção necessária em determinado dia.
+	1. A pesquisa é feita com base num ano, mês e dia específicos.
+	2. É realizada uma query à BD e o resultado é apresentado ao padeiro em forma de lista.
+	3. Cada elemento da lista tem informação como o nome do produto e a quantidade a confecionar.
+	4. Cada elemento da lista representa um só artigo com a quantidade total a fabricar. Assim sendo, mesmo que o mesmo artigo esteja presente em várias encomendas, este aparece apenas uma vez com as quantidades somadas.
+
+## Administrador
+8. O administrador deve poder consultar dados sobre os diferentes serviços na Bread Spread. Nomeadamente as vendas da plataforma, estatísticas relacionadas com as subscrições dos diversos serviços e as quantidades vendidas de cada produto.
+	1. Os dados serão apresentados utilizando um template do bootstrap intitulado "SB Admin".
+	2. De forma a popular o bootstrap os dados serão carregados da BD diretamente. Caso as informações se alterem, a página só muda quando atualizada. Nesse momento os dados serão extraídos novamente da BD e a página terá a informação mais recente.
+	3. As vendas serão representadas por um gráfico de área. O eixo das abcissas representa cada semana com a respetiva quantidades de vendas dessa semana no eixo das ordenadas.
+	4. As estatísticas relacionadas com as subscrições dos clientes serão representadas por um diagrama circular. Cada um dos setores representará a percentegem de clientes que subscreveram o serviço em questão.
+	5. As quantidades vendidas de cada produto serão representadas num gráfico de barras. Cada barra corresponderá a um único artigo.
+	6. Nos diferentes dados presentes nesta página web, apenas entrarão as vendas que já tenham sido confirmadas ou realizadas. Desta forma, toda e qualquer encomenda pendente não será contemplada.
+
+- consultar estado de encomendas (?)
+
+## Cliente e Administrador [Faz mais sentido estar na realização]
+10. Tanto o cliente como o administrador devem poder consultar uma estimativa da posição do estafeta durante o seu percurso.
+	1. ...
 
 ---
 
