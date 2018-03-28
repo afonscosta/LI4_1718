@@ -98,41 +98,32 @@
 	5. As entregas ocasionais tem um acrescento ao preço total dos artigos de *2€*.
 	6. Todo e qualquer serviço de entrega deve respeitar o horário de entregas, que se encontra determinado como sendo das 6h às 22h. 
 
-3. O cliente deve poder usar o "carrinho" para guardar os artigos com o preço e respetivas quantidades que deseja comprar. Consequentemente, deve poder finalizar a compra quando tiver terminado.
-	1. Quer no catálogo principal dos artigos, quer na popup com a informação detalhada de um determinado produto, deve ser possível adicionar esse mesmo produto ao carrinho de compras, com a respetiva quantidade especificada. Se nada for dito será adicionada uma quantidade unitária apenas.
-	2. O cliente pode remover qualquer produto associado ao carrinho.
-	3. As informações associadas ao carrinho encontram-se guardadas enquanto o cliente tiver a sessão iniciada. Caso este termine sessão os dados presentes no carrinho são automaticamente apagados.
-	4. Toda a informação que defina o carrinho encontra-se num objeto "encomenda" e como tal não é armazenada diretamente na BD sempre que existe alguma mudança.
-	5. Toda e qualquer alteração ao estado do carrinho terá uma atualização imediata no objeto encomenda correspondente aquela sessão.
-	6. Ao finalizar a compra o cliente indica que a informação presente no carrinho pode ser registada e como tal o objeto "encomenda" inserido na BD de forma a consolidar a ação do cliente.
-
-4. O cliente deve poder consultar as encomendas que realizou, quer estas estejam confirmadas ou pendentes.
+3. O cliente deve poder consultar as encomendas que realizou, quer estas estejam confirmadas ou pendentes.
 	1. Cada encomenda deve apresentar o seu código identificador, o estado (confirmada/pendente), a data de entrega, artigos solicitados.
 	2. A informação das encomendas é carregada diretamente da BD e mostrada ao utilizador em formato de lista.
 	3. A lista só é atualizada se o cliente recarregar a página.
 
-5. O cliente deve poder consultar os dados da sua conta pessoal e, consequentemente, poder altera-los.
+4. O cliente deve poder consultar os dados da sua conta pessoal e, consequentemente, poder altera-los.
 	1. A informação pessoal aparece em formato formulário para que o cliente possa alterar.
 	2. Após a alteração o cliente deve confirmar a ação carregando no botão para o efeito. Deste modo, os dados modificados são propagados e registados de imediato na BD.
 
-6. O cliente deve poder consultar informação da empresa, como a sua história e contactos.
+5. O cliente deve poder consultar informação da empresa, como a sua história e contactos.
 	1. A informação da empresa apenas pode ser alterada pelo administrador.
 	2. Os dados são carregados da BD em texto e apresentados no site ao cliente quando este os solicita.
 
-7. O cliente deve poder consultar uma página com todos os passos descrevendo o funcionamento dos serviços.
+6. O cliente deve poder consultar uma página com todos os passos descrevendo o funcionamento dos serviços.
 	1. A informação apenas pode ser alterada pelo administrador.
 	2. Os dados são carregados da BD em texto e apresentados no site ao cliente quando este os solicita.
 
-## Padeiro [ALTERAR]
-8. O padeiro deve poder consultar a produção necessária em determinado dia.
-	1. A pesquisa é feita com base num ano, mês e dia específicos.
-	2. É realizada uma query à BD e o resultado é apresentado ao padeiro em forma de lista.
-	3. Cada elemento da lista tem informação como o nome do produto e a quantidade a confecionar.
-	4. Cada elemento da lista representa um só artigo com a quantidade total a fabricar. Assim sendo, mesmo que o mesmo artigo esteja presente em várias encomendas, este aparece apenas uma vez com as quantidades somadas.
-	[X] 5. confirmadas e pendentes da próxima semana.
+## Padeiro
+7. O padeiro deve poder consultar a produção necessária em cada dia, ao longo de uma semana.
+	1. É realizada uma query à BD e o resultado é apresentado ao padeiro em forma de lista.
+	2. Cada elemento da lista tem informação como o nome do produto e a quantidade a confecionar.
+	3. Cada elemento da lista representa um só artigo com a quantidade total a fabricar. Assim sendo, mesmo que o mesmo artigo esteja presente em várias encomendas, este aparece apenas uma vez com as quantidades somadas.
+	4. As encomendas visíveis tem de estar confirmadas ou pendentes quando associadas a uma subscrição.
 
 ## Administrador
-9. O administrador deve poder consultar dados sobre os diferentes serviços na Bread Spread. Nomeadamente as vendas da plataforma, estatísticas relacionadas com as subscrições dos diversos serviços e as quantidades vendidas de cada produto.
+8. O administrador deve poder consultar dados sobre os diferentes serviços na Bread Spread. Nomeadamente as vendas da plataforma, estatísticas relacionadas com as subscrições dos diversos serviços e as quantidades vendidas de cada produto.
 	1. Os dados serão apresentados utilizando um template de administração dos serviços disponíveis.
 	2. De forma a popular o template os dados serão carregados da BD diretamente. Caso as informações se alterem, a página só muda quando atualizada. Nesse momento os dados serão extraídos novamente da BD e a página terá a informação mais recente.
 	3. As vendas serão representadas por um gráfico de área. O eixo das abcissas representa cada semana com a respetiva quantidades de vendas dessa semana no eixo das ordenadas.
@@ -143,6 +134,8 @@
 ---
 
 # Requisição
+
+## Cliente
 1. O cliente deve ter disponível para preencher um formulário onde possa especificar todos os dados necessários para requisitar uma entrega ocasional (ou outro tipo de entregas).
     1. Este formulário é apresentado para ser preenchido no momento em que um cliente se regista mas pode ser acedido em qualquer momento.
     2. Os dados do formulário podem ser alterados a qualquer momento.
@@ -158,16 +151,26 @@
 	3. No formulário de inscrição numa subscrição, o cliente escolhe se quer usar a morada que está associada à sua conta ou uma nova, para a realização da entrega.
 	4. No formulário de inscrição numa subscrição, o cliente escolhe se quer usar a informação para faturação que está associada à sua conta ou uma nova.
 	5. Após a subscrição de um serviço este só entre em vigor na semana seguinte.
-4. [COLOCAR COISAS DO CARRINHO DA PESQUISA]
+4. O cliente deve poder usar o "carrinho" para guardar os artigos com o preço e respetivas quantidades que deseja comprar. Consequentemente, deve poder finalizar a compra quando tiver terminado.
+	1. Quer no catálogo principal dos artigos, quer na popup com a informação detalhada de um determinado produto, deve ser possível adicionar esse mesmo produto ao carrinho de compras, com a respetiva quantidade especificada. Se nada for dito será adicionada uma quantidade unitária apenas.
+	2. O cliente pode remover qualquer produto associado ao carrinho.
+	3. As informações associadas ao carrinho encontram-se guardadas enquanto o cliente tiver a sessão iniciada. Caso este termine sessão os dados presentes no carrinho são automaticamente apagados.
+	4. Toda a informação que defina o carrinho encontra-se num objeto "encomenda" e como tal não é armazenada diretamente na BD sempre que existe alguma mudança.
+	5. Toda e qualquer alteração ao estado do carrinho terá uma atualização imediata no objeto encomenda correspondente aquela sessão.
+	6. Ao finalizar a compra o cliente indica que a informação presente no carrinho pode ser registada e como tal o objeto "encomenda" inserido na BD de forma a consolidar a ação do cliente.
 
 ---
 
 # Agendamento 
+
+## Cliente
 1. O cliente que tenha uma subscrição ativa pode a qualquer momento agendar os produtos que deseja receber na semana seguinte. É considerado "segunda" como primeiro dia da semana.
     1. O agendamento das entregas e respetivo pagamento tem ser feito até às 23h59min de domingo.
     2. O cliente pode agendar, nas horas estipuladas pela sua subscrição, a entrega de qualquer produto que seja fabricado pela empresa Bread Spread nas quantidades que desejar.
     3. Em qualquer momento o cliente pode cancelar a sua encomenda. Caso os artigos ainda não tenham sido produzidos o cliente será reembolsado com saldo na plataforma, no valor da mesma.
 2. O cliente recebe via email/sms assim que a sua encomenda é confirmada.
+
+## Administrador
 3. Todas as entregas ocasionais devem ser validadas pelo administrador.
 	1. Uma entrega ocasional quando requisitada deve surgir num estado pendente.
 	2. O administrador consoante a disponibilidade para a produção dos artigos para a data especificada, confirma ou não o pedido.
@@ -177,9 +180,11 @@
 
 # Realização
 
+## Padeiro
 1. O padeiro deve poder marcar como confecionadas as encomendas quando estas estiverem completas.
 	1. A BD é atualizada para refletir o facto de que a encomenda está pronta a ser entregue.
-	
+
+## Estafeta
 2. O estafeta poderá consultar a rota que tomará no dia em questão.
 	1. O estafeta poderá visualizar as direções do percurso como um conjunto de diretivas ou no mapa.
 	2. A rota gerada pela plataforma descreverá um percurso eficiente que passa por todos os clientes com subscrição.
