@@ -181,10 +181,21 @@
 ---
 
 # Cobrança e Recebimento
-- pagamento online de subscrições e entregas ocasionais
-- confirmação via email/sms do pagamento de uma entrega ocasional
-- registo de pagamento ao estafeta de subscrições e entregas ocasionais
-- emissão de fatura após o pagamento do serviço, via email e da sua referência via sms
+
+## Cliente
+1. O *cliente* deverá ter disponível na sua área de cliente a opção de efetuar pagamentos dos seus serviços via web.
+	1. Quando selecionada pelo *cliente* a opção de pagamento via web, deverá ser apresentada uma lista dos serviços que ainda não se encontram pagos.
+	2. Deverá ser dada a opção ao *cliente* a opção de seleção de vários serviços para pagamento.
+	3. Após serem selecionados os serviços a pagar, deverá ser apresentado ao *cliente* um formulário onde este deverá introduzir os dados de pagamento.
+	4. Após o preenchimento do formulário, o *cliente* deverá confirmar que deseja efetuar o pagamento selecionando a opção *Pagar*, sendo apresentado de seguida o estado de sucesso ou insucesso da ação.
+	5. Para além da confirmação via web, o sistema deverá enviar ao cliente um email/sms de confirmação de receção do pagamento com as referências associadas à transação.
+
+## Estafeta
+1. O *estafeta* deverá ter a possibilidade de registar pagamentos de encomendas ocasionais e de subscrições no sistema. (feitos pessoalmente)
+	1. Quando selecionada a entrega que será efetuada pelo *estafeta* no momento, deverá existir um campo de observações no qual estejam presentes dados relevantes do cliente ao qual será feita a entrega. A título exemplificativo, se esta for a última encomenda da semana será apresentado um lembrete de que o cliente deverá efetuar o pagamento do serviço da próxima semana.
+	2. O estafeta confirma o pagamento do serviço, sendo gerada automaticamente a fatura. Esta é registada na BD, podendo ser acedida posteriormente.
+	3. Após a confirmação do pagamento será apresentado um estado de sucesso ou insucesso da ação através de um popup.
+	4. Para além da confirmação com o *estafeta*, o *cliente* deverá receber também via email/sms uma confirmação do registo de pagamento.
 
 ---
 
