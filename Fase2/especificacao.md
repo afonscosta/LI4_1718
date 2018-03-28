@@ -144,12 +144,28 @@
 ---
 
 # Realização
-- finalizar produção (padeiro)
-- consultar o percurso do dia
-- inicializar percurso de entregas
-	* acesso a informação do cliente no momento da entrega (morada, nome, observações)
-	* finalizar entrega
-		$ registo do estado de finalização de entrega (caixinha com o motivo)
+
+1. O padeiro deve poder marcar como confecionadas as encomendas quando estas estiverem completas.
+	1. A BD é atualizada para refletir o facto de que a encomenda está pronta a ser entregue.
+	
+2. O estafeta poderá consultar a rota que tomará no dia em questão.
+	1. O estafeta poderá visualizar as direções do percurso como um conjunto de diretivas ou no mapa.
+	2. A rota gerada pela plataforma descreverá um percurso eficiente que passa por todos os clientes com subscrição.
+	3. Caso uma entrega ocasional seja requerida durante a hora de entrega de uma subscrição, esta será também inserida na rota.
+	
+3. O estafeta deve marcar o seu percurso como inicializado ao partir da padaria.
+	1. Haverá uma opção "Iniciar roteiro" que, quando selecionada, atualizará o estatuto do estafeta e respetivas encomendas na BD.
+	2. A opção "Iniciar roteiro" apenas se disponibilizará no dia em questão.
+	3. Igualmente, haverá uma opção "Finalizar roteiro" que, quando selecionada, atualizará o estatuto do estafeta.
+	4. A opção "Finalizar roteiro" apenas se disponibilizará quando todas as entregas estiverem marcadas como finalizadas (quer seja por sucesso ou por caso de incapacidade de entrega).
+
+4. O estafeta deve ter acesso ao nome de cada cliente do percurso e a sua morada, bem como um contacto, caso o estafeta não receba resposta inicial do cliente no momento de entrega.
+	1. Acesso à informação do cliente será restrita ao dia em questão enquanto o roteiro estiver em curso e apenas quando o cliente em questão for o seguinte no roteiro.
+	2. No momento em que a entrega de um dado cliente for completa, o acesso à sua informação será revogado.
+
+5. No momento de entrega, o estafeta preencherá um pequeno formulário no qual especificará se a entrega foi bem sucedida. Adicionalmente, poderá acrescentar observações relativas à mesma.
+	1. Caso a entrega seja bem sucedida, especificar-se-á o método de pagamento.
+	2. Caso contrário, informar-se-á que a entrega não pôde ser feita e porquê.
 
 ---
 
@@ -162,10 +178,31 @@
 ---
 
 # Manutenção
-- Inserção de novos produtos.
-- Remoção de produtos.
-- Alteração de produtos.
-- Inserção de novas modalidades de subscrição.
-- Remoção de subscrições.
-- Alteração de subscrições.
+
+## Cliente
+
+1. O cliente poderá alterar a sua subscrição a qualquer momento.
+	1. O cliente poderá mudar entre subscrição *bronze, prata* e *ouro* consoante os seus desejos.
+	2. A alteração tomará efeito apenas na semana seguinte.
+	3. Caso sejam realizadas alterações numa subscrição, estas apenas ficam vigentes enquanto o serviço estiver ativo. A partir do momento em que o cliente o cancela, as suas preferências não serão guardadas.
+	
+2. O cliente poderá cancelar a sua subscrição a qualquer momento.
+	1. A seleção desta opção deverá abrir um popup que informa o cliente de que perderá os benefícios da subscrição, sendo necessária a aprovação do cliente para que a ação seja consumada.
+	2. O cliente terá a opção de cancelar as encomendas desta semana caso deseje. Caso contrário, o serviço deixará de ter efeito a partir da semana seguinte.
+
+
+## Administrador
+1. O administrador deve poder inserir novos produtos para venda na plataforma.
+	1. A informação do produto a inserir inclui nome, descrição, preço, imagem, ingredientes e informação nutricional.
+	2. A informação será guardada num objeto *produto* e como tal não será imediatemente guardada na BD.
+	3. Os produtos adicionados serão apresentados em formato de lista como forma de verificação dos dados introduzidos.
+	4. Ao submeter os novos produtos, estes serão registados na BD, ficando de imediato acessíveis.
+
+2. O administrador deve poder alterar informação relativa a produtos existentes para venda na plataforma.
+	1. A informação relativa ao produto que pretende alterar é carregada da BD para um objeto *produto* local.
+	2. O administrador poderá mudar qualquer informação que considere relevante.
+	3. Ao submeter as alterações, as mudanças são registadas na BD e, consequentemente, na apresentação do produto na plataforma.
+
+3. O administrador deve poder remover produtos de venda da plataforma.
+	1. A seleção desta opção deverá abrir um popup, que informa o administrador de que a informação relativa ao produto será apagada permanentemente, questionando se tem a certeza que o deseja fazer.
 
