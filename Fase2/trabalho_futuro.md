@@ -11,3 +11,4 @@
 9. remoção de subscrições
 10. alteração dos dados de uma subscrição
 11. pagamento adiantados de subscrições
+12. cada vez que o cliente cancela uma entrega e esta já está feita recebe "bolinhas vermelhas" (tipo os pontos na carta de condução)
