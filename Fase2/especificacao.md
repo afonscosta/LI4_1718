@@ -145,19 +145,25 @@
 
 # Realização
 
-1. A padeiro deve poder marcar como confecionadas as encomendas quando estas estiverem completas.
-	1. Alterada a info da encomenda para dizer que está pronta a ser entregue.
+1. O padeiro deve poder marcar como confecionadas as encomendas quando estas estiverem completas.
+	1. A BD é atualizada para refletir o facto de que a encomenda está pronta a ser entregue.
+	//1. Alterada a info da encomenda para dizer que está pronta a ser entregue.
 	
 2. O estafeta poderá consultar a rota que tomará no dia em questão.
 	1. O estafeta poderá visualizar as direções do percurso como um conjunto de diretivas ou no mapa.
-	2. rota eficiente que passa por todos os clientes com subscrição
-	3. entregas ocasionais como é que são inseridas na rota.
+	2. A rota gerada pela plataforma descreverá um percurso eficiente que passa por todos os clientes com subscrição.
+	3. Caso uma entrega ocasional seja requerida durante a hora de entrega de uma subscrição, esta será também inserida na rota.
 	
 3. O estafeta deve marcar o seu percurso como inicializado ao partir da padaria.
+	1. Haverá uma opção "Iniciar roteiro" que, quando selecionada, atualizará o estatuto do estafeta e respetivas encomendas na BD.
+	2. A opção "Iniciar roteiro" apenas se disponibilizará no dia em questão.
+	3. Igualmente, haverá uma opção "Finalizar roteiro" que, quando selecionada, atualizará o estatuto do estafeta.
+	4. A opção "Finalizar roteiro" apenas se disponibilizará quando todas as entregas estiverem marcadas como finalizadas (quer seja por sucesso ou por caso de incapacidade de entrega).
 
 4. O estafeta deve ter acesso ao nome de cada cliente do percurso e a sua morada, bem como um contacto, caso o estafeta não receba resposta inicial do cliente no momento de entrega.
 
-5. No momento de entrega, o estafeta preencherá um pequeno formulário no qual especificará se a entrega foi bem sucedida. Adicionalmente, poderá acrescentar observações relativas à mesma. 
+5. No momento de entrega, o estafeta preencherá um pequeno formulário no qual especificará se a entrega foi bem sucedida. Adicionalmente, poderá acrescentar observações relativas à mesma.
+	1. 
 
 ---
 
