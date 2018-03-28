@@ -155,7 +155,7 @@
 	
 3. O estafeta deve marcar o seu percurso como inicializado ao partir da padaria.
 	1. O estafeta deve ter acesso ao nome de cada cliente do percurso e a sua morada, bem como um contacto, caso o estafeta não receba resposta inicial do cliente no momento de entrega.
-	2. No momento de entrega, o estafeta preencherá um formulário no qual especificará se a entrega foi bem sucedida, bem como quaisquer observações relativas à mesma. (talvez se reescreva melhor)
+	2. No momento de entrega, o estafeta preencherá um pequeno formulário no qual especificará se a entrega foi bem sucedida, bem como quaisquer observações relativas à mesma. (talvez se reescreva melhor)
 
 - inicializar percurso de entregas
 	* acesso a informação do cliente no momento da entrega (morada, nome, observações)
@@ -173,6 +173,25 @@
 ---
 
 # Manutenção
+
+## Cliente
+
+1. O cliente poderá alterar a sua subscrição a qualquer momento.
+	1. O cliente poderá mudar entre subscrição *bronze, prata* e *ouro* consoante os seus desejos.
+	2. A alteração tomará efeito apenas na semana seguinte.
+	3. Caso mude de subscrição *ouro* para outra e de volta para *ouro*, as preferências da subscrição não serão guardadas.
+	
+2. O cliente poderá cancelar a sua subscrição a qualquer momento.
+
+## Funcionário
+1. A Sra. Francisca poderá inserir novos produtos para venda na plataforma.
+	1. A informação do produto a inserir inclui nome, descrição, preço, imagem, ingredientes e informação nutricional.
+	2. 
+
+2. A Sra. Francisca poderá alterar infomração relativa a produtos existentes para venda na plataforma.
+
+
+3. A Sra. Francisca poderá remover produtos de venda da plataforma.
 - Inserção de novos produtos.
 - Remoção de produtos.
 - Alteração de produtos.
