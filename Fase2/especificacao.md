@@ -150,16 +150,20 @@
 		$ registo do estado de finalização de entrega (caixinha com o motivo)
 
 # Cobrança e Recebimento
-1. O *estafeta* deverá ter a possibilidade de registar os pagamentos de encomendas ocasionais e subscrições no sistema.
-	1. Quando selecionada a entrega que será efetuada pelo *estafeta* no momento, deverá existir um campo de observações no qual esteja presente se o cliente deverá efetuar o pagamento brevemente ou não.
-	2. Um formulário deve estar visível após a seleção da opção de registo de pagamento.
-	3. Após o preenchimento do formulário com os dados do pagamento e conformação do *estafeta* com o cliente que os dados introduzidos estão corretos, este deve ser de imediato registado no servidor, sendo apresentado um estado de sucesso ou insucesso da ação através de um popup.
-2. O *cliente* deverá ter disponível na sua área de cliente a opção de efetuar pagamentos dos seus serviços via web.
+
+## Cliente
+1. O *cliente* deverá ter disponível na sua área de cliente a opção de efetuar pagamentos dos seus serviços via web.
 	1. Quando selecionada pelo *cliente* a opção de pagamento via web, deverá ser apresentada uma lista dos serviços que ainda não se encontram pagos.
 	2. Deverá ser dada a opção ao *cliente* a opção de selecionar vários serviços para pagamento.
 	3. Após serem selecionados os serviços a pagar, deverá ser apresentado ao *cliente* um formulário onde este deverá introduzir os dados de pagamento.
 	4. Após o preenchimento do formulário, o *cliente* deverá confirmar que deseja fazer o pagamento selecionando a opção *Pagar*, sendo apresentado de seguida o estado de sucesso ou insucesso da ação.
 	5. Para além da confirmação via web, o sistema deverá enviar ao cliente um email/sms de confirmação de receção do pagamento.
+
+## Estafeta
+1. O *estafeta* deverá ter a possibilidade de registar os pagamentos de encomendas ocasionais e subscrições no sistema.
+	1. Quando selecionada a entrega que será efetuada pelo *estafeta* no momento, deverá existir um campo de observações no qual esteja presente se o cliente deverá efetuar o pagamento brevemente ou não.
+	2. Um formulário deve estar visível após a seleção da opção de registo de pagamento.
+	3. Após o preenchimento do formulário com os dados do pagamento e conformação do *estafeta* com o cliente que os dados introduzidos estão corretos, este deve ser de imediato registado no servidor, sendo apresentado um estado de sucesso ou insucesso da ação através de um popup.
 
 ---
 
