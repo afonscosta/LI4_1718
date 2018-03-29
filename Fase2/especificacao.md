@@ -37,7 +37,7 @@
 1. Todos os utilizadores tem de ter uma conta associada.
 
 ## Cliente
-2. Registo do *cliente* deve ser efectuado com os seguintes dados: nome, data de nascimento, morada, género e email.
+2. Registo do *cliente* deve ser efectuado com os seguintes dados: nome, data de nascimento, morada, NIF, género e email.
 	1. Um formulário deve estar visível após a escolha do cliente em se registar.
 	2. Após o preenchimento do registo o cliente deve confirmar a ação, sendo os dados de cada campo recolhidos e armazenados de imediato na base de dados.
 	3. O sucesso ou insucesso da acção é comunicado ao cliente através de um popup.
@@ -136,26 +136,26 @@
 # Requisição
 
 ## Cliente
-1. O cliente deve ter disponível para preencher um formulário onde possa especificar todos os dados necessários para requisitar uma entrega ocasional (ou outro tipo de entregas).
-    1. Este formulário é apresentado para ser preenchido no momento em que um cliente se regista mas pode ser acedido em qualquer momento.
-    2. Os dados do formulário podem ser alterados a qualquer momento.
-	3. O cliente pode requisitar uma entrega ocasional a qualquer momento do dia.
-    4. Os dados que têm de ser especificados para uma entrega ocasional são: o dia e a hora a que a entrega deve ser feita, a morada onde deve ser entregue, o NIF para faturação e os produtos que devem ser entregues.
-    5. O cliente deve conseguir escolher usar os seus dados da faturação ou inserir novos.
-    6. O cliente deve conseguir escolher usar a sua morada ou inserir outra para a realização da entrega.
-    7. A entrega ocasional tem de ser feita com pelo menos 1h00 de antecedência.
-    8. A qualquer momento, antes de a entrega ocasional ser confirmada pelo administrador, a encomenda pode ser anulada.
-3. O cliente pode a qualquer momento assinar uma subscrição de qualquer tipo.
+1. O cliente deve ter disponível para preencher um formulário onde possa especificar todos os dados necessários à requisição de um serviço.
+	1. Neste formulário, o *cliente* deverá ter a opção de escolha entre a requisição de uma subscrição ou de uma entrega ocasional.
+2. No caso de seleção de requisição de uma entrega ocasional, deverão ser indicados no formulário o dia e a hora a que a entrega deve ser feita, a morada onde deve ser entregue, o NIF para faturação e os produtos que devem ser entregues, sendo sempre possível selecionar os dados guardados no perfil do cliente.
 	1. O cliente tem de estar registado no sistema.
-	2. No momento de fazer uma nova subscrição o cliente escolhe uma das três opções disponíveis.
-	3. No formulário de inscrição numa subscrição, o cliente escolhe se quer usar a morada que está associada à sua conta ou uma nova, para a realização da entrega.
-	4. No formulário de inscrição numa subscrição, o cliente escolhe se quer usar a informação para faturação que está associada à sua conta ou uma nova.
-	5. Após a subscrição de um serviço este só entre em vigor na semana seguinte.
+	2. O cliente deve poder requisitar uma entrega ocasional a qualquer momento do dia.
+	3. A requisição de uma entrega ocasional terá de ser registada necessáriamente com  1h00 de antecedência até ao momento de entrega definido.
+	4. A qualquer momento, antes de a entrega ocasional ser confirmada pelo administrador, a encomenda pode ser anulada.
+3. No caso de seleção da opção de *Nova Subscrição*:
+	1. O cliente tem de estar registado no sistema.
+	2. No momento de fazer uma nova subscrição o cliente escolhe um dos três serviços disponíveis.
+	3. No formulário de adesão a uma subscrição, o cliente escolhe se quer usar a morada para a realização de entregas que está associada à sua conta ou uma alternativa.
+	4. No formulário de adesão a uma subscrição, o cliente escolhe se quer usar a informação para faturação que está associada à sua conta ou uma alternativa.
+	5. Devem ser definidos também neste momento os produtos a serem entregues bem como as respetivas quantidades.
+	5. Após a subscrição de um serviço este só entrará em vigor na semana seguinte.
 4. O cliente deve poder usar o "carrinho" para guardar os artigos com o preço e respetivas quantidades que deseja comprar. Consequentemente, deve poder finalizar a compra quando tiver terminado.
-	1. Quer no catálogo principal dos artigos, quer na popup com a informação detalhada de um determinado produto, deve ser possível adicionar esse mesmo produto ao carrinho de compras, com a respetiva quantidade especificada. Se nada for dito será adicionada uma quantidade unitária apenas.
+	1. Quer no catálogo principal dos artigos, quer no popup com a informação detalhada de um determinado produto, deve ser possível adicionar esse mesmo produto ao carrinho de compras, com a respetiva quantidade especificada. Se nada for dito será adicionada uma quantidade unitária apenas.
 	2. O cliente pode remover qualquer produto associado ao carrinho.
 	3. As informações associadas ao carrinho encontram-se guardadas enquanto o cliente tiver a sessão iniciada. Caso este termine sessão os dados presentes no carrinho são automaticamente apagados.
-	4. Toda a informação que defina o carrinho encontra-se num objeto "encomenda" e como tal não é armazenada diretamente na BD sempre que existe alguma mudança.
+	4. Toda a informação que defina o carrinho encontra-se num objeto "encomenda". 
+		1. Como tal não é armazenada diretamente na BD sempre que existe alguma mudança, uma vez exigiria comunicação constante entre o servidor e o cliente.
 	5. Toda e qualquer alteração ao estado do carrinho terá uma atualização imediata no objeto encomenda correspondente aquela sessão.
 	6. Ao finalizar a compra o cliente indica que a informação presente no carrinho pode ser registada e como tal o objeto "encomenda" inserido na BD de forma a consolidar a ação do cliente.
 
@@ -167,7 +167,7 @@
 1. O cliente que tenha uma subscrição ativa pode a qualquer momento agendar os produtos que deseja receber na semana seguinte. É considerado "segunda" como primeiro dia da semana.
     1. O agendamento das entregas e respetivo pagamento tem ser feito até às 23h59min de domingo.
     2. O cliente pode agendar, nas horas estipuladas pela sua subscrição, a entrega de qualquer produto que seja fabricado pela empresa Bread Spread nas quantidades que desejar.
-    3. Em qualquer momento o cliente pode cancelar a sua encomenda. Caso os artigos ainda não tenham sido produzidos o cliente será reembolsado com saldo na plataforma, no valor da mesma.
+    3. No caso de uma encomenda ocasional, a  qualquer momento o cliente pode cancelar a sua encomenda. Caso os artigos ainda não tenham sido produzidos o cliente será reembolsado com saldo na plataforma, no valor da mesma.
 2. O cliente recebe via email/sms assim que a sua encomenda é confirmada.
 
 ## Administrador
