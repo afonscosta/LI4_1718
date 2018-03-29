@@ -73,8 +73,9 @@
 				   ] }
 	]
 
-	3. O sistema deve fazer parse da informação e registar diretamente na BD todos os funcionários presentes no documento.
-	4. O sucesso ou insucesso da acção é comunicado ao administrador através de um popup.
+	3. O funcionário é caracterizado pela função que desempenha. Esta pode tomar os seguintes valores: estafeta (E) ou padeiro (P).
+	4. O sistema deve fazer parse da informação e registar diretamente na BD todos os funcionários presentes no documento.
+	5. O sucesso ou insucesso da acção é comunicado ao administrador através de um popup.
 
 4. O utilizador deve estar autenticado para usufruir de todo e qualquer serviço disponibilizado.
 5. O utilizador pode consultar os produtos e informações da empresa sem ter sessão iniciada.
