@@ -149,7 +149,7 @@
 	3. No formulário de adesão a uma subscrição, o cliente escolhe se quer usar a morada para a realização de entregas que está associada à sua conta ou uma alternativa.
 	4. No formulário de adesão a uma subscrição, o cliente escolhe se quer usar a informação para faturação que está associada à sua conta ou uma alternativa.
 	5. Devem ser definidos também neste momento os produtos a serem entregues bem como as respetivas quantidades.
-	5. Após a subscrição de um serviço este só entrará em vigor na semana seguinte.
+	6. Após a subscrição de um serviço este só entrará em vigor na semana seguinte.
 4. O cliente deve poder usar o "carrinho" para guardar os artigos com o preço e respetivas quantidades que deseja comprar. Consequentemente, deve poder finalizar a compra quando tiver terminado.
 	1. Quer no catálogo principal dos artigos, quer no popup com a informação detalhada de um determinado produto, deve ser possível adicionar esse mesmo produto ao carrinho de compras, com a respetiva quantidade especificada. Se nada for dito será adicionada uma quantidade unitária apenas.
 	2. O cliente pode remover qualquer produto associado ao carrinho.
