@@ -51,7 +51,6 @@
 	"funcionarios": [
 		{ "idFunc":"E001", 
 		  "nome":"Rogério Azevedo", 
-		  "funcao":"E", 
 		  "dataNasc":"1996/10/25", 
 		  "contacto":"919999999", 
 		  "morada":[ 
@@ -62,7 +61,6 @@
 				   ] },
 		{ "idFunc":"P001", 
 		  "nome":"Guilhermina", 
-		  "funcao":"P", 
 		  "dataNasc":"1981/04/13", 
 		  "contacto":"911111111", 
 		  "morada":[ 
@@ -73,8 +71,9 @@
 				   ] }
 	]
 
-	3. O sistema deve fazer parse da informação e registar diretamente na BD todos os funcionários presentes no documento.
-	4. O sucesso ou insucesso da acção é comunicado ao administrador através de um popup.
+	3. O funcionário é caracterizado pela função que desempenha. Esta pode ser derivada com base no primeiro caractere do campo "idFunc". Assim sendo, existe duas categorias diferentes: estafeta (E) ou padeiro (P).
+	4. O sistema deve fazer parse da informação e registar diretamente na BD todos os funcionários presentes no documento.
+	5. O sucesso ou insucesso da acção é comunicado ao administrador através de um popup.
 
 4. O utilizador deve estar autenticado para usufruir de todo e qualquer serviço disponibilizado.
 5. O utilizador pode consultar os produtos e informações da empresa sem ter sessão iniciada.
