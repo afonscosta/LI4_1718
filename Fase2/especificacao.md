@@ -136,31 +136,29 @@
 # Requisição
 
 ## Cliente
-1. Para novas subscrições de serviços, deverão ser indicados no formulário de adesão o horário no qual deve ser feita a entrega, caso o plano subscrito permita a escolha, os dias da semana em que o *cliente* pretende receber os produtos.
-	1. O sistema deverá apresentar em grelha os serviços disponíveis, bem como o respetivo preçoe horários de entrega.
-2. O *cliente* deverá ter a opção de selecionar os dados guardados no seu perfil de utilizador para faturação, ou caso deseje, indicar outros. Do mesmo modo, deverá proceder-se também para a morada de entrega.
-	[REMOVER]2. No formulário de adesão a uma subscrição, o cliente escolhe se quer usar a morada para a realização de entregas que está associada à sua conta ou uma alternativa.
-	[REMOVER]3. No formulário de adesão a uma subscrição, o cliente escolhe se quer usar a informação para faturação que está associada à sua conta ou uma alternativa.
-3. O *cliente* deverá também neste momento definir os produtos a serem entregues bem como as respetivas quantidades.
+1. O cliente deve poder realizar subscrições nos diversos serviços disponibilizados.
+	1. O sistema deverá apresentar em grelha os serviços disponíveis, bem como o respetivo preço e horários de entrega.
+	2. Para novas subscrições de serviços, deverão ser indicados no formulário de adesão os dias e horas no qual devem ser feitas as entregas, caso o plano subscrito permita a escolha.
+	3. Após a subscrição de um serviço este só entrará em vigor na semana seguinte.
+	
+2. O *cliente* deve poder selecionar os dados guardados no seu perfil de utilizador para faturação, ou caso deseje, indicar outros. Deverá proceder-se do mesmo modo para a morada de entrega.
 
-[acho que daqui para baixo os requisitos que estão segundo a identação como requisitos de sistema não o são, uma vez que referem "o cliente" quando deveriam ser ações do sistema, seria apenas manter as ideias mas reorganizar a identação e dizer que ações o sistema deverá tomar em cada um dos pontos (já fiz alguns em cima de como fiz na minha parte em baixo, acho que estavam OK)]
-
-	5. Após a subscrição de um serviço este só entrará em vigor na semana seguinte.
-	6. Neste formulário, o *cliente* deverá ter a opção de escolha entre a requisição de uma subscrição ou de uma entrega ocasional.
-2. Para a requisição de entregas ocasionais, deverão ser indicados no formulário o dia e hora a que a entrega deve ser feita, a morada onde deve ser entregue, o NIF para faturação e os produtos que devem ser entregues, sendo sempre possível selecionar os dados guardados no perfil do cliente.
+3. O *cliente* deve poder definir os produtos a serem entregues bem como as respetivas quantidades.
+	
+4. Para a requisição de entregas ocasionais, deverão ser indicados o dia e hora a que a entrega deve ser feita, a morada onde deve ser entregue, o NIF para faturação e os produtos que devem ser entregues, sendo sempre possível selecionar os dados guardados no perfil do cliente.
 	1. O cliente deve poder requisitar uma entrega ocasional a qualquer momento do dia.
 	2. A requisição de uma entrega ocasional terá de ser registada necessáriamente com  1h00 de antecedência até ao momento de entrega definido.
 	3. A qualquer momento, antes de a entrega ocasional ser confirmada pelo administrador, a encomenda pode ser anulada.
-4. O cliente deve poder usar o "carrinho" para guardar os artigos com o preço e respetivas quantidades que deseja comprar. Consequentemente, deve poder finalizar a compra quando tiver terminado.
+
+5. O cliente deve poder usar o "carrinho" para guardar os artigos com o preço e respetivas quantidades que deseja comprar. Consequentemente, deve poder finalizar a compra quando tiver terminado.
 	1. Quer no catálogo principal dos artigos, quer no popup com a informação detalhada de um determinado produto, deve ser possível adicionar esse mesmo produto ao carrinho de compras, com a respetiva quantidade especificada. Se nada for dito será adicionada uma quantidade unitária apenas.
-	2. O cliente pode remover qualquer produto associado ao carrinho.
-	3. As informações associadas ao carrinho encontram-se guardadas enquanto o cliente tiver a sessão iniciada. Caso este termine sessão os dados presentes no carrinho são automaticamente apagados.
-	4. Toda a informação que defina o carrinho encontra-se num objeto "encomenda", não presente na BD.
+	2. As informações associadas ao carrinho encontram-se guardadas enquanto o cliente tiver a sessão iniciada. Caso este termine sessão os dados presentes no carrinho são automaticamente apagados.
+	3. Toda a informação que defina o carrinho encontra-se num objeto "encomenda", não presente na BD.
+	4. Os produtos podem ser removidos a qualquer momento, desde que ainda não tenha sido feito o "checkout" do carrinho.
 	5. Toda e qualquer alteração ao estado do carrinho terá uma atualização imediata no objeto encomenda correspondente aquela sessão.
 	6. Ao finalizar a compra o cliente indica que a informação presente no carrinho pode ser registada e como tal o objeto "encomenda" inserido na BD de forma a consolidar a ação do cliente.
 
 ---
-[caso se verifique o erro em cima, vamos ter de corrigir aqui também]
 
 # Agendamento 
 
