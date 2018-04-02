@@ -102,27 +102,24 @@
 	2. A informação das encomendas é carregada diretamente da BD e mostrada ao utilizador em formato de lista.
 	3. A lista só é atualizada se o cliente recarregar a página.
 
-4. O cliente deve poder consultar os dados da sua conta pessoal e, consequentemente, poder altera-los.
-	1. A informação pessoal aparece em formato formulário para que o cliente possa alterar.
-	2. Após a alteração o cliente deve confirmar a ação carregando no botão para o efeito. Deste modo, os dados modificados são propagados e registados de imediato na BD.
 
-5. O cliente deve poder consultar informação da empresa, como a sua história e contactos.
+4. O cliente deve poder consultar informação da empresa, como a sua história e contactos.
 	1. A informação da empresa apenas pode ser alterada pelo administrador.
 	2. Os dados são carregados da BD em texto e apresentados no site ao cliente quando este os solicita.
 
-6. O cliente deve poder consultar uma página com todos os passos descrevendo o funcionamento dos serviços.
+5. O cliente deve poder consultar uma página com todos os passos descrevendo o funcionamento dos serviços.
 	1. A informação apenas pode ser alterada pelo administrador.
 	2. Os dados são carregados da BD em texto e apresentados no site ao cliente quando este os solicita.
 
 ## Padeiro
-7. O padeiro deve poder consultar a produção necessária em cada dia, ao longo de uma semana.
+6. O padeiro deve poder consultar a produção necessária em cada dia, ao longo de uma semana.
 	1. É realizada uma query à BD e o resultado é apresentado ao padeiro em forma de lista.
 	2. Cada elemento da lista tem informação como o nome do produto e a quantidade a confecionar.
 	3. Cada elemento da lista representa um só artigo com a quantidade total a fabricar. Assim sendo, mesmo que o mesmo artigo esteja presente em várias encomendas, este aparece apenas uma vez com as quantidades somadas.
 	4. As encomendas visíveis tem de estar confirmadas ou pendentes quando associadas a uma subscrição.
 
 ## Administrador
-8. O administrador deve poder consultar dados sobre os diferentes serviços na Bread Spread. Nomeadamente as vendas da plataforma, estatísticas relacionadas com as subscrições dos diversos serviços e as quantidades vendidas de cada produto.
+7. O administrador deve poder consultar dados sobre os diferentes serviços na Bread Spread. Nomeadamente as vendas da plataforma, estatísticas relacionadas com as subscrições dos diversos serviços e as quantidades vendidas de cada produto.
 	1. Os dados serão apresentados utilizando um template de administração dos serviços disponíveis.
 	2. De forma a popular o template os dados serão carregados da BD diretamente. Caso as informações se alterem, a página só muda quando atualizada. Nesse momento os dados serão extraídos novamente da BD e a página terá a informação mais recente.
 	3. As vendas serão representadas por um gráfico de área. O eixo das abcissas representa cada semana com a respetiva quantidades de vendas dessa semana no eixo das ordenadas.
@@ -235,6 +232,10 @@
 2. O cliente poderá cancelar a sua subscrição a qualquer momento.
 	1. A seleção desta opção deverá abrir um popup que informa o cliente de que perderá os benefícios da subscrição, sendo necessária a aprovação do cliente para que a ação seja consumada.
 	2. O cliente terá a opção de cancelar as encomendas desta semana caso deseje. Caso contrário, o serviço deixará de ter efeito a partir da semana seguinte.
+
+3. O cliente deve poder consultar os dados da sua conta pessoal e, consequentemente, poder altera-los.
+	1. A informação pessoal aparece em formato formulário para que o cliente possa alterar.
+	2. Após a alteração o cliente deve confirmar a ação carregando no botão para o efeito. Deste modo, os dados modificados são propagados e registados de imediato na BD.
 
 
 ## Administrador
