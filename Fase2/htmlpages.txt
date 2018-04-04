@@ -1,5 +1,5 @@
 Site principal:
-	Pagina principal
+	Pagina principal -> index.html
 		Fala da empresa da sua história e contactos.
 
 	Pagina de Login
