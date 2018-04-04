@@ -2,17 +2,17 @@ Site principal:
 	Pagina principal -> index.html
 		Fala da empresa da sua história e contactos.
 
-	Pagina de Login
+	Pagina de Login -> login.html
 		
-	Pagina de registo
+	Pagina de registo -> register.html
 		nome, data de nascimento, morada, genero, email, informaçao de faturação
 		popup com informação de sucesso ou insucesso
 
-	Catalogo de produtos
+	Catalogo de produtos -> catalogo.html
 		Todos os produtos; imagem, nome e preço carrinho para adicionar
 		Selecção do produto deve abrir um popup com imagem, descrição completa, preço, lista de ingredientes e tabela nutricional e carrinho para adicionar.
 
-	Catalogo de serviços
+	Catalogo de serviços -> pricing.html
 		Descrição das três subscriçoes e da entrega ocasional.
 			preço, e informação adicional.
 
