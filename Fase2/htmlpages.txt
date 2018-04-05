@@ -61,11 +61,11 @@ Site administrador:
 		Vendas
 		Notificações
 
-	Info de Entregas
+	Info de Entregas -> admin/breadspread/entregas.html
 
-	Estatisticas de subscrições
+	Estatisticas de subscrições -> admin/breadspread/subscriptions.html
 
-	Validar entregas ocasionais
+	Validar entregas ocasionais -> admin/breadspread/ocasionais.html
 		Estado pendente ou confirmado
 
 	Quantidades vendidas de cada produto -> admin/breadspread/vendas.html
