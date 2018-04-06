@@ -37,11 +37,12 @@
 1. Todos os utilizadores tem de ter uma conta associada.
 
 ## Cliente
-2. Registo do *cliente* deve ser efectuado com os seguintes dados: nome, data de nascimento, morada, NIF, género e email.
+2. Registo do *cliente* deve ser efectuado com os seguintes dados: nome, data de nascimento, género, morada, NIF, contacto e email.
 	1. Um formulário deve estar visível após a escolha do cliente em se registar.
 	2. Após o preenchimento do registo o cliente deve confirmar a ação, sendo os dados de cada campo recolhidos e armazenados de imediato na base de dados.
 	3. O sucesso ou insucesso da acção é comunicado ao cliente através de um popup.
 	4. Caso a conta seja registada com sucesso, o cliente deve ficar automaticamente autenticado e com total acesso às funcionalidades do site.
+	5. A morada será constituida pela rua, número de porta, código postal, freguesia e cidade.
 
 ## Funcionário
 3. Registo do *funcionário* deve ser efetuado automaticamente pelo sistema considerando os seguintes dados: identificador do funcionário, nome, função, data de nascimento, contacto e morada.
@@ -56,7 +57,8 @@
 		  "morada":[ 
 		  			 "rua":"Rua Flores de Cima", 
 		  			 "numPorta":15, 
-		             "codPostal":"4444-111", 
+		             		 "codPostal":"4444-111",
+					 "freg":"Gualtar",
 		  			 "cidade":"Braga" 
 				   ] },
 		{ "idFunc":"P001", 
@@ -67,6 +69,7 @@
 		  			 "rua":"Rua Flores de Baixo", 
 					 "numPorta":136, 
 					 "codPostal":"5555-222", 
+					 "freg":"Lamaçães",
 					 "cidade":"Braga" 
 				   ] }
 	]
@@ -156,6 +159,8 @@
 	4. Os produtos podem ser removidos a qualquer momento, desde que ainda não tenha sido feito o "checkout" do carrinho.
 	5. Toda e qualquer alteração ao estado do carrinho terá uma atualização imediata no objeto encomenda correspondente aquela sessão.
 	6. Ao finalizar a compra o cliente indica que a informação presente no carrinho pode ser registada e como tal o objeto "encomenda" inserido na BD de forma a consolidar a ação do cliente.
+
+6. A encomenda apenas será considerada válida se a morada definida para entrega pertencer à cidade de Braga.
 
 ---
 
