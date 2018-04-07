@@ -4,15 +4,15 @@ Site principal:
 
 	Pagina de Login -> breadstrap/login.html
 		
-	Pagina de registo -> breadspread/register.html
+	Pagina de registo -> breadstrap/register.html
 		nome, data de nascimento, morada, genero, email, informaçao de faturação
 		popup com informação de sucesso ou insucesso
 
-	Catalogo de produtos -> breadspread/catalogo.html
+	Catalogo de produtos -> breadstrap/catalogo.html
 		Todos os produtos; imagem, nome e preço carrinho para adicionar
 		Selecção do produto deve abrir um popup com imagem, descrição completa, preço, lista de ingredientes e tabela nutricional e carrinho para adicionar.
 
-	Catalogo de serviços -> breadspread/pricing.html
+	Catalogo de serviços -> breadstrap/pricing.html
 		Descrição das três subscriçoes e da entrega ocasional.
 			preço, e informação adicional.
 
@@ -25,7 +25,7 @@ Site principal:
 	Entrega ocasional
 		dia e hora, morada, produtos, nif,
 
-	Visualizar carrinho 
+	Visualizar carrinho -> breadstrap/cart.html
 		Finalizar a compra
 		Remover produtos
 
