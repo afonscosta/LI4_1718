@@ -6,7 +6,7 @@
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
   <meta content="" name="description">
   <meta content="" name="author">
-    <link href="./images/logo.png" rel="icon">
+  <link href="./images/logo.png" rel="icon">
   <title>BreadSpread</title>
   
   <!-- Bootstrap core CSS -->
@@ -14,6 +14,9 @@
   <!-- Custom styles for this template -->
   <link href="./bootstrap_files/main.css" rel="stylesheet">
   </head>
+  <!-- Custom Fonts -->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
   
   <body cz-shortcut-listen="true">
   <!-- NAVBAR -->
@@ -31,10 +34,9 @@
         <a class="p-2 text-dark" href="comofunciona.html">
           Como Funciona
         </a>
+      <!--<a href="cart.html" class="text-dark"><i class="fa fa-shopping-cart"></i> Carrinho de compras</a>-->
       </nav>
-      <a class="btn btn-outline-primary" href="login.html">
-        Login
-      </a>
+      <a class="btn btn-outline-primary" href="login.html">Login</a>
     </div>
     <!-- NAVBAR END -->
 
@@ -43,22 +45,21 @@
       <h1 class="display-4">
         Como encomendar?
       </h1>
-      <button class="btn btn-lg btn-primary border-primary rounded-circle" type="button">
-              1
-            </button>
+      <a href="login.html"><button class="btn btn-lg btn-primary border-primary rounded-circle" type="button">
+      1
+      </button></a>
       <p class="lead">
         Fazer Login
       </p>
-      <button class="btn btn-lg btn-primary border-primary rounded-circle" type="button">
+      <a href="produtos.html"><button class="btn btn-lg btn-primary border-primary rounded-circle" type="button">
               2
-            </button>
-      
+      </button></a>
       <p class="lead">
         Escolher Produtos
       </p>
-      <button class="btn btn-lg border-primary rounded-circle" type="button">
+      <a href="cart.html"><button class="btn btn-lg border-primary rounded-circle" type="button">
               3
-            </button>
+      </button></a>
       
       <p class="lead">
         Terminar encomenda
@@ -69,49 +70,27 @@
     <!--            FOOTER            -->
     <div class="container">
       <footer class="pt-4 my-md-5 pt-md-5 border-top">
-        <div class="row">
-          <div class="col-12 col-md">
+        <div class="row mb-3">
+          <div class="col-12 col-sm-12 col-md-3">
             <img alt="" class="mb-2" height="24" src="./images/logo.png" width="24">
               <small class="d-block mb-3 text-muted">
                 © LI4G20
               </small>
-            </img>
           </div>
-          <div class="col-6 col-md">
+          <div class="col-12 col-sm-6 col-md-5">
             <h5>
-              Produtos
+              Contactos
             </h5>
             <ul class="list-unstyled text-small">
               <li>
-                <a class="text-muted" href="https://getbootstrap.com/docs/4.0/examples/pricing/#">
-                  Catalogo de produtos
-                </a>
+                <a class="text-muted">
+                  253 604 448
               </li>
-              <li>
-                <a class="text-muted" href="https://getbootstrap.com/docs/4.0/examples/pricing/#">
-                  Last time
+                  <a class="text-muted" href="mailto:geral@breadspread.pt"> geral@breadspread.pt
                 </a>
-              </li>
             </ul>
           </div>
-          <div class="col-6 col-md">
-            <h5>
-              Serviços
-            </h5>
-            <ul class="list-unstyled text-small">
-              <li>
-                <a class="text-muted" href="https://getbootstrap.com/docs/4.0/examples/pricing/#">
-                  Serviços disponiveis
-                </a>
-              </li>
-              <li>
-                <a class="text-muted" href="https://getbootstrap.com/docs/4.0/examples/pricing/#">
-                  Final resource
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-6 col-md">
+          <div class="col-12 col-sm-6 col-md-4">
             <h5>
               Como funciona
             </h5>
@@ -131,15 +110,16 @@
                   Cancelar encomendas
                 </a>
               </li>
-              <li>
-                <a class="text-muted" href="https://getbootstrap.com/docs/4.0/examples/pricing/#">
-                  Terms
-                </a>
-              </li>
             </ul>
           </div>
         </div>
       </footer>
     </div>
+    <script crossorigin="anonymous" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" src="https://code.jquery.com/jquery-3.2.1.slim.min.js">
+    </script>
+    <script crossorigin="anonymous" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js">
+    </script>
+    <script crossorigin="anonymous" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
+    </script>
   </body>
 </html>
