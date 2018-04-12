@@ -145,7 +145,7 @@
 	1. O cliente deve poder requisitar uma entrega ocasional a qualquer momento do dia.
 	2. A requisição de uma entrega ocasional terá de ser registada necessáriamente com  1h00 de antecedência até ao momento de entrega definido.
 	3. A qualquer momento, antes de a entrega ocasional ser confirmada pelo administrador, a encomenda pode ser anulada.
-	4. A encomenda pode tomar diferentes estados, nomeadamente, pendente, confirmada, confecionada e entregue. Pendente quando é realizada pelo cliente. Confirmada quando o administrador a aceita. Confecionada quando o padeiro já realizou o artigo em questão. Entregue quando esta já se encontra na posse do cliente.
+	4. A encomenda pode tomar diferentes estados, nomeadamente, pendente, confirmada, confecionada, entregue e falhada. Pendente quando é realizada pelo cliente. Confirmada quando o administrador a aceita. Confecionada quando o padeiro já realizou o artigo em questão. Entregue quando esta já se encontra na posse do cliente. Falhada quando a entrega realizada pelo estafeta não foi concluída, isto é, o cliente não recebeu a encomenda.
 
 5. O cliente deve poder usar o "carrinho" para guardar os artigos com o preço e respetivas quantidades que deseja comprar. Consequentemente, deve poder finalizar a compra quando tiver terminado.
 	1. Quer no catálogo principal dos artigos, quer no popup com a informação detalhada de um determinado produto, deve ser possível adicionar esse mesmo produto ao carrinho de compras, com a respetiva quantidade especificada. Se nada for dito será adicionada uma quantidade unitária apenas.
