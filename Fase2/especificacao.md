@@ -42,6 +42,7 @@
 	2. Após o preenchimento do registo o cliente deve confirmar a ação, sendo os dados de cada campo recolhidos e armazenados de imediato na base de dados.
 	3. O sucesso ou insucesso da acção é comunicado ao cliente através de um popup.
 	4. Caso a conta seja registada com sucesso, o cliente deve ficar automaticamente autenticado e com total acesso às funcionalidades do site.
+	5. A morada será caracterizada pela rua, número de porta, freguesia, cidade e código postal.
 
 ## Funcionário
 3. Registo do *funcionário* deve ser efetuado automaticamente pelo sistema considerando os seguintes dados: identificador do funcionário, nome, função, data de nascimento, contacto e morada.
