@@ -42,7 +42,7 @@
 	2. Após o preenchimento do registo o cliente deve confirmar a ação, sendo os dados de cada campo recolhidos e armazenados de imediato na base de dados.
 	3. O sucesso ou insucesso da acção é comunicado ao cliente através de um popup.
 	4. Caso a conta seja registada com sucesso, o cliente deve ficar automaticamente autenticado e com total acesso às funcionalidades do site.
-	5. A morada será constituida pela rua, número de porta, código postal, freguesia e cidade.
+	5. A morada será caracterizada pela rua, número de porta, freguesia, cidade e código postal.
 
 ## Funcionário
 3. Registo do *funcionário* deve ser efetuado automaticamente pelo sistema considerando os seguintes dados: identificador do funcionário, nome, função, data de nascimento, contacto e morada.
@@ -90,7 +90,7 @@
 1. O cliente deve ter acesso a um catálogo com todos os produtos comercializados e consequente descrição dos mesmos.
 	1. Os produtos devem aparecer em formato de grelha com um número de colunas e linhas variáveis consoante o tamanho do ecrã do dispositivo que está a aceder ao website.
 	2. Em cada célula deve estar presente uma imagem do produto, nome e o seu preço com IVA incluído.
-	3. A seleção do produto deve apresentar ao cliente toda a informação do mesmo. Nomeadamente, uma imagem, descrição completa, preço com IVA incluído, peso, lista dos ingredientes e tabela nutricional.
+	3. A seleção do produto deve apresentar ao cliente toda a informação do mesmo. Nomeadamente, um identificador, uma imagem, descrição completa, preço com IVA incluído, peso em gramas, lista dos ingredientes e tabela nutricional.
 	
 2. O cliente deve ter acesso a um catálogo com todos os serviços praticados. Desta forma, devem ser apresentadas a subscrição de bronze, prata, ouro e as entregas ocasionais (serviços oferecidos até à data de desenvolvimento do software Bread Spread).
 	1. A subscrição *bronze* consiste em entregas entre as 6h e as 7h da manhã, todos os dias úteis e tem um custo semanal de *2€*.
@@ -148,6 +148,7 @@
 	1. O cliente deve poder requisitar uma entrega ocasional a qualquer momento do dia.
 	2. A requisição de uma entrega ocasional terá de ser registada necessáriamente com  1h00 de antecedência até ao momento de entrega definido.
 	3. A qualquer momento, antes de a entrega ocasional ser confirmada pelo administrador, a encomenda pode ser anulada.
+	4. A encomenda pode tomar diferentes estados, nomeadamente, pendente, confirmada, confecionada, em curso, entregue e falhada. Pendente quando é realizada pelo cliente. Confirmada quando o administrador a aceita. Confecionada quando o padeiro já realizou o artigo em questão. Em curso quando o estafeta já indicou que iniciou o percurso de entrega das encomendas. Entregue quando esta já se encontra na posse do cliente. Falhada quando a entrega realizada pelo estafeta não foi concluída, isto é, o cliente não recebeu a encomenda.
 
 5. O cliente deve poder usar o "carrinho" para guardar os artigos com o preço e respetivas quantidades que deseja comprar. Consequentemente, deve poder finalizar a compra quando tiver terminado.
 	1. Quer no catálogo principal dos artigos, quer no popup com a informação detalhada de um determinado produto, deve ser possível adicionar esse mesmo produto ao carrinho de compras, com a respetiva quantidade especificada. Se nada for dito será adicionada uma quantidade unitária apenas.
@@ -241,6 +242,11 @@
 3. O cliente deve poder consultar os dados da sua conta pessoal e, consequentemente, poder altera-los.
 	1. A informação pessoal aparece em formato formulário para que o cliente possa alterar.
 	2. Após a alteração o cliente deve confirmar a ação carregando no botão para o efeito. Deste modo, os dados modificados são propagados e registados de imediato na BD.
+
+4. O cliente deve poder demonstrar a sua satisfação perante a globalidade do serviço Bread Spread classificando-o de 1 a 5. A pontuação menor transparece um maior descontentamento com o serviço. No entanto a pontuação máxima revela uma satisfação total com o serviço prestado. 
+	1. O cliente quando se regista tem a avaliação a 0. Esta significa que ainda não foi realizada nenhuma avaliação por parte do cliente.
+	2. Caso o cliente já tenha avaliado anteriormente o serviço, este pode alterar a sua avaliação a qualquer momento.
+	3. Apenas é mantido o registo da última avaliação feito do serviço.
 
 
 ## Administrador
