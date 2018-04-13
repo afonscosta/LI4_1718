@@ -88,7 +88,7 @@
 1. O cliente deve ter acesso a um catálogo com todos os produtos comercializados e consequente descrição dos mesmos.
 	1. Os produtos devem aparecer em formato de grelha com um número de colunas e linhas variáveis consoante o tamanho do ecrã do dispositivo que está a aceder ao website.
 	2. Em cada célula deve estar presente uma imagem do produto, nome e o seu preço com IVA incluído.
-	3. A seleção do produto deve apresentar ao cliente toda a informação do mesmo. Nomeadamente, uma imagem, descrição completa, preço com IVA incluído, peso, lista dos ingredientes e tabela nutricional.
+	3. A seleção do produto deve apresentar ao cliente toda a informação do mesmo. Nomeadamente, um identificador, uma imagem, descrição completa, preço com IVA incluído, peso em gramas, lista dos ingredientes e tabela nutricional.
 	
 2. O cliente deve ter acesso a um catálogo com todos os serviços praticados. Desta forma, devem ser apresentadas a subscrição de bronze, prata, ouro e as entregas ocasionais (serviços oferecidos até à data de desenvolvimento do software Bread Spread).
 	1. A subscrição *bronze* consiste em entregas entre as 6h e as 7h da manhã, todos os dias úteis e tem um custo semanal de *2€*.
@@ -238,6 +238,11 @@
 3. O cliente deve poder consultar os dados da sua conta pessoal e, consequentemente, poder altera-los.
 	1. A informação pessoal aparece em formato formulário para que o cliente possa alterar.
 	2. Após a alteração o cliente deve confirmar a ação carregando no botão para o efeito. Deste modo, os dados modificados são propagados e registados de imediato na BD.
+
+4. O cliente deve poder demonstrar a sua satisfação perante a globalidade do serviço Bread Spread classificando-o de 1 a 5. A pontuação menor transparece um maior descontentamento com o serviço. No entanto a pontuação máxima revela uma satisfação total com o serviço prestado. 
+	1. O cliente quando se regista tem a avaliação a 0. Esta significa que ainda não foi realizada nenhuma avaliação por parte do cliente.
+	2. Caso o cliente já tenha avaliado anteriormente o serviço, este pode alterar a sua avaliação a qualquer momento.
+	3. Apenas é mantido o registo da última avaliação feito do serviço.
 
 
 ## Administrador
