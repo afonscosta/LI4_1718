@@ -161,22 +161,19 @@
 
 6. A encomenda apenas será considerada válida se a morada definida para entrega pertencer à cidade de Braga.
 
----
-
-# Agendamento 
-
-## Cliente
-1. O cliente que tenha uma subscrição ativa pode a qualquer momento agendar os produtos que deseja receber na semana seguinte. É considerado "segunda-feira" como primeiro dia da semana.
+7. O cliente que tenha uma subscrição ativa pode a qualquer momento agendar os produtos que deseja receber na semana seguinte. É considerado "segunda-feira" como primeiro dia da semana.
     1. O agendamento das entregas e respetivo pagamento tem ser feito até às 23h59min de domingo.
     2. O cliente pode agendar, nas horas estipuladas pela sua subscrição, a entrega de qualquer produto que seja fabricado pela empresa Bread Spread nas quantidades que desejar.
     3. No caso de uma encomenda ocasional, a  qualquer momento o cliente pode cancelar a sua encomenda. Caso os artigos ainda não tenham sido produzidos o cliente será reembolsado com saldo na plataforma, no valor da mesma.
-2. O cliente recebe via email/sms assim que a sua encomenda é confirmada.
+
+8. O cliente recebe via email/sms assim que a sua encomenda é confirmada.
 
 ## Administrador
-3. Todas as entregas ocasionais devem ser validadas pelo administrador.
+9. Todas as entregas ocasionais devem ser validadas pelo administrador.
 	1. Uma entrega ocasional quando requisitada deve surgir num estado pendente.
 	2. O administrador consoante a disponibilidade para a produção dos artigos para a data especificada, confirma ou não o pedido.
 	3. Caso a encomenda seja aceite, esta passa a confirmada.
+	4. Caso a encomenda seja rejeita, esta é eliminada do sistema.
 
 ---
 
