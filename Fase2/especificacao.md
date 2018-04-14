@@ -153,10 +153,10 @@
 5. O cliente deve poder usar o "carrinho" para guardar os artigos com o preço e respetivas quantidades que deseja comprar. Consequentemente, deve poder finalizar a compra quando tiver terminado.
 	1. Quer no catálogo principal dos artigos, quer no popup com a informação detalhada de um determinado produto, deve ser possível adicionar esse mesmo produto ao carrinho de compras, com a respetiva quantidade especificada. Se nada for dito será adicionada uma quantidade unitária apenas.
 	2. As informações associadas ao carrinho encontram-se guardadas enquanto o cliente tiver a sessão iniciada. Caso este termine sessão os dados presentes no carrinho são automaticamente apagados.
-	3. Toda a informação que defina o carrinho encontra-se num objeto "encomenda", não presente na BD.
+	3. Toda a informação que defina o carrinho encontra-se no lado do cliente e como tal não é registada no servidor.
 	4. Os produtos podem ser removidos a qualquer momento, desde que ainda não tenha sido feito o "checkout" do carrinho.
-	5. Toda e qualquer alteração ao estado do carrinho terá uma atualização imediata no objeto encomenda correspondente aquela sessão.
-	6. Ao finalizar a compra o cliente indica que a informação presente no carrinho pode ser registada e como tal o objeto "encomenda" inserido na BD de forma a consolidar a ação do cliente.
+	5. Toda e qualquer alteração ao estado do carrinho terá uma atualização imediata na estrutura de dados do carrinho guardada no lado do cliente.
+	6. Ao finalizar a compra o cliente indica que a informação presente no carrinho pode ser registada e como tal esta é instanciada numa encomenda que será armazenada de forma a consolidar a ação do cliente.
 
 6. A encomenda apenas será considerada válida se a morada definida para entrega pertencer à cidade de Braga.
 
