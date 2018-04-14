@@ -139,6 +139,7 @@
 	1. O sistema deverá apresentar em grelha os serviços disponíveis, bem como o respetivo preço e horários de entrega.
 	2. Para novas subscrições de serviços, deverão ser indicados no formulário de adesão os dias e horas no qual devem ser feitas as entregas, caso o plano subscrito permita a escolha.
 	3. Após a subscrição de um serviço este só entrará em vigor na semana seguinte.
+	4. A subscrição é iniciada com o estado "ativa".
 	
 2. O *cliente* deve poder selecionar os dados guardados no seu perfil de utilizador para faturação, ou caso deseje, indicar outros. Deverá proceder-se do mesmo modo para a morada de entrega.
 
@@ -243,6 +244,7 @@
 2. O cliente poderá cancelar a sua subscrição a qualquer momento.
 	1. A seleção desta opção deverá abrir um popup que informa o cliente de que perderá os benefícios da subscrição, sendo necessária a aprovação do cliente para que a ação seja consumada.
 	2. O cliente terá a opção de cancelar as encomendas desta semana caso deseje. Caso contrário, o serviço deixará de ter efeito a partir da semana seguinte.
+	3. Cancelando a subscrição imediatamente esta fico no estado "inativa". Caso apenas seja anulada no final da semana passa ao estado "última".
 
 3. O cliente deve poder consultar os dados da sua conta pessoal e, consequentemente, poder altera-los.
 	1. A informação pessoal aparece em formato formulário para que o cliente possa alterar.
