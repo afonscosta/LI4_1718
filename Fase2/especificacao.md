@@ -10,13 +10,12 @@
 
 # Módulos
 
-- Autenticação
-- Pesquisa
-- Requisição
-- Agendamento
-- Realização
-- Cobrança e Recebimento
-- Manutenção
+- Autenticação [AFONSO]
+- Pesquisa [MARCO]
+- Requisição [AFONSO]
+- Realização [DANIEL]
+- Cobrança e Recebimento [MARCO]
+- Manutenção [DANIEL]
 
 ---
 
@@ -249,7 +248,7 @@
 
 5. O cliente deve poder desativar a sua conta.
 	1. O perfil do cliente não é eliminado da BD.
-	2. O estado do perfil é alterado para "inativado".
+	2. O estado do perfil é alterado para "desativado".
 
 
 ## Administrador
