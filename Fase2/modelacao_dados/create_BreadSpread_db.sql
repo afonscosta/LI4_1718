@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [BreadSpread]    Script Date: 14/04/18 10:27:21 ******/
+/****** Object:  Database [BreadSpread]    Script Date: 14/04/18 16:51:43 ******/
 CREATE DATABASE [BreadSpread]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -99,34 +99,34 @@ ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTIMIZER_HOTFIXES =
 GO
 USE [BreadSpread]
 GO
-/****** Object:  Table [dbo].[Cliente]    Script Date: 14/04/18 10:27:21 ******/
+/****** Object:  Table [dbo].[Cliente]    Script Date: 14/04/18 16:51:44 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Cliente](
 	[idCli] [int] NOT NULL,
-	[nome] [nchar](100) NOT NULL,
+	[nome] [nvarchar](100) NOT NULL,
 	[dataNasc] [date] NOT NULL,
-	[NIF] [nchar](9) NOT NULL,
-	[genero] [char](1) NOT NULL,
-	[email] [nchar](30) NOT NULL,
+	[NIF] [int] NOT NULL,
+	[sexo] [char](1) NOT NULL,
+	[email] [nvarchar](50) NOT NULL,
 	[idSub] [int] NULL,
-	[rua] [nchar](100) NOT NULL,
+	[rua] [nvarchar](100) NOT NULL,
 	[numPorta] [int] NOT NULL,
-	[codPostal] [nchar](10) NOT NULL,
-	[cidade] [nchar](30) NOT NULL,
+	[codPostal] [nvarchar](50) NOT NULL,
+	[cidade] [nvarchar](50) NOT NULL,
 	[rating_servico] [int] NOT NULL,
-	[contacto] [nchar](9) NOT NULL,
-	[freguesia] [nchar](30) NOT NULL,
-	[password] [nchar](20) NOT NULL,
+	[contacto] [nvarchar](50) NOT NULL,
+	[freguesia] [nvarchar](50) NOT NULL,
+	[password] [nvarchar](50) NOT NULL,
  CONSTRAINT [PK_Cliente] PRIMARY KEY CLUSTERED 
 (
 	[idCli] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Encomenda]    Script Date: 14/04/18 10:27:22 ******/
+/****** Object:  Table [dbo].[Encomenda]    Script Date: 14/04/18 16:51:44 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -134,22 +134,24 @@ GO
 CREATE TABLE [dbo].[Encomenda](
 	[idEnc] [int] NOT NULL,
 	[idCli] [int] NOT NULL,
-	[data] [date] NOT NULL,
+	[dataSub] [date] NOT NULL,
+	[dataEnt] [date] NOT NULL,
 	[valor] [float] NOT NULL,
-	[status] [nchar](30) NOT NULL,
+	[status] [nvarchar](50) NOT NULL,
 	[idFunc] [int] NOT NULL,
-	[rua] [nchar](100) NOT NULL,
+	[rua] [nvarchar](100) NOT NULL,
 	[numPorta] [int] NOT NULL,
-	[codPostal] [nchar](10) NOT NULL,
-	[cidade] [nchar](30) NOT NULL,
-	[obs] [nchar](500) NULL,
+	[codPostal] [nvarchar](50) NOT NULL,
+	[cidade] [nvarchar](50) NOT NULL,
+	[obs] [nvarchar](500) NULL,
+	[freguesia] [nchar](50) NOT NULL,
  CONSTRAINT [PK_Encomenda] PRIMARY KEY CLUSTERED 
 (
 	[idEnc] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Encomenda_Produto]    Script Date: 14/04/18 10:27:22 ******/
+/****** Object:  Table [dbo].[Encomenda_Produto]    Script Date: 14/04/18 16:51:44 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -165,28 +167,29 @@ CREATE TABLE [dbo].[Encomenda_Produto](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Funcionario]    Script Date: 14/04/18 10:27:22 ******/
+/****** Object:  Table [dbo].[Funcionario]    Script Date: 14/04/18 16:51:44 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Funcionario](
 	[idFunc] [int] NOT NULL,
-	[nome] [nchar](100) NOT NULL,
+	[nome] [nvarchar](100) NOT NULL,
 	[dataNasc] [date] NOT NULL,
-	[contacto] [nchar](13) NOT NULL,
-	[rua] [nchar](100) NOT NULL,
+	[contacto] [nvarchar](50) NOT NULL,
+	[rua] [nvarchar](100) NOT NULL,
 	[numPorta] [int] NOT NULL,
-	[codPostal] [nchar](10) NOT NULL,
-	[cidade] [nchar](30) NOT NULL,
-	[password] [nchar](20) NOT NULL,
+	[codPostal] [nvarchar](50) NOT NULL,
+	[cidade] [nvarchar](50) NOT NULL,
+	[password] [nvarchar](50) NOT NULL,
+	[freguesia] [nvarchar](50) NOT NULL,
  CONSTRAINT [PK_Funcionario] PRIMARY KEY CLUSTERED 
 (
 	[idFunc] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Pagamento]    Script Date: 14/04/18 10:27:22 ******/
+/****** Object:  Table [dbo].[Pagamento]    Script Date: 14/04/18 16:51:44 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -196,7 +199,7 @@ CREATE TABLE [dbo].[Pagamento](
 	[data] [date] NOT NULL,
 	[idCli] [int] NOT NULL,
 	[idEnc] [int] NOT NULL,
-	[modo_pag] [nchar](20) NOT NULL,
+	[modo_pag] [nvarchar](50) NOT NULL,
 	[valor] [float] NOT NULL,
 	[fatura] [varbinary](max) NOT NULL,
  CONSTRAINT [PK_Pagamento] PRIMARY KEY CLUSTERED 
@@ -205,16 +208,16 @@ CREATE TABLE [dbo].[Pagamento](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Produto]    Script Date: 14/04/18 10:27:22 ******/
+/****** Object:  Table [dbo].[Produto]    Script Date: 14/04/18 16:51:44 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Produto](
 	[idProd] [int] NOT NULL,
-	[descr] [nchar](50) NOT NULL,
-	[ingredientes] [nchar](500) NOT NULL,
-	[info_nut] [nchar](500) NOT NULL,
+	[descr] [nvarchar](50) NOT NULL,
+	[ingredientes] [nvarchar](500) NOT NULL,
+	[info_nut] [nvarchar](500) NOT NULL,
 	[preco] [float] NOT NULL,
 	[image] [varbinary](max) NOT NULL,
 	[peso] [float] NOT NULL,
@@ -224,30 +227,32 @@ CREATE TABLE [dbo].[Produto](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Slots]    Script Date: 14/04/18 10:27:22 ******/
+/****** Object:  Table [dbo].[Slots]    Script Date: 14/04/18 16:51:44 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Slots](
 	[idSlot] [int] NOT NULL,
-	[horario] [nchar](30) NOT NULL,
+	[horario] [nvarchar](15) NOT NULL,
+	[idEnc] [int] NOT NULL,
  CONSTRAINT [PK_Slots] PRIMARY KEY CLUSTERED 
 (
 	[idSlot] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Subscricao]    Script Date: 14/04/18 10:27:22 ******/
+/****** Object:  Table [dbo].[Subscricao]    Script Date: 14/04/18 16:51:44 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Subscricao](
 	[idSub] [int] NOT NULL,
-	[designacao] [nchar](50) NOT NULL,
+	[designacao] [nvarchar](50) NOT NULL,
 	[custo] [float] NOT NULL,
-	[plano_ent] [nchar](200) NOT NULL,
+	[plano_ent] [nvarchar](200) NOT NULL,
+	[estado] [nvarchar](50) NOT NULL,
  CONSTRAINT [PK_Subscricao] PRIMARY KEY CLUSTERED 
 (
 	[idSub] ASC
@@ -288,6 +293,11 @@ ALTER TABLE [dbo].[Pagamento]  WITH CHECK ADD  CONSTRAINT [FK_Pagamento_Encomend
 REFERENCES [dbo].[Encomenda] ([idEnc])
 GO
 ALTER TABLE [dbo].[Pagamento] CHECK CONSTRAINT [FK_Pagamento_Encomenda]
+GO
+ALTER TABLE [dbo].[Slots]  WITH CHECK ADD  CONSTRAINT [FK_Slots_Encomenda] FOREIGN KEY([idEnc])
+REFERENCES [dbo].[Encomenda] ([idEnc])
+GO
+ALTER TABLE [dbo].[Slots] CHECK CONSTRAINT [FK_Slots_Encomenda]
 GO
 USE [master]
 GO
