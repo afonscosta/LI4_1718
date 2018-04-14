@@ -268,4 +268,4 @@
 
 4. O administrador deve poder desativar as contas dos funcionários que já não trabalham na empresa.
 	1. O perfil do funcionário é mantido na BD.
-	2. O estado adjacente ao funcionário é alterado para "inativo".
+	2. O estado adjacente ao funcionário é alterado para "desativado".
