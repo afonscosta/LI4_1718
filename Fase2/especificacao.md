@@ -194,7 +194,7 @@
 	2. A opção "Iniciar percurso" apenas se disponibilizará no dia em questão.
 	3. Igualmente, haverá uma opção "Finalizar percurso" que, quando selecionada, atualizará o estatuto do estafeta.
 	4. A opção "Finalizar percurso" apenas se disponibilizará quando todas as entregas estiverem marcadas como finalizadas (quer seja por sucesso ou por caso de incapacidade de entrega).
-	5. O estatuto do estafeta poderá tomar os seguintes valores: ativo, quando estiver a realizar entregas, inativo, quando não o estiver a fazer ou despedido, caso já não trabalhe na empresa pelo menos como estafeta.
+	5. O estatuto do estafeta poderá tomar os seguintes valores: ativo, quando estiver a realizar entregas, ou inativo, quando não o estiver a fazer.
 
 4. O estafeta deve ter acesso ao nome de cada cliente do percurso e a sua morada, bem como um contacto, caso o estafeta não receba resposta inicial do cliente no momento de entrega.
 	1. Acesso à informação do cliente será restrita ao dia em questão enquanto o percurso estiver em curso e apenas quando o cliente em questão for o seguinte no percurso.
@@ -247,9 +247,9 @@
 	2. Caso o cliente já tenha avaliado anteriormente o serviço, este pode alterar a sua avaliação a qualquer momento.
 	3. Apenas é mantido o registo da última avaliação feito do serviço.
 
-5. O cliente deve poder eliminar a sua conta.
-	1. Ao eliminar a conta todos os dados associados ao cliente são eliminados.
-	2. As encomendas que este realizou permanecerão no sistema. XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+5. O cliente deve poder desativar a sua conta.
+	1. O perfil do cliente não é eliminado da BD.
+	2. O estado do perfil é alterado para "inativado".
 
 
 ## Administrador
@@ -267,6 +267,6 @@
 3. O administrador deve poder remover produtos de venda da plataforma.
 	1. A seleção desta opção deverá abrir um popup, que informa o administrador de que a informação relativa ao produto será apagada permanentemente, questionando se tem a certeza que o deseja fazer.
 
-4. O administrador deve poder eliminar os funcionários que já não trabalhem na empresa.
-	1. O seu registo permanece na BD de forma a manter o histórico de entregas que realizou.
-	2. O estado referente ao estafeta passa a tomar o valor de "despedido".
+4. O administrador deve poder desativar as contas dos funcionários que já não trabalham na empresa.
+	1. O perfil do funcionário é mantido na BD.
+	2. O estado adjacente ao funcionário é alterado para "inativo".
