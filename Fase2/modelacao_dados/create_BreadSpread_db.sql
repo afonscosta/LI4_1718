@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [BreadSpread]    Script Date: 13/04/18 11:36:18 ******/
+/****** Object:  Database [BreadSpread]    Script Date: 14/04/18 10:27:21 ******/
 CREATE DATABASE [BreadSpread]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -99,7 +99,7 @@ ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTIMIZER_HOTFIXES =
 GO
 USE [BreadSpread]
 GO
-/****** Object:  Table [dbo].[Cliente]    Script Date: 13/04/18 11:36:18 ******/
+/****** Object:  Table [dbo].[Cliente]    Script Date: 14/04/18 10:27:21 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -116,13 +116,17 @@ CREATE TABLE [dbo].[Cliente](
 	[numPorta] [int] NOT NULL,
 	[codPostal] [nchar](10) NOT NULL,
 	[cidade] [nchar](30) NOT NULL,
+	[rating_servico] [int] NOT NULL,
+	[contacto] [nchar](9) NOT NULL,
+	[freguesia] [nchar](30) NOT NULL,
+	[password] [nchar](20) NOT NULL,
  CONSTRAINT [PK_Cliente] PRIMARY KEY CLUSTERED 
 (
 	[idCli] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Encomenda]    Script Date: 13/04/18 11:36:18 ******/
+/****** Object:  Table [dbo].[Encomenda]    Script Date: 14/04/18 10:27:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -138,13 +142,14 @@ CREATE TABLE [dbo].[Encomenda](
 	[numPorta] [int] NOT NULL,
 	[codPostal] [nchar](10) NOT NULL,
 	[cidade] [nchar](30) NOT NULL,
+	[obs] [nchar](500) NULL,
  CONSTRAINT [PK_Encomenda] PRIMARY KEY CLUSTERED 
 (
 	[idEnc] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Encomenda_Produto]    Script Date: 13/04/18 11:36:18 ******/
+/****** Object:  Table [dbo].[Encomenda_Produto]    Script Date: 14/04/18 10:27:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -160,7 +165,7 @@ CREATE TABLE [dbo].[Encomenda_Produto](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Funcionario]    Script Date: 13/04/18 11:36:18 ******/
+/****** Object:  Table [dbo].[Funcionario]    Script Date: 14/04/18 10:27:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -174,13 +179,14 @@ CREATE TABLE [dbo].[Funcionario](
 	[numPorta] [int] NOT NULL,
 	[codPostal] [nchar](10) NOT NULL,
 	[cidade] [nchar](30) NOT NULL,
+	[password] [nchar](20) NOT NULL,
  CONSTRAINT [PK_Funcionario] PRIMARY KEY CLUSTERED 
 (
 	[idFunc] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Pagamento]    Script Date: 13/04/18 11:36:18 ******/
+/****** Object:  Table [dbo].[Pagamento]    Script Date: 14/04/18 10:27:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -199,7 +205,7 @@ CREATE TABLE [dbo].[Pagamento](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Produto]    Script Date: 13/04/18 11:36:18 ******/
+/****** Object:  Table [dbo].[Produto]    Script Date: 14/04/18 10:27:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -207,17 +213,32 @@ GO
 CREATE TABLE [dbo].[Produto](
 	[idProd] [int] NOT NULL,
 	[descr] [nchar](50) NOT NULL,
-	[ingredientes] [nchar](200) NOT NULL,
-	[info_nut] [nchar](200) NOT NULL,
+	[ingredientes] [nchar](500) NOT NULL,
+	[info_nut] [nchar](500) NOT NULL,
 	[preco] [float] NOT NULL,
 	[image] [varbinary](max) NOT NULL,
+	[peso] [float] NOT NULL,
  CONSTRAINT [PK_Produto] PRIMARY KEY CLUSTERED 
 (
 	[idProd] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Subscricao]    Script Date: 13/04/18 11:36:18 ******/
+/****** Object:  Table [dbo].[Slots]    Script Date: 14/04/18 10:27:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Slots](
+	[idSlot] [int] NOT NULL,
+	[horario] [nchar](30) NOT NULL,
+ CONSTRAINT [PK_Slots] PRIMARY KEY CLUSTERED 
+(
+	[idSlot] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Subscricao]    Script Date: 14/04/18 10:27:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
