@@ -169,7 +169,7 @@
 8. O cliente recebe via email/sms assim que a sua encomenda é confirmada.
 
 ## Administrador
-9. Todas as entregas ocasionais devem ser validadas pelo administrador.
+1. Todas as entregas ocasionais devem ser validadas pelo administrador.
 	1. Uma entrega ocasional quando requisitada deve surgir num estado pendente.
 	2. O administrador consoante a disponibilidade para a produção dos artigos para a data especificada, confirma ou não o pedido.
 	3. Caso a encomenda seja aceite, esta passa a confirmada.
@@ -233,17 +233,12 @@
 
 ## Cliente
 
-1. O cliente poderá alterar a sua subscrição a qualquer momento.
-	1. O cliente poderá mudar entre subscrição *bronze, prata* e *ouro* consoante os seus desejos.
-	2. A alteração tomará efeito apenas na semana seguinte.
-	3. Caso sejam realizadas alterações numa subscrição, estas apenas ficam vigentes enquanto o serviço estiver ativo. A partir do momento em que o cliente o cancela, as suas preferências não serão guardadas.
-	
-2. O cliente poderá cancelar a sua subscrição a qualquer momento.
+1. O cliente poderá cancelar a sua subscrição a qualquer momento.
 	1. A seleção desta opção deverá abrir um popup que informa o cliente de que perderá os benefícios da subscrição, sendo necessária a aprovação do cliente para que a ação seja consumada.
 	2. O cliente terá a opção de cancelar as encomendas desta semana caso deseje. Caso contrário, o serviço deixará de ter efeito a partir da semana seguinte.
 	3. Cancelando a subscrição imediatamente esta fico no estado "inativa". Caso apenas seja anulada no final da semana passa ao estado "última".
 
-3. O cliente deve poder consultar os dados da sua conta pessoal e, consequentemente, poder altera-los.
+2. O cliente deve poder consultar os dados da sua conta pessoal e, consequentemente, poder altera-los.
 	1. A informação pessoal aparece em formato formulário para que o cliente possa alterar.
 	2. Após a alteração o cliente deve confirmar a ação carregando no botão para o efeito. Deste modo, os dados modificados são propagados e registados de imediato na BD.
 
