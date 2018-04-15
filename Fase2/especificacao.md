@@ -10,13 +10,12 @@
 
 # Módulos
 
-- Autenticação
-- Pesquisa
-- Requisição
-- Agendamento
-- Realização
-- Cobrança e Recebimento
-- Manutenção
+- Autenticação [AFONSO]
+- Pesquisa [MARCO]
+- Requisição [AFONSO]
+- Realização [DANIEL]
+- Cobrança e Recebimento [MARCO]
+- Manutenção [DANIEL]
 
 ---
 
@@ -139,6 +138,7 @@
 	1. O sistema deverá apresentar em grelha os serviços disponíveis, bem como o respetivo preço e horários de entrega.
 	2. Para novas subscrições de serviços, deverão ser indicados no formulário de adesão os dias e horas no qual devem ser feitas as entregas, caso o plano subscrito permita a escolha.
 	3. Após a subscrição de um serviço este só entrará em vigor na semana seguinte.
+	4. A subscrição é iniciada com o estado "ativa".
 	
 2. O *cliente* deve poder selecionar os dados guardados no seu perfil de utilizador para faturação, ou caso deseje, indicar outros. Deverá proceder-se do mesmo modo para a morada de entrega.
 
@@ -148,34 +148,31 @@
 	1. O cliente deve poder requisitar uma entrega ocasional a qualquer momento do dia.
 	2. A requisição de uma entrega ocasional terá de ser registada necessáriamente com  1h00 de antecedência até ao momento de entrega definido.
 	3. A qualquer momento, antes de a entrega ocasional ser confirmada pelo administrador, a encomenda pode ser anulada.
-	4. A encomenda pode tomar diferentes estados, nomeadamente, pendente, confirmada, confecionada, em curso, entregue e falhada. Pendente quando é realizada pelo cliente. Confirmada quando o administrador a aceita. Confecionada quando o padeiro já realizou o artigo em questão. Em curso quando o estafeta já indicou que iniciou o percurso de entrega das encomendas. Entregue quando esta já se encontra na posse do cliente. Falhada quando a entrega realizada pelo estafeta não foi concluída, isto é, o cliente não recebeu a encomenda.
+	4. A encomenda pode tomar diferentes estados, nomeadamente, pendente, confirmada, confecionada, iniciou, proxima, entregue e falhada. Pendente quando é realizada pelo cliente. Confirmada quando o administrador a aceita. Confecionada quando o padeiro já realizou o artigo em questão. Iniciou quando o estafeta já indicou que iniciou o percurso de entrega das encomendas. Proxima quando o estafeta já declarou que a casa anterior no percurso já recebeu os seus produtos. Entregue quando esta já se encontra na posse do cliente. Falhada quando a entrega realizada pelo estafeta não foi concluída, isto é, o cliente não recebeu a encomenda.
 
 5. O cliente deve poder usar o "carrinho" para guardar os artigos com o preço e respetivas quantidades que deseja comprar. Consequentemente, deve poder finalizar a compra quando tiver terminado.
 	1. Quer no catálogo principal dos artigos, quer no popup com a informação detalhada de um determinado produto, deve ser possível adicionar esse mesmo produto ao carrinho de compras, com a respetiva quantidade especificada. Se nada for dito será adicionada uma quantidade unitária apenas.
 	2. As informações associadas ao carrinho encontram-se guardadas enquanto o cliente tiver a sessão iniciada. Caso este termine sessão os dados presentes no carrinho são automaticamente apagados.
-	3. Toda a informação que defina o carrinho encontra-se num objeto "encomenda", não presente na BD.
+	3. Toda a informação que defina o carrinho encontra-se no lado do cliente e como tal não é registada no servidor.
 	4. Os produtos podem ser removidos a qualquer momento, desde que ainda não tenha sido feito o "checkout" do carrinho.
-	5. Toda e qualquer alteração ao estado do carrinho terá uma atualização imediata no objeto encomenda correspondente aquela sessão.
-	6. Ao finalizar a compra o cliente indica que a informação presente no carrinho pode ser registada e como tal o objeto "encomenda" inserido na BD de forma a consolidar a ação do cliente.
+	5. Toda e qualquer alteração ao estado do carrinho terá uma atualização imediata na estrutura de dados do carrinho guardada no lado do cliente.
+	6. Ao finalizar a compra o cliente indica que a informação presente no carrinho pode ser registada e como tal esta é instanciada numa encomenda que será armazenada de forma a consolidar a ação do cliente.
 
 6. A encomenda apenas será considerada válida se a morada definida para entrega pertencer à cidade de Braga.
 
----
-
-# Agendamento 
-
-## Cliente
-1. O cliente que tenha uma subscrição ativa pode a qualquer momento agendar os produtos que deseja receber na semana seguinte. É considerado "segunda-feira" como primeiro dia da semana.
+7. O cliente que tenha uma subscrição ativa pode a qualquer momento agendar os produtos que deseja receber na semana seguinte. É considerado "segunda-feira" como primeiro dia da semana.
     1. O agendamento das entregas e respetivo pagamento tem ser feito até às 23h59min de domingo.
     2. O cliente pode agendar, nas horas estipuladas pela sua subscrição, a entrega de qualquer produto que seja fabricado pela empresa Bread Spread nas quantidades que desejar.
     3. No caso de uma encomenda ocasional, a  qualquer momento o cliente pode cancelar a sua encomenda. Caso os artigos ainda não tenham sido produzidos o cliente será reembolsado com saldo na plataforma, no valor da mesma.
-2. O cliente recebe via email/sms assim que a sua encomenda é confirmada.
+
+8. O cliente recebe via email/sms assim que a sua encomenda é confirmada.
 
 ## Administrador
-3. Todas as entregas ocasionais devem ser validadas pelo administrador.
+1. Todas as entregas ocasionais devem ser validadas pelo administrador.
 	1. Uma entrega ocasional quando requisitada deve surgir num estado pendente.
 	2. O administrador consoante a disponibilidade para a produção dos artigos para a data especificada, confirma ou não o pedido.
 	3. Caso a encomenda seja aceite, esta passa a confirmada.
+	4. Caso a encomenda seja rejeita, esta é eliminada do sistema.
 
 ---
 
@@ -192,13 +189,14 @@
 	3. Caso uma entrega ocasional seja requerida durante a hora de entrega de uma subscrição, esta será também inserida na rota.
 	
 3. O estafeta deve marcar o seu percurso como inicializado ao partir da padaria.
-	1. Haverá uma opção "Iniciar roteiro" que, quando selecionada, atualizará o estatuto do estafeta e respetivas encomendas na BD.
-	2. A opção "Iniciar roteiro" apenas se disponibilizará no dia em questão.
-	3. Igualmente, haverá uma opção "Finalizar roteiro" que, quando selecionada, atualizará o estatuto do estafeta.
-	4. A opção "Finalizar roteiro" apenas se disponibilizará quando todas as entregas estiverem marcadas como finalizadas (quer seja por sucesso ou por caso de incapacidade de entrega).
+	1. Haverá uma opção "Iniciar percurso" que, quando selecionada, atualizará o estatuto do estafeta e respetivas encomendas na BD.
+	2. A opção "Iniciar percurso" apenas se disponibilizará no dia em questão.
+	3. Igualmente, haverá uma opção "Finalizar percurso" que, quando selecionada, atualizará o estatuto do estafeta.
+	4. A opção "Finalizar percurso" apenas se disponibilizará quando todas as entregas estiverem marcadas como finalizadas (quer seja por sucesso ou por caso de incapacidade de entrega).
+	5. O estatuto do estafeta poderá tomar os seguintes valores: ativo, quando estiver a realizar entregas, ou inativo, quando não o estiver a fazer.
 
 4. O estafeta deve ter acesso ao nome de cada cliente do percurso e a sua morada, bem como um contacto, caso o estafeta não receba resposta inicial do cliente no momento de entrega.
-	1. Acesso à informação do cliente será restrita ao dia em questão enquanto o roteiro estiver em curso e apenas quando o cliente em questão for o seguinte no roteiro.
+	1. Acesso à informação do cliente será restrita ao dia em questão enquanto o percurso estiver em curso e apenas quando o cliente em questão for o seguinte no percurso.
 	2. No momento em que a entrega de um dado cliente for completa, o acesso à sua informação será revogado.
 
 5. No momento de entrega, o estafeta preencherá um pequeno formulário no qual especificará se a entrega foi bem sucedida. Adicionalmente, poderá acrescentar observações relativas à mesma.
@@ -218,11 +216,15 @@
 	5. Para além da confirmação via web, o sistema deverá enviar ao cliente um email/sms de confirmação de receção do pagamento com as referências associadas à transação.
 
 ## Estafeta
-1. O *estafeta* deverá ter a possibilidade de registar pagamentos de encomendas ocasionais e de subscrições no sistema. (feitos pessoalmente)
+1. O *estafeta* deverá ter a possibilidade de registar pagamentos de encomendas ocasionais e de subscrições no sistema.
 	1. Quando selecionada a entrega que será efetuada pelo *estafeta* no momento, deverá existir um campo de observações no qual estejam presentes dados relevantes do cliente ao qual será feita a entrega. A título exemplificativo, se esta for a última encomenda da semana será apresentado um lembrete de que o cliente deverá efetuar o pagamento do serviço da próxima semana.
 	2. O estafeta confirma o pagamento do serviço, sendo gerada automaticamente a fatura. Esta é registada na BD, podendo ser acedida posteriormente.
 	3. Após a confirmação do pagamento será apresentado um estado de sucesso ou insucesso da ação através de um popup.
 	4. Para além da confirmação com o *estafeta*, o *cliente* deverá receber também via email/sms uma confirmação do registo de pagamento.
+	5. O pagamento da primeira semana de uma determinada subscrição, deve ser realizado na primeira entrega dessa mesma semana.
+	6. Os pagamentos realizados ao estafeta adjacentes a uma subscrição, são referentes às entregas da semana subsequente.
+	7. Caso o cliente ainda não tenha escolhido os produtos que pretende para a semana seguinte aquando da última entrega da semana, deve ser informado que terá de realizar o pagamento online caso pretenda alterar o calendário/produtos da semana atual.
+	8. O não pagamento adiantado do serviço prestado invalida a realização, e consequente entrega, do mesmo.
 
 ---
 
@@ -230,16 +232,12 @@
 
 ## Cliente
 
-1. O cliente poderá alterar a sua subscrição a qualquer momento.
-	1. O cliente poderá mudar entre subscrição *bronze, prata* e *ouro* consoante os seus desejos.
-	2. A alteração tomará efeito apenas na semana seguinte.
-	3. Caso sejam realizadas alterações numa subscrição, estas apenas ficam vigentes enquanto o serviço estiver ativo. A partir do momento em que o cliente o cancela, as suas preferências não serão guardadas.
-	
-2. O cliente poderá cancelar a sua subscrição a qualquer momento.
+1. O cliente poderá cancelar a sua subscrição a qualquer momento.
 	1. A seleção desta opção deverá abrir um popup que informa o cliente de que perderá os benefícios da subscrição, sendo necessária a aprovação do cliente para que a ação seja consumada.
 	2. O cliente terá a opção de cancelar as encomendas desta semana caso deseje. Caso contrário, o serviço deixará de ter efeito a partir da semana seguinte.
+	3. Cancelando a subscrição imediatamente esta fico no estado "inativa". Caso apenas seja anulada no final da semana passa ao estado "última".
 
-3. O cliente deve poder consultar os dados da sua conta pessoal e, consequentemente, poder altera-los.
+2. O cliente deve poder consultar os dados da sua conta pessoal e, consequentemente, poder altera-los.
 	1. A informação pessoal aparece em formato formulário para que o cliente possa alterar.
 	2. Após a alteração o cliente deve confirmar a ação carregando no botão para o efeito. Deste modo, os dados modificados são propagados e registados de imediato na BD.
 
@@ -247,6 +245,10 @@
 	1. O cliente quando se regista tem a avaliação a 0. Esta significa que ainda não foi realizada nenhuma avaliação por parte do cliente.
 	2. Caso o cliente já tenha avaliado anteriormente o serviço, este pode alterar a sua avaliação a qualquer momento.
 	3. Apenas é mantido o registo da última avaliação feito do serviço.
+
+5. O cliente deve poder desativar a sua conta.
+	1. O perfil do cliente não é eliminado da BD.
+	2. O estado do perfil é alterado para "desativado".
 
 
 ## Administrador
@@ -264,3 +266,6 @@
 3. O administrador deve poder remover produtos de venda da plataforma.
 	1. A seleção desta opção deverá abrir um popup, que informa o administrador de que a informação relativa ao produto será apagada permanentemente, questionando se tem a certeza que o deseja fazer.
 
+4. O administrador deve poder desativar as contas dos funcionários que já não trabalham na empresa.
+	1. O perfil do funcionário é mantido na BD.
+	2. O estado adjacente ao funcionário é alterado para "desativado".
