@@ -119,11 +119,83 @@
                 </button>
               </div>
               <div class="col-3">
-                <button class="btn btn-lg btn-success btn-block" type="submit">
+                <button class="btn btn-lg btn-success btn-block" type="submit" data-toggle="modal" data-target="#pagamento" aria-hidden="true">
                 Efetuar Pagamento
                 </button>
+                <!-- Modall -->
+                <div class="modal fade" id="pagamento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Pagamento</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <table class="table table-user-information">
+                          <tbody>
+                            <tr>
+                              <td>Nr encomenda</td>
+                              <td>Data de realização da encomenda</td>
+                              <td> </td>
+                            </tr>
+                            <tr>
+                              <td>12</td>
+                              <td>28/05/2018</td>
+                              <td><button type="button" class="btn btn-success">Efetuar Pagamento</button></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="col-3">
+                <button class="btn btn-lg btn-primary btn-block" type="submit" data-toggle="modal" data-target="#encomendas" aria-hidden="true">
+                  Encomendas
+                </button>
+                <!-- Modall -->
+                <div class="modal fade" id="encomendas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Encomendas</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <table class="table table-user-information">
+                          <tbody>
+                            <tr>
+                              <td>Nr encomenda</td>
+                              <td>Estado da encomenda</td>
+                              <td> </td>
+                            </tr>
+                            <tr>
+                              <td>7</td>
+                              <td>Pronta</td>
+                              <td><button type="button" class="btn btn-danger">Cancelar</button></td>
+                            </tr>
+                            <tr>
+                              <td>12</td>
+                              <td>Aguarda Pagamento</td>
+                              <td><button type="button" class="btn btn-success">Efetuar Pagamento</button></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="col-3">
                 <button class="btn btn-lg btn-danger btn-block" type="submit">
