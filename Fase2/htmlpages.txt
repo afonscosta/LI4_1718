@@ -1,0 +1,74 @@
+Site principal:
+	Pagina principal -> breadstrap/index.html
+		Fala da empresa da sua história e contactos.
+
+	Pagina de Login -> breadstrap/login.html
+		
+	Pagina de registo -> breadstrap/register.html
+		nome, data de nascimento, morada, genero, email, informaçao de faturação
+		popup com informação de sucesso ou insucesso
+
+	Catalogo de produtos -> breadstrap/catalogo.html
+		Todos os produtos; imagem, nome e preço carrinho para adicionar
+		Selecção do produto deve abrir um popup com imagem, descrição completa, preço, lista de ingredientes e tabela nutricional e carrinho para adicionar.
+
+	Catalogo de serviços -> breadstrap/pricing.html
+		Descrição das três subscriçoes e da entrega ocasional.
+			preço, e informação adicional.
+
+	Subscrição de um serviço
+		Produtos a serem entregues e as respetivas horas
+		Alteração da subscrição
+			Alteração de produtos
+			Cancelamento da mesma
+
+	Entrega ocasional
+		dia e hora, morada, produtos, nif,
+
+	Visualizar carrinho -> breadstrap/cart.html
+		Finalizar a compra
+		Remover produtos
+
+	Consulta da conta
+		Consultar dados pessoais e alterar os mesmos
+			formato formulário
+		Efetuar pagamento via web
+
+	Pagina de explicação dos passos que descrevem o funcionamento dos serviços.
+
+Site padeiro:
+	Produção necessária em cada dia.
+		Tabela com todos os produtos e respetivas quantidades.
+
+	Lista das encomendas por hora de entrega
+		Marcar como prontas as encomendas para serem distribuidas
+
+
+Site estafeta: 
+	Ver rota que deve seguir
+		Marcar como inicializado o percurso
+
+	Percurso Inicializado
+		Lista das moradas a que se deve dirigir com info do cliente 
+			Nome, etc
+		Entrega efetuada ou entrega não efetuada(motivo)
+			Pagamento efetuado ou não
+			possibilidade de adicionar notas
+
+
+Site administrador:
+	Info Geral -> admin/breadspread/index.html
+		Vendas
+		Notificações
+
+	Info de Entregas -> admin/breadspread/entregas.html
+
+	Estatisticas de subscrições -> admin/breadspread/subscriptions.html
+
+	Validar entregas ocasionais -> admin/breadspread/ocasionais.html
+		Estado pendente ou confirmado
+
+	Quantidades vendidas de cada produto -> admin/breadspread/vendas.html
+
+	Lista de produtos -> admin/breadspread/produtos.html
+		Inserir, alterar e remover produtos do catalogo

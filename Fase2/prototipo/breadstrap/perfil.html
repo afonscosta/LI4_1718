@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://getbootstrap.com/docs/4.0/examples/pricing/ -->
+<html lang="pt">
+  <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+  <meta content="" name="description">
+  <meta content="" name="author">
+  <link href="./images/logo.png" rel="icon">
+  <title>Perfil</title>
+
+  <!-- Bootstrap core CSS 
+  <link href="./bootstrap_files/bootstrap.min.css" rel="stylesheet">-->
+  
+  <!--using online bootstrap-->
+  <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+  
+  <!-- Custom styles for this template -->
+  <link href="./bootstrap_files/main.css" rel="stylesheet">
+  
+  <!-- Custom Fonts -->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  </head>
+  <body cz-shortcut-listen="true">
+    <!-- NAVBAR -->
+    <div class="fixed-top d-flex flex-column flex-sm-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow justify-content-between">
+      <h5 class="my-0 font-weight-normal">
+        <a class="text-dark" href="index.html">
+          BreadSpread
+        </a>
+      </h5>
+      <nav class="my-2 my-md-0 ">
+        <a class="p-2 text-dark" href="produtos.html">
+          Produtos
+        </a>
+        <a class="p-2 text-dark" href="servicos.html">
+          Serviços
+        </a>
+        <a class="p-2 text-dark" href="comofunciona.html">
+          Como Funciona
+        </a>
+        <a class="dropdown">
+          <a aria-haspopup="true" class="p-2 text-dark dropdown-toggle" data-toggle="dropdown" href="#" id="dropdownMenuButton">
+            Conta
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">
+              Perfil Utilizador
+            </a>
+            <a class="dropdown-item" href="cart.html">
+              Carrinho de Compras
+            </a>
+            <a class="divider">
+            </a>
+            <a class="dropdown-item" href="index.html">
+              Logout
+            </a>
+          </div>
+        </a>
+        <!-- this is the cart-->
+        <i class="fa fa-shopping-cart ml-2">
+        </i>
+        <a class="text-dark " href="cart.html">
+          3.24€
+        </a>
+      </nav>
+      <!--<a class="btn btn-outline-primary" href="login.html">Login</a>-->
+    </div>
+    <!-- NAVBAR END -->
+    
+    <div class="container">
+      <div class="col-xs-12 col-sm-12 col-xs-offset-0 topadd" style="padding-top: 60px;">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">Orlando Belo</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-3 col-lg-3" align="center"><img src="images/profile.png" class="img-circle" style="height: 200px"></div>
+              <div class="col-md-9 col-lg-9">
+                <table class="table table-user-information">
+                  <tbody>
+                    <tr>
+                      <td>e-mail</td>
+                      <td>obelo@breadspread.pt</td>
+                    </tr>
+                    <tr>
+                      <td>Sexo</td>
+                      <td>Masculino</td>
+                    </tr>
+                    <tr>
+                      <td>Idade</td>
+                      <td>42</td>
+                    </tr>
+                    <tr>
+                      <td>Morada</td>
+                      <td>Largo da Padaria</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td>Nº28, 2ºesq 4750-100</td>
+                    </tr>
+                    <tr>
+                      <td>Telemóvel</td>
+                      <td>912 345 678</td>
+                    </tr>
+                    <tr>
+                      <td>NIF</td>
+                      <td>198 765 432</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-3">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                Editar Informação
+                </button>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-lg btn-success btn-block" type="submit" data-toggle="modal" data-target="#pagamento" aria-hidden="true">
+                Efetuar Pagamento
+                </button>
+                <!-- Modall -->
+                <div class="modal fade" id="pagamento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Pagamento</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <table class="table table-user-information">
+                          <tbody>
+                            <tr>
+                              <td>Nr encomenda</td>
+                              <td>Data de realização da encomenda</td>
+                              <td> </td>
+                            </tr>
+                            <tr>
+                              <td>12</td>
+                              <td>28/05/2018</td>
+                              <td><button type="button" class="btn btn-success">Efetuar Pagamento</button></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-lg btn-primary btn-block" type="submit" data-toggle="modal" data-target="#encomendas" aria-hidden="true">
+                  Encomendas
+                </button>
+                <!-- Modall -->
+                <div class="modal fade" id="encomendas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Encomendas</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <table class="table table-user-information">
+                          <tbody>
+                            <tr>
+                              <td>Nr encomenda</td>
+                              <td>Estado da encomenda</td>
+                              <td> </td>
+                            </tr>
+                            <tr>
+                              <td>7</td>
+                              <td>Pronta</td>
+                              <td><button type="button" class="btn btn-danger">Cancelar</button></td>
+                            </tr>
+                            <tr>
+                              <td>12</td>
+                              <td>Aguarda Pagamento</td>
+                              <td><button type="button" class="btn btn-success">Efetuar Pagamento</button></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-lg btn-danger btn-block" type="submit">
+                Apagar Conta
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+
+    <!--            FOOTER            -->
+    <div class="container">
+      <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row mb-3">
+          <div class="col-12 col-sm-12 col-md-3">
+            <img alt="" class="mb-2" height="24" src="./images/logo.png" width="24">
+              <small class="d-block mb-3 text-muted">
+                © LI4G20
+              </small>
+            </img>
+          </div>
+          <div class="col-12 col-sm-6 col-md-5">
+            <h5>
+              Contactos
+            </h5>
+            <ul class="list-unstyled text-small">
+              <li>
+                <a class="text-muted">
+                  253 604 448
+                </a>
+              </li>
+              <a class="text-muted" href="mailto:geral@breadspread.pt">
+                geral@breadspread.pt
+              </a>
+            </ul>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4">
+            <h5>
+              Como funciona
+            </h5>
+            <ul class="list-unstyled text-small">
+              <li>
+                <a class="text-muted" href="comofunciona.html">
+                  Subscrições
+                </a>
+              </li>
+              <li>
+                <a class="text-muted" href="comofunciona.html">
+                  Entregas ocasionais
+                </a>
+              </li>
+              <li>
+                <a class="text-muted" href="comofunciona.html">
+                  Cancelar encomendas
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script crossorigin="anonymous" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" src="https://code.jquery.com/jquery-3.2.1.slim.min.js">
+    </script>
+    <script crossorigin="anonymous" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js">
+    </script>
+    <script crossorigin="anonymous" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
+    </script>
+  </body>
+</html>
