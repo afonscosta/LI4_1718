@@ -56,7 +56,7 @@
 		  "morada":[ 
 		  			 "rua":"Rua Flores de Cima", 
 		  			 "numPorta":15, 
-		             		 "codPostal":"4444-111",
+		             		 "codPostal":"4444-111", 
 					 "freg":"Gualtar",
 		  			 "cidade":"Braga" 
 				   ] },
