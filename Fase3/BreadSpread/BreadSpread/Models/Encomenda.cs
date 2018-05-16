@@ -16,7 +16,6 @@ namespace BreadSpread.Models
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int idEnc { get; set; }
 
         public int idCli { get; set; }
@@ -58,13 +57,11 @@ namespace BreadSpread.Models
         public string tipoEnc { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime dataPag { get; set; }
+        public DateTime? dataPag { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string modoPag { get; set; }
 
-        [Required]
         public byte[] fatura { get; set; }
 
         public virtual Cliente Cliente { get; set; }
