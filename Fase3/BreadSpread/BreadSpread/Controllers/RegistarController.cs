@@ -9,7 +9,7 @@ namespace BreadSpread.Controllers
 {
     public class RegistarController : Controller
     {
-        ClientesContext db = new ClientesContext();
+        BSContext db = new BSContext();
 
         // GET: Registar
         public ActionResult Index()
