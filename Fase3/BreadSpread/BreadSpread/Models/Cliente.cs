@@ -4,7 +4,6 @@ namespace BreadSpread.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity;
     using System.Data.Entity.Spatial;
 
     [Table("Cliente")]
@@ -17,9 +16,9 @@ namespace BreadSpread.Models
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int idCli { get; set; }
 
+        [Required]
         [StringLength(100)]
         public string nome { get; set; }
 
@@ -28,38 +27,47 @@ namespace BreadSpread.Models
 
         public int NIF { get; set; }
 
-        [StringLength(1)]
+        [Required]
+        [StringLength(20)]
         public string sexo { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string email { get; set; }
 
+        [Required]
         [StringLength(100)]
         public string rua { get; set; }
 
         public int numPorta { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string codPostal { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string cidade { get; set; }
 
-        public int ratingServico { get; set; }
+        public int? ratingServico { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string contacto { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string freguesia { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string password { get; set; }
 
+        [Required]
         [StringLength(20)]
         public string estadoConta { get; set; }
 
-        public int idSub { get; set; }
+        public int? idSub { get; set; }
 
         public virtual Subscricao Subscricao { get; set; }
 

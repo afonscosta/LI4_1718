@@ -17,7 +17,6 @@ namespace BreadSpread.Models
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int idSub { get; set; }
 
         [Required]
@@ -25,10 +24,6 @@ namespace BreadSpread.Models
         public string designacao { get; set; }
 
         public double custo { get; set; }
-
-        [Required]
-        [StringLength(200)]
-        public string plano_ent { get; set; }
 
         [Required]
         [StringLength(50)]

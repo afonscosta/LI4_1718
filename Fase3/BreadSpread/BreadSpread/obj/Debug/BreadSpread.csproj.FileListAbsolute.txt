@@ -70,3 +70,7 @@ C:\Users\DiogoAfonsoSilvaCost\source\repos\BreadSpread\BreadSpread\bin\roslyn\vb
 C:\Users\DiogoAfonsoSilvaCost\source\repos\BreadSpread\BreadSpread\bin\roslyn\vbc.rsp
 C:\Users\DiogoAfonsoSilvaCost\source\repos\BreadSpread\BreadSpread\bin\roslyn\VBCSCompiler.exe
 C:\Users\DiogoAfonsoSilvaCost\source\repos\BreadSpread\BreadSpread\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\DiogoAfonsoSilvaCost\Desktop\Repos\LI4_1718\Fase3\BreadSpread\BreadSpread\obj\Debug\BreadSpread.csprojResolveAssemblyReference.cache
+C:\Users\DiogoAfonsoSilvaCost\Desktop\Repos\LI4_1718\Fase3\BreadSpread\BreadSpread\obj\Debug\BreadSpread.csproj.CoreCompileInputs.cache
+C:\Users\DiogoAfonsoSilvaCost\Desktop\Repos\LI4_1718\Fase3\BreadSpread\BreadSpread\obj\Debug\BreadSpread.dll
+C:\Users\DiogoAfonsoSilvaCost\Desktop\Repos\LI4_1718\Fase3\BreadSpread\BreadSpread\obj\Debug\BreadSpread.pdb
