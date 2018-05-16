@@ -160,14 +160,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BSContext.cs" />
     <Compile Include="Models\Cliente.cs" />
-    <Compile Include="ClientesContext.cs" />
     <Compile Include="Models\Encomenda.cs" />
     <Compile Include="Models\Encomenda_Produto.cs" />
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Slot.cs" />
     <Compile Include="Models\Subscricao.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

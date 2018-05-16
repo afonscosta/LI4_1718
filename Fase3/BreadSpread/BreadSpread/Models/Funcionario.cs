@@ -16,7 +16,6 @@ namespace BreadSpread.Models
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int idFunc { get; set; }
 
         [Required]

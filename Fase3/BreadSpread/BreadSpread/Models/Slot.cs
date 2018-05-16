@@ -9,7 +9,6 @@ namespace BreadSpread.Models
     public partial class Slot
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int idSlot { get; set; }
 
         [Required]
