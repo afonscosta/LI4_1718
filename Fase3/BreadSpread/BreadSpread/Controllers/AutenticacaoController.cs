@@ -52,7 +52,7 @@ namespace BreadSpread.Controllers
         [HttpPost]
         public ActionResult AdicionarCliente(
             [Bind(Include =
-                "idCli, nome, dataNasc, NIF, sexo, email, rua, numPorta,codPostal, cidade, ratingServico, contacto, freguesia,password,estadoConta,idSub")]
+                "nome, dataNasc, NIF, sexo, email, rua, numPorta, codPostal, cidade, ratingServico, contacto, freguesia,password,estadoConta")]
             Cliente cliente)
         {
             cliente.estadoConta = "ativo";
