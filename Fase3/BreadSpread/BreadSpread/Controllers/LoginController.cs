@@ -10,7 +10,7 @@ namespace BreadSpread.Controllers
 {
     public class LoginController : Controller
     {
-        ClientesContext db = new ClientesContext();
+        BSContext db = new BSContext();
         // GET: Login
         public ActionResult Index()
         {
