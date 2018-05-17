@@ -1,0 +1,131 @@
+﻿@*@{
+        ViewBag.Title = "Registar";
+        Layout = null;
+    }
+
+    <!DOCTYPE html>
+    <!-- saved from url=(0051)https://getbootstrap.com/docs/4.0/examples/sign-in/ -->
+    <html lang="pt">
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+        <meta content="" name="description">
+        <meta content="" name="author">
+        <link href="/images/logo.png" rel="icon">
+        <title>Registar</title>
+
+        <!-- Bootstrap core CSS
+        <link href="./bootstrap_files/bootstrap.min.css" rel="stylesheet"> -->
+        <!--using online bootstrap-->
+        <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="/Content/signin.css" rel="stylesheet">
+    </head>
+    <body>
+        <div>
+            @using (Html.BeginForm("AdicionarCliente", "Autenticaco", FormMethod.Post))
+            {
+                @Html.ValidationSummary(true)
+                <fieldset>
+                    Nome: <input type="text" name="nome" required />
+                </fieldset>
+                <input type="submit" value="Submit" />
+            }
+        </div>
+    </body>
+    </html>*@
+
+
+@{
+    ViewBag.Title = "Registar";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://getbootstrap.com/docs/4.0/examples/sign-in/ -->
+<html lang="pt">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <link href="/images/logo.png" rel="icon">
+    <title>Registar</title>
+
+    <!-- Bootstrap core CSS
+    <link href="./bootstrap_files/bootstrap.min.css" rel="stylesheet"> -->
+    <!--using online bootstrap-->
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/Content/signin.css" rel="stylesheet">
+</head>
+<body class="text-center" cz-shortcut-listen="true">
+    @using (Html.BeginForm("AdicionarCliente", "Autenticacao", FormMethod.Post))
+    {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <input class="form-control" placeholder="Nome" type="text" name="nome" />
+                </div>
+            </div>
+            <div class="form-group">
+                <input aria-describedby="emailHelp" class="form-control" id="exampleInputEmail1" placeholder="bread@spread.pt" type="email" name="email" />
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="exampleInputPassword1" placeholder="password" type="password" name="password" />
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <select class="form-control" id="inputState" name="sexo">
+                        <option selected="">Género</option>
+                        <option>M</option>
+                        <option>F</option>
+                    </select>
+                </div>
+                <input type="date" name="dataNasc" required />
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="nome_rua" placeholder="Rua da Padaria" type="text" name="rua" />
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="numero_porta" placeholder="Porta, andar" type="text" name="numPorta">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                    <select class="form-control" id="nome_cidade" name="cidade">
+                        <option selected="">Braga</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <select class="form-control" id="nome_freguesia" name="freguesia">
+                        <option selected="">Gualtar</option>
+                        <option>Nogueiró</option>
+                        <option>Nogueira</option>
+                        <option>Fraião</option>
+                        <option>Lamaçães</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <input class="form-control" id="inputZip" placeholder="4710-XXX" type="text" name="codPostal" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input class="form-control" id="numerofiscal" placeholder="NIF" type="text" name="NIF" />
+                </div>
+                <div class="form-group col-md-6">
+                    <input class="form-control" id="inputAddress2" placeholder="Telemóvel" type="text" name="contacto" />
+                </div>
+            </div>
+        </fieldset>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">
+            Registar
+        </button>
+
+        <p class="mt-5 mb-3 text-muted">
+            © LI4G20
+        </p>
+    }
+</body>
+</html>
