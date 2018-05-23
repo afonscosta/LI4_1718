@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using BreadSpread.Encriptacao;
 using BreadSpread.Models;
 
 namespace BreadSpread.Controllers
@@ -29,12 +31,23 @@ namespace BreadSpread.Controllers
             if (ModelState.IsValid)
             {
                 var clientes = (from m in db.Clientes
-                    where m.email == email && m.password == password
+                    where m.email == email
                     select m);
                 if (clientes.ToList<Cliente>().Count > 0)
                 {
                     Cliente cliente = clientes.ToList<Cliente>().ElementAt<Cliente>(0);
-                    FormsAuthentication.SetAuthCookie(cliente.email, false);
+                    using (MD5 md5Hash = MD5.Create())
+                    {
+                        if (MyHelpers.VerifyMd5Hash(md5Hash, password, cliente.password))
+                        {
+                            FormsAuthentication.SetAuthCookie(cliente.email, false);
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("password", "Password incorreta!");
+                            return View("Index");
+                        }
+                    }
                 }
                 else
                 {
@@ -66,6 +79,7 @@ namespace BreadSpread.Controllers
             cliente.estadoConta = "ativo";
             if (ModelState.IsValid)
             {
+                cliente.password = MyHelpers.HashPassword(cliente.password);
                 db.Clientes.Add(cliente);
                 db.SaveChanges();
 				return RedirectToAction("sucessOperation");
