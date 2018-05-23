@@ -79,25 +79,13 @@ namespace BreadSpread.Controllers
             cliente.estadoConta = "ativo";
             if (ModelState.IsValid)
             {
+                var originalPass = cliente.password;
                 cliente.password = MyHelpers.HashPassword(cliente.password);
                 db.Clientes.Add(cliente);
                 db.SaveChanges();
-				return RedirectToAction("sucessOperation");
-			}
+                return Autentica(cliente.email, originalPass);
+            }
 			return RedirectToAction("notsucessOperation");
         }
-
-        public ActionResult sucessOperation()
-        {
-            ViewBag.title = "Cliente adicionado com sucesso";
-            ViewBag.mensagem = "Cliente inserido com sucesso";
-            return View();
-        }
-		public ActionResult notsucessOperation()
-		{
-			ViewBag.title = "Cliente não adicionado com sucesso";
-			ViewBag.mensagem = "Cliente não inserido com sucesso";
-			return View();
-		}
 	}
 }
