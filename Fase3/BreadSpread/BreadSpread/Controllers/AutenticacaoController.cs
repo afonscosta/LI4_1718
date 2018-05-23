@@ -31,7 +31,7 @@ namespace BreadSpread.Controllers
             if (ModelState.IsValid)
             {
                 var clientes = (from m in db.Clientes
-                    where m.email == email
+                    where m.email == email && m.estadoConta != "desativado"
                     select m);
                 if (clientes.ToList<Cliente>().Count > 0)
                 {
