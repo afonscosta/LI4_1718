@@ -50,9 +50,10 @@ namespace BreadSpread.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdicionarCliente(
+		[ValidateAntiForgeryToken]
+		public ActionResult AdicionarCliente(
             [Bind(Include =
-                "nome, dataNasc, NIF, sexo, email, rua, numPorta, codPostal, cidade, ratingServico, contacto, freguesia,password,estadoConta")]
+                "nome, dataNasc, NIF, sexo, email, rua, numPorta, codPostal, cidade, contacto, freguesia,password,estadoConta")]
             Cliente cliente)
         {
             cliente.estadoConta = "ativo";
@@ -60,8 +61,9 @@ namespace BreadSpread.Controllers
             {
                 db.Clientes.Add(cliente);
                 db.SaveChanges();
-            }
-            return RedirectToAction("sucessOperation");
+				return RedirectToAction("sucessOperation");
+			}
+			return RedirectToAction("notsucessOperation");
         }
 
         public ActionResult sucessOperation()
@@ -70,5 +72,11 @@ namespace BreadSpread.Controllers
             ViewBag.mensagem = "Cliente inserido com sucesso";
             return View();
         }
-    }
+		public ActionResult notsucessOperation()
+		{
+			ViewBag.title = "Cliente não adicionado com sucesso";
+			ViewBag.mensagem = "Cliente não inserido com sucesso";
+			return View();
+		}
+	}
 }
