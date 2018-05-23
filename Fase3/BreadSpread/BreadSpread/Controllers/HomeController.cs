@@ -13,5 +13,10 @@ namespace BreadSpread.Controllers
         {
             return View();
         }
+
+        public ActionResult ComoFunciona()
+        {
+            return View();
+        }
     }
 }

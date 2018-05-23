@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ComoFunciona";
     Layout = null;
 }
 
@@ -12,7 +12,7 @@
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <meta content="" name="description">
     <meta content="" name="author">
-    <link href="~/images/logo.png" rel="icon">
+    <link href="./images/logo.png" rel="icon">
     <title>BreadSpread</title>
 
     <!-- Bootstrap core CSS
@@ -37,15 +37,15 @@
                 Produtos
             </a>
             <a class="p-2 text-dark" href="servicos.html">
-                Serviços
+                ServiÃ§os
             </a>
             <a class="dropdown">
                 <a aria-haspopup="true" class="p-2 text-dark dropdown-toggle" data-toggle="dropdown" href="#" id="dropdownMenuButton">
                     Como funciona
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/Home/ComoFunciona">
-                        Subscrições
+                    <a class="dropdown-item" href="comofunciona.html">
+                        SubscriÃ§Ãµes
                     </a>
                     <a class="dropdown-item" href="comofunciona.html">
                         Entregas ocasionais
@@ -58,20 +58,41 @@
             </a>
             <!--<a href="cart.html" class="text-dark"><i class="fa fa-shopping-cart"></i> Carrinho de compras</a>-->
         </nav>
-        <a class="btn btn-outline-primary" href="/Login/Index">Login</a>
+        <a class="btn btn-outline-primary" href="login.html">Login</a>
     </div>
     <!-- NAVBAR END -->
+
+
     <div class="index-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
         <h1 class="display-4">
-            Bem-Vindo
+            Como encomendar?
         </h1>
+        <a href="login.html">
+            <button class="btn btn-lg btn-primary border-primary rounded-circle" type="button">
+                1
+            </button>
+        </a>
         <p class="lead">
-            Somos a BreadSpread, o seu serviço de distribuição de pão
+            Login
         </p>
-        <img alt="" class="img-fluid img-thumbnail mb-4" src="~/images/bakery.jpg">
-        <p>
-            A BreadSpread consiste na entrega de pão e outros produtos de pastelaria ao domicílio, quando quiser, onde quiser. A recuperação do antigo método de entregas do padeiro aliado às novas tecnologias. Entregamos produtos de padaria e produtos de pastelaria. Atualmente a empresa faz a distribuição de pequenos-almoços ao domicílio, na zona da Universidade do Minho. A entrega de produtos ao domicílio é feita entre as 2h e as 7h de 2ª à 6ª feira e das 2h às 9h Sábados e Feriados.
+        Aqui, como na maioria dos serviÃ§os de compras online terÃ¡ primeiro que fazer login para poder adicionar compras ao carrinho. Use o <button class="btn btn-primary rounded-circle btn-sm">1</button> para ir para lÃ¡ diretamente. <br>
+        <a href="produtos.html"><button class="btn btn-lg btn-primary border-primary rounded-circle" type="button">2</button></a>
+        <p class="lead">
+            Escolher Produtos
         </p>
+        Chegou o momento de escolher os produtos que deseja receber em casa nesta encomenda. Na pÃ¡gina de produtos escolha quais quer e em que quantidades deseja receber esses produtos.
+        <a href="cart.html">
+            <button class="btn btn-lg border-primary rounded-circle" type="button">
+                3
+            </button>
+        </a>
+
+        <p class="lead">
+            Terminar encomenda
+        </p>
+        Neste momento sÃ³ tem de se dirigir ao seu carrinho e terminar a encomenda. Assim que o fizer, nÃ£o se esqueÃ§a de efetuar o pagamento na sua conta para que a encomenda seja validada.
+
+
     </div>
     <!--            FOOTER            -->
     <div class="container">
@@ -80,7 +101,7 @@
                 <div class="col-12 col-sm-12 col-md-3">
                     <img alt="" class="mb-2" height="24" src="~/images/logo.png" width="24">
                     <small class="d-block mb-3 text-muted">
-                        © LI4G20
+                        Â© LI4G20
                     </small>
                 </div>
                 <div class="col-12 col-sm-6 col-md-5">
@@ -104,7 +125,7 @@
                     <ul class="list-unstyled text-small">
                         <li>
                             <a class="text-muted" href="comofunciona.html">
-                                Subscrições
+                                SubscriÃ§Ãµes
                             </a>
                         </li>
                         <li>
@@ -130,3 +151,4 @@
     </script>
 </body>
 </html>
+
