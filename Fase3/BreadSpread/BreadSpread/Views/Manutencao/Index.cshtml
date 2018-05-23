@@ -1,0 +1,117 @@
+﻿@model IEnumerable<BreadSpread.Models.Cliente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Subscricao.designacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dataNasc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NIF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rua)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numPorta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.codPostal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ratingServico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contacto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.freguesia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estadoConta)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subscricao.designacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dataNasc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NIF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sexo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rua)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numPorta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.codPostal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ratingServico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contacto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.freguesia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estadoConta)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idCli }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idCli }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idCli })
+        </td>
+    </tr>
+}
+
+</table>

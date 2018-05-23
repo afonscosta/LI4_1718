@@ -87,5 +87,13 @@ namespace BreadSpread.Controllers
             }
 			return RedirectToAction("notsucessOperation");
         }
-	}
+
+        public bool isAutenticado()
+        {
+            return (System.Web.HttpContext.Current.User != null) &&
+                   System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+        }
+        
+
+    }
 }
