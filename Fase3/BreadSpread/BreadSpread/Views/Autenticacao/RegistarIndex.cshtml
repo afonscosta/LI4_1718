@@ -24,6 +24,7 @@
 	<body>
 
 		<div>
+<<<<<<< HEAD
 			@using (Html.BeginForm("AdicionarCliente", "Autenticacao", FormMethod.Post))
 			{
 				@Html.ValidationSummary(true)
@@ -43,6 +44,27 @@
 					estado: <input type="text" name="estadoConta" required />
 				</fieldset>
 				<input type="submit" value="Submit" />
+=======
+					@using (Html.BeginForm("AdicionarCliente", "Autenticacao", FormMethod.Post))
+				{
+					@Html.ValidationSummary(true)
+					<fieldset>
+						Nome: <input type="text" name="nome" required />
+						data: <input type="date" name="dataNasc" required/>
+						NIF: <input type="number" name="NIF"  required/>
+						sexo: <input type="text" name="sexo" required/>
+						email: <input type="text" name="email" required/>
+						RUA: <input type="text" name="rua" required/>
+						numero postal: <input type="number" name="numPorta" required/>
+						codigo: <input type="text" name="codPostal" required/>
+						cidade: <input type="text" name="cidade" required/>
+						contacto: <input type="text" name="contacto" required/>
+						freguesia: <input type="text" name="freguesia" required/>
+						pass: <input type="text" name="password" required/>
+						estado: <input type="text" name="estadoConta" required/>
+					</fieldset>
+					<input type="submit" value="Submit" />
+>>>>>>> 4f403218e549954922dad5451ad1406708c136bf
 			}
 		</div>
 	</body>
