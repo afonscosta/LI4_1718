@@ -46,7 +46,7 @@ namespace BreadSpread.Controllers
                 ModelState.AddModelError("", "Invalid Request");
             }
 
-            return RedirectToAction("Index", "AutenticacaoController");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
