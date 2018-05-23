@@ -24,13 +24,13 @@ namespace BreadSpread.Controllers
         }
 
         [HttpPost]
-        public ActionResult Autentica(string username, string password)
+        public ActionResult Autentica(string email, string password)
         {
             if (ModelState.IsValid)
             {
-                var clientes = (from c in db.Clientes
-                    where c.email == username && c.password == password
-                    select c);
+                var clientes = (from m in db.Clientes
+                    where m.email == email && m.password == password
+                    select m);
                 if (clientes.ToList<Cliente>().Count > 0)
                 {
                     Cliente cliente = clientes.ToList<Cliente>().ElementAt<Cliente>(0);
@@ -39,14 +39,21 @@ namespace BreadSpread.Controllers
                 else
                 {
                     ModelState.AddModelError("", "Login data is incorrect!");
+                    return View("Index");
                 }
             }
             else
             {
                 ModelState.AddModelError("", "Invalid Request");
+                return View("Index");
             }
-
             return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Autentica", "Autenticacao");
         }
 
         [HttpPost]
