@@ -74,6 +74,8 @@
 @model BreadSpread.Models.Cliente
 
 
+
+
 @{
 	ViewBag.Title = "Registar";
 	Layout = null;
@@ -113,7 +115,14 @@
 		</div>
 		<div class="form-row">
 			<div class="form-group col-md-5">
-				@Html.TextBoxFor(model => model.sexo, new { @class = "form-control", placeholder = "genero", type = "text" })
+				@Html.DropDownListFor( model => model.sexo, new SelectList(
+																		new List<Object>{
+																			new { value = 0 , text = "Masculino"  },
+																			new { value = 1 , text = "Feminino" },
+																			},
+																		"value",
+																		"text"),
+																	new { @class = "form-control", type = "sexo" })
 				@Html.ValidationMessageFor(model => model.sexo, "", new { @class = "text-danger" })
 			</div>
 			<div class="form-group col-md-7">
@@ -155,9 +164,10 @@
 			<div class="form-group col-md-6">
 				@Html.TextBoxFor(model => model.contacto, new { @class = "form-control", placeholder = "987654321", type = "number" })
 				@Html.ValidationMessageFor(model => model.contacto, "", new { @class = "text-danger" })
-			</div>
-			<div class="form-group col-md-6">
-				@Html.TextBoxFor(model => model.estadoConta, new { @class = "form-control", placeholder = "ativo", type = "string" })
+			</div></div>
+		<div class="form-row">
+			<div class="form-group col-md-12 text-left ml-2">
+				@Html.RadioButtonFor(m => m.estadoConta, "Ativo") Li e concordo com os termos e condições
 				@Html.ValidationMessageFor(model => model.estadoConta, "", new { @class = "text-danger" })
 			</div>
 		</div>
@@ -167,7 +177,6 @@
 			</div>
 		</div>
 	</div>
-
 	}
 </body>
 
