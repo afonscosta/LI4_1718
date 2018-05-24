@@ -93,7 +93,7 @@
 	{
 		@Html.AntiForgeryToken()
 
-	<div class="form-signin" style="padding-top: 150px;">
+	<div class="form-signin">
 		<a href="index.html"> <img alt="" class="mb-4" height="300" src="/images/logo.png" width="300"></a><!--corrigir link-->
 		<h1 class="h3 mb-3 font-weight-normal">@ViewBag.Title</h1>
 		<hr />
@@ -161,9 +161,9 @@
 				@Html.ValidationMessageFor(model => model.estadoConta, "", new { @class = "text-danger" })
 			</div>
 		</div>
-		<div class="form-group">
-			<div class="col-md-offset-2 col-md-10">
-				<button type="submit" value="Create" class="btn btn-default" />
+		<div class="form-row">
+			<div class="form-group col-md-12">
+				<button type="submit" value="Create" class="btn btn-lg btn-primary btn-block">Registar</button>
 			</div>
 		</div>
 	</div>
