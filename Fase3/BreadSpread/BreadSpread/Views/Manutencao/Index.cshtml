@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BreadSpread.Models.Cliente>
+﻿@model IEnumerable<BreadSpread.Models.Produto>
 
 @{
     ViewBag.Title = "Index";
@@ -12,49 +12,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Subscricao.designacao)
+            @Html.DisplayNameFor(model => model.designacao)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.nome)
+            @Html.DisplayNameFor(model => model.ingredientes)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.dataNasc)
+            @Html.DisplayNameFor(model => model.infoNutricional)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NIF)
+            @Html.DisplayNameFor(model => model.preco)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.sexo)
+            @Html.DisplayNameFor(model => model.imagem)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.rua)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.numPorta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.codPostal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cidade)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ratingServico)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.contacto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.freguesia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.estadoConta)
+            @Html.DisplayNameFor(model => model.peso)
         </th>
         <th></th>
     </tr>
@@ -62,54 +35,27 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Subscricao.designacao)
+            @Html.DisplayFor(modelItem => item.designacao)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.nome)
+            @Html.DisplayFor(modelItem => item.ingredientes)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.dataNasc)
+            @Html.DisplayFor(modelItem => item.infoNutricional)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NIF)
+            @Html.DisplayFor(modelItem => item.preco)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.sexo)
+            @Html.DisplayFor(modelItem => item.imagem)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.email)
+            @Html.DisplayFor(modelItem => item.peso)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.rua)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.numPorta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.codPostal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cidade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ratingServico)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.contacto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.freguesia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.estadoConta)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idCli }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idCli }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idCli })
+            @Html.ActionLink("Edit", "Edit", new { id=item.idProd }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idProd }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idProd })
         </td>
     </tr>
 }

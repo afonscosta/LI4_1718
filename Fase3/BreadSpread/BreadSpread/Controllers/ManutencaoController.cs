@@ -17,10 +17,23 @@ namespace BreadSpread.Controllers
         // GET: Manutencao
         public ActionResult Index()
         {
-            var clientes = db.Clientes.Include(c => c.Subscricao);
-            return View(clientes.ToList());
+            return View(db.Produtoes.ToList());
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DesativarFuncionario([Bind(Include = "idFunc, nome, dataNasc, contacto, rua, numPorta, codPostal, cidade, password, freguesia, estadoConta, distribuicao")] Funcionario funcionario)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(funcionario).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(funcionario);
+        }
+
+        /*
         // GET: Manutencao/Details/5
         public ActionResult Details(int? id)
         {
@@ -28,12 +41,18 @@ namespace BreadSpread.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cliente cliente = db.Clientes.Find(id);
-            if (cliente == null)
+            Produto produto = db.Produtoes.Find(id);
+            if (produto == null)
             {
                 return HttpNotFound();
             }
-            return View(cliente);
+            return View(produto);
+        }
+
+        // GET: Manutencao/Create
+        public ActionResult Create()
+        {
+            return View();
         }
 
         // POST: Manutencao/Create
@@ -41,17 +60,16 @@ namespace BreadSpread.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idCli,nome,dataNasc,NIF,sexo,email,rua,numPorta,codPostal,cidade,ratingServico,contacto,freguesia,password,estadoConta,idSub")] Cliente cliente)
+        public ActionResult Create([Bind(Include = "idProd,designacao,ingredientes,infoNutricional,preco,imagem,peso")] Produto produto)
         {
             if (ModelState.IsValid)
             {
-                db.Clientes.Add(cliente);
+                db.Produtoes.Add(produto);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idSub = new SelectList(db.Subscricaos, "idSub", "designacao", cliente.idSub);
-            return View(cliente);
+            return View(produto);
         }
 
         // GET: Manutencao/Edit/5
@@ -61,13 +79,12 @@ namespace BreadSpread.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cliente cliente = db.Clientes.Find(id);
-            if (cliente == null)
+            Produto produto = db.Produtoes.Find(id);
+            if (produto == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.idSub = new SelectList(db.Subscricaos, "idSub", "designacao", cliente.idSub);
-            return View(cliente);
+            return View(produto);
         }
 
         // POST: Manutencao/Edit/5
@@ -75,16 +92,15 @@ namespace BreadSpread.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idCli,nome,dataNasc,NIF,sexo,email,rua,numPorta,codPostal,cidade,ratingServico,contacto,freguesia,password,estadoConta,idSub")] Cliente cliente)
+        public ActionResult Edit([Bind(Include = "idProd,designacao,ingredientes,infoNutricional,preco,imagem,peso")] Produto produto)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cliente).State = EntityState.Modified;
+                db.Entry(produto).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.idSub = new SelectList(db.Subscricaos, "idSub", "designacao", cliente.idSub);
-            return View(cliente);
+            return View(produto);
         }
 
         // GET: Manutencao/Delete/5
@@ -94,12 +110,12 @@ namespace BreadSpread.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cliente cliente = db.Clientes.Find(id);
-            if (cliente == null)
+            Produto produto = db.Produtoes.Find(id);
+            if (produto == null)
             {
                 return HttpNotFound();
             }
-            return View(cliente);
+            return View(produto);
         }
 
         // POST: Manutencao/Delete/5
@@ -107,8 +123,8 @@ namespace BreadSpread.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Cliente cliente = db.Clientes.Find(id);
-            db.Clientes.Remove(cliente);
+            Produto produto = db.Produtoes.Find(id);
+            db.Produtoes.Remove(produto);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -121,5 +137,6 @@ namespace BreadSpread.Controllers
             }
             base.Dispose(disposing);
         }
+        */
     }
 }
