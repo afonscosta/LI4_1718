@@ -17,23 +17,10 @@ namespace BreadSpread.Controllers
         // GET: Manutencao
         public ActionResult Index()
         {
-            return View(db.Produtoes.ToList());
+            var clientes = db.Clientes.Include(c => c.Subscricao);
+            return View(clientes.ToList());
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult DesativarFuncionario([Bind(Include = "idFunc, nome, dataNasc, contacto, rua, numPorta, codPostal, cidade, password, freguesia, estadoConta, distribuicao")] Funcionario funcionario)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(funcionario).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(funcionario);
-        }
-
-        /*
         // GET: Manutencao/Details/5
         public ActionResult Details(int? id)
         {
@@ -41,18 +28,12 @@ namespace BreadSpread.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produto produto = db.Produtoes.Find(id);
-            if (produto == null)
+            Cliente cliente = db.Clientes.Find(id);
+            if (cliente == null)
             {
                 return HttpNotFound();
             }
-            return View(produto);
-        }
-
-        // GET: Manutencao/Create
-        public ActionResult Create()
-        {
-            return View();
+            return View(cliente);
         }
 
         // POST: Manutencao/Create
@@ -60,16 +41,17 @@ namespace BreadSpread.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idProd,designacao,ingredientes,infoNutricional,preco,imagem,peso")] Produto produto)
+        public ActionResult Create([Bind(Include = "idCli,nome,dataNasc,NIF,sexo,email,rua,numPorta,codPostal,cidade,ratingServico,contacto,freguesia,password,estadoConta,idSub")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
-                db.Produtoes.Add(produto);
+                db.Clientes.Add(cliente);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(produto);
+            ViewBag.idSub = new SelectList(db.Subscricaos, "idSub", "designacao", cliente.idSub);
+            return View(cliente);
         }
 
         // GET: Manutencao/Edit/5
@@ -79,12 +61,13 @@ namespace BreadSpread.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produto produto = db.Produtoes.Find(id);
-            if (produto == null)
+            Cliente cliente = db.Clientes.Find(id);
+            if (cliente == null)
             {
                 return HttpNotFound();
             }
-            return View(produto);
+            ViewBag.idSub = new SelectList(db.Subscricaos, "idSub", "designacao", cliente.idSub);
+            return View(cliente);
         }
 
         // POST: Manutencao/Edit/5
@@ -92,15 +75,16 @@ namespace BreadSpread.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idProd,designacao,ingredientes,infoNutricional,preco,imagem,peso")] Produto produto)
+        public ActionResult Edit([Bind(Include = "idCli,nome,dataNasc,NIF,sexo,email,rua,numPorta,codPostal,cidade,ratingServico,contacto,freguesia,password,estadoConta,idSub")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(produto).State = EntityState.Modified;
+                db.Entry(cliente).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(produto);
+            ViewBag.idSub = new SelectList(db.Subscricaos, "idSub", "designacao", cliente.idSub);
+            return View(cliente);
         }
 
         // GET: Manutencao/Delete/5
@@ -110,12 +94,12 @@ namespace BreadSpread.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produto produto = db.Produtoes.Find(id);
-            if (produto == null)
+            Cliente cliente = db.Clientes.Find(id);
+            if (cliente == null)
             {
                 return HttpNotFound();
             }
-            return View(produto);
+            return View(cliente);
         }
 
         // POST: Manutencao/Delete/5
@@ -123,8 +107,8 @@ namespace BreadSpread.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Produto produto = db.Produtoes.Find(id);
-            db.Produtoes.Remove(produto);
+            Cliente cliente = db.Clientes.Find(id);
+            db.Clientes.Remove(cliente);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -137,6 +121,5 @@ namespace BreadSpread.Controllers
             }
             base.Dispose(disposing);
         }
-        */
     }
 }
