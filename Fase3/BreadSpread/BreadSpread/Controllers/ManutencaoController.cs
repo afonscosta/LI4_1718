@@ -20,10 +20,22 @@ namespace BreadSpread.Controllers
             return View(db.Produtoes.ToList());
         }
 
+        public ActionResult AdminIndex()
+        {
+            return View("~/Views/Admin/Index.cshtml");
+        }
+
+        public ActionResult ProdutosIndex()
+        {
+            return View("~/Views/Admin/Produtos.cshtml");
+        }
+
+        /*
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult DesativarFuncionario([Bind(Include = "idFunc, nome, dataNasc, contacto, rua, numPorta, codPostal, cidade, password, freguesia, estadoConta, distribuicao")] Funcionario funcionario)
         {
+            funcionario.estadoConta = "desativado";
             if (ModelState.IsValid)
             {
                 db.Entry(funcionario).State = EntityState.Modified;
@@ -32,8 +44,8 @@ namespace BreadSpread.Controllers
             }
             return View(funcionario);
         }
+        */
 
-        /*
         // GET: Manutencao/Details/5
         public ActionResult Details(int? id)
         {
@@ -137,6 +149,5 @@ namespace BreadSpread.Controllers
             }
             base.Dispose(disposing);
         }
-        */
     }
 }
