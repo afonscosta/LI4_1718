@@ -260,19 +260,21 @@
 										<th>Preço</th>
 										<th>Ingredientes</th>
 										<th>Peso</th>
-										s
 										<th>Alterar/remover</th>
 									</tr>
 								</thead>
 								<tbody>
 									@foreach (var item in Model)
-									{
+                                    {
 										<tr class="odd gradeA">
 											<td>@Html.DisplayFor(modelItem => item.designacao)</td>
 											<td>@Html.DisplayFor(modelItem => item.preco)</td>
 											<td>@Html.DisplayFor(modelItem => item.ingredientes)</td>
 											<td>@Html.DisplayFor(modelItem => item.peso)</td>
-											<td><button type="button" class="btn btn-success">Alterar</button> <button type="button" class="btn btn-danger">Remover</button></td>
+											<td>
+                                                @Html.ActionLink("Alterar", "Edit", new { id = item.idProd }) |
+                                                @Html.ActionLink("Remover", "Delete", new { id = item.idProd })
+                                            </td>
 										</tr>
 									}
 								</tbody>
