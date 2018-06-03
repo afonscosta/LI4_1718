@@ -44,17 +44,33 @@
                 © LI4G20
             </p>
         </form>*@
-    @using (Html.BeginForm("Autentica", "Autenticacao", FormMethod.Post))
-    {
-        @Html.ValidationSummary(true);
-        <fieldset>
-            Email: <input type="text" name="email" required />
-            Password: <input type="text" name="password" required />
-        </fieldset>
-        <input type="submit" value="Submit" />
-        <a class="btn btn-lg btn-primary btn-block" role="button" href="/Autenticacao/RegistarIndex">
-            Registar
-        </a>
-    }
+     
+	@using (Html.BeginForm("Autentica", "Autenticacao", FormMethod.Post))
+	{
+		@Html.AntiForgeryToken()
+
+	<div class="form-signin">
+		<a href="/Home/Index"> <img alt="" class="mb-4" height="300" src="/images/logo.png" width="300"></a><!--corrigir link-->
+		<h1 class="h3 mb-3 font-weight-normal">@ViewBag.Title</h1>
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+		<div class="form-group">
+			@Html.TextBox("email", null, new { @class = "form-control", placeholder = "bread@spread.com", type = "text" })
+			@Html.ValidationMessage("", new { @class = "text-danger" })
+		</div>
+		<div class="form-group">
+			@Html.TextBox("password", null, new { @class = "form-control", placeholder = "********", type = "password" })
+			@Html.ValidationMessage("", new { @class = "text-danger" })
+		</div>
+		<button type="submit" value="Login" class="btn btn-lg btn-primary btn-block">Login</button>
+		<a class="btn btn-lg btn-primary btn-block" role="button" href="/Autenticacao/RegistarIndex">
+			Registar
+		</a>
+		<p class="mt-5 mb-3 text-muted">
+			© LI4G20
+		</p>
+	</div>
+	}
 </body>
 </html>
