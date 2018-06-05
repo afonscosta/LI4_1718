@@ -193,6 +193,8 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Registar\sucessOperation.cshtml" />
     <Content Include="Views\Home\ComoFunciona.cshtml" />
+    <Content Include="Views\Requisicao\Subscrever.cshtml" />
+    <Content Include="Views\Requisicao\Carrinho.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -202,7 +204,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Requisicao\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
