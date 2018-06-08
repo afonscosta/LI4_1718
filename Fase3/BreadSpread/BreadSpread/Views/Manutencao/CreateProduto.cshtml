@@ -1,7 +1,7 @@
 ﻿@model BreadSpread.Models.Produto
 
 @{
-	ViewBag.Title = "Delete";
+	ViewBag.Title = "Create";
 	Layout = null;
 }
 
@@ -232,72 +232,78 @@
 		<div id="page-wrapper">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">Remover</h1>
+					<h1 class="page-header">Produto</h1>
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
 			<!-- /.row -->
 			<div class="row">
 				<div class="col-lg-12">
-					<div >
+					<div class="panel panel-default ">
+						<!-- /.panel-heading -->
 						<div class="panel-body">
-							<h2>Tem a certeza que quer remover "@Html.DisplayFor(model => model.designacao)" da lista de produtos?</h2>
-							<div>
-								<hr />
-								<dl class="dl-horizontal">
-									<dt>
-										@Html.DisplayNameFor(model => model.ingredientes)
-									</dt>
+							@using (Html.BeginForm("CreateProduto", "Manutencao", FormMethod.Post))
+							{
+								@Html.AntiForgeryToken()
 
-									<dd>
-										@Html.DisplayFor(model => model.ingredientes)
-									</dd>
+							<div class="form-horizontal">
 
-									<dt>
-										@Html.DisplayNameFor(model => model.infoNutricional)
-									</dt>
+								<div class="form-group">
+									@Html.LabelFor(model => model.designacao, htmlAttributes: new { @class = "control-label col-md-2" })
+									<div class="col-md-10">
+										@Html.EditorFor(model => model.designacao, new { htmlAttributes = new { @class = "form-control" } })
+										@Html.ValidationMessageFor(model => model.designacao, "", new { @class = "text-danger" })
+									</div>
+								</div>
 
-									<dd>
-										@Html.DisplayFor(model => model.infoNutricional)
-									</dd>
+								<div class="form-group">
+									@Html.LabelFor(model => model.ingredientes, htmlAttributes: new { @class = "control-label col-md-2" })
+									<div class="col-md-10">
+										@Html.EditorFor(model => model.ingredientes, new { htmlAttributes = new { @class = "form-control" } })
+										@Html.ValidationMessageFor(model => model.ingredientes, "", new { @class = "text-danger" })
+									</div>
+								</div>
 
-									<dt>
-										@Html.DisplayNameFor(model => model.preco)
-									</dt>
+								<div class="form-group">
+									@Html.LabelFor(model => model.infoNutricional, htmlAttributes: new { @class = "control-label col-md-2" })
+									<div class="col-md-10">
+										@Html.EditorFor(model => model.infoNutricional, new { htmlAttributes = new { @class = "form-control" } })
+										@Html.ValidationMessageFor(model => model.infoNutricional, "", new { @class = "text-danger" })
+									</div>
+								</div>
 
-									<dd>
-										@Html.DisplayFor(model => model.preco)
-									</dd>
+								<div class="form-group">
+									@Html.LabelFor(model => model.preco, htmlAttributes: new { @class = "control-label col-md-2" })
+									<div class="col-md-10">
+										@Html.EditorFor(model => model.preco, new { htmlAttributes = new { @class = "form-control" } })
+										@Html.ValidationMessageFor(model => model.preco, "", new { @class = "text-danger" })
+									</div>
+								</div>
 
-									<dt>
-										@Html.DisplayNameFor(model => model.imagem)
-									</dt>
+								<div class="form-group">
+									@Html.LabelFor(model => model.imagem, htmlAttributes: new { @class = "control-label col-md-2" })
+									<div class="col-md-10">
+										@Html.EditorFor(model => model.imagem, new { htmlAttributes = new { @class = "form-control" } })
+										@Html.ValidationMessageFor(model => model.imagem, "", new { @class = "text-danger" })
+									</div>
+								</div>
 
-									<dd>
-										@Html.DisplayFor(model => model.imagem)
-									</dd>
+								<div class="form-group">
+									@Html.LabelFor(model => model.peso, htmlAttributes: new { @class = "control-label col-md-2" })
+									<div class="col-md-10">
+										@Html.EditorFor(model => model.peso, new { htmlAttributes = new { @class = "form-control" } })
+										@Html.ValidationMessageFor(model => model.peso, "", new { @class = "text-danger" })
+									</div>
+								</div>
 
-									<dt>
-										@Html.DisplayNameFor(model => model.peso)
-									</dt>
-
-									<dd>
-										@Html.DisplayFor(model => model.peso)
-									</dd>
-
-								</dl>
-
-								@using (Html.BeginForm())
-		{
-						@Html.AntiForgeryToken()
-
-						<div class="form-actions no-color">
-							<input type="submit" value="Delete" class="btn btn-lg btn-danger" />
-							@Html.ActionLink("Voltar", "Index",null, new { @class = "btn btn-lg btn-primary" })
-						</div>
-}
+								<div class="form-group">
+									<div class="col-md-offset-2 col-md-10">
+										<input type="submit" value="Adicionar" class="btn btn-success btn-lg" />
+										@Html.ActionLink("Voltar", "IndexProduto", null, new { @class = "btn btn-lg btn-primary" })
+									</div>
+								</div>
 							</div>
-
+							}
 
 						</div>
 						<!-- /.panel-body -->
@@ -332,8 +338,6 @@
 </body>
 
 </html>
-
-
 
 
 
