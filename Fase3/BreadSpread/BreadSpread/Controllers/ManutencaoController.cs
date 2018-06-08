@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BreadSpread.Models;
+using BreadSpread.Controllers;
 
 namespace BreadSpread.Controllers
 {
@@ -27,8 +28,17 @@ namespace BreadSpread.Controllers
 
         public ActionResult ProdutosIndex()
         {
-            return View("~/Views/Admin/Produtos.cshtml");
+            return RedirectToAction("Index", "Produto", new { view = "~/Views/Manutencao/Index.cshtml" });
         }
+        public ActionResult ProdutosCreate()
+        {
+            return RedirectToAction("Create", "Produto", new { view = "~/Views/Manutencao/Create.cshtml" });
+        }
+
+        //public ActionResult ProdutosEdit()
+        //{
+        //    return RedirectToAction("Edit", "Produto", new { view = "~/Views/Manutencao/Edit.cshtml" });
+        //}
 
         /*
         [HttpPost]
@@ -46,6 +56,7 @@ namespace BreadSpread.Controllers
         }
         */
 
+            /*
         // GET: Manutencao/Details/5
         public ActionResult Details(int? id)
         {
@@ -149,5 +160,6 @@ namespace BreadSpread.Controllers
             }
             base.Dispose(disposing);
         }
+        */
     }
 }

@@ -156,6 +156,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AutenticacaoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManutencaoController.cs" />
+    <Compile Include="Controllers\ProdutoController.cs" />
+    <Compile Include="Encriptacao\MyHelpers.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -190,6 +193,22 @@
     <Content Include="Views\Autenticacao\Index.cshtml" />
     <Content Include="Views\Autenticacao\RegistarIndex.cshtml" />
     <Content Include="Views\Autenticacao\sucessOperation.cshtml" />
+    <Content Include="Views\Admin\Entregas.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Ocasionais.cshtml" />
+    <Content Include="Views\Admin\Subscriptions.cshtml" />
+    <Content Include="Views\Admin\Vendas.cshtml" />
+    <Content Include="Views\Estafeta\Encomendas.cshtml" />
+    <Content Include="Views\Estafeta\Index.cshtml" />
+    <Content Include="Views\Estafeta\Percurso.cshtml" />
+    <Content Include="Views\Manutencao\Create.cshtml" />
+    <Content Include="Views\Manutencao\Delete.cshtml" />
+    <Content Include="Views\Manutencao\Details.cshtml" />
+    <Content Include="Views\Manutencao\Edit.cshtml" />
+    <Content Include="Views\Manutencao\Index.cshtml" />
+    <Content Include="Views\Padeiro\Encomendas.cshtml" />
+    <Content Include="Views\Padeiro\Index.cshtml" />
+    <Content Include="Views\Padeiro\Producao.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -199,6 +218,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Produto\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
