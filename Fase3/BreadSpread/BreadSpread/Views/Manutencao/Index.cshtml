@@ -247,7 +247,7 @@
 									Todos os Produtos
 								</div>
 								<div class="col-sm-2">
-									<button type="button" class="btn btn-success pt-3">Adicionar</button>
+									@Html.ActionLink("Adicionar", "Create", null, new { @class = "btn btn-success" })
 								</div>
 							</div>
 						</div>
@@ -272,9 +272,9 @@
 											<td>@Html.DisplayFor(modelItem => item.ingredientes)</td>
 											<td>@Html.DisplayFor(modelItem => item.peso)</td>
 											<td>
-                                                @Html.ActionLink("Alterar", "Edit", new { id = item.idProd }) |
-                                                @Html.ActionLink("Remover", "Delete", new { id = item.idProd })
-                                            </td>
+												@Html.ActionLink("Alterar", "Edit", new { id = item.idProd }, new { @class = "btn btn-success"})
+												@Html.ActionLink("Remover", "Delete", new { id = item.idProd }, new { @class = "btn btn-danger"})
+											</td>
 										</tr>
 									}
 								</tbody>
