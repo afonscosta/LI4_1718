@@ -351,6 +351,11 @@
     <Content Include="Views\Manutencao\CreateProduto.cshtml" />
     <Content Include="Views\Manutencao\EditProduto.cshtml" />
     <Content Include="Views\Manutencao\DeleteProduto.cshtml" />
+    <Content Include="Views\Manutencao\IndexFuncionario.cshtml" />
+    <Content Include="Views\Manutencao\DetailsFuncionario.cshtml" />
+    <Content Include="Views\Manutencao\CreateFuncionario.cshtml" />
+    <Content Include="Views\Manutencao\EditFuncionario.cshtml" />
+    <Content Include="Views\Manutencao\DeleteFuncionario.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -363,6 +368,7 @@
     <Folder Include="Content\bootstrap\mixins\" />
     <Folder Include="Content\fonts\" />
     <Folder Include="Content\themes\base\images\" />
+    <Folder Include="Views\Funcionario\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

@@ -15,46 +15,20 @@ namespace BreadSpread.Controllers
     {
         private BSContext db = new BSContext();
 
-        // GET: Manutencao
-        public ActionResult IndexProduto()
-        {
-            return View(db.Produtoes.ToList());
-        }
-
         public ActionResult AdminIndex()
         {
             return View("~/Views/Admin/Index.cshtml");
         }
 
-        //public ActionResult ProdutosIndex()
-        //{
-        //    return RedirectToAction("Index", "Produto", new { view = "~/Views/Manutencao/Index.cshtml" });
-        //}
-        //public ActionResult ProdutosCreate()
-        //{
-        //    return RedirectToAction("Create", "Produto", new { view = "~/Views/Manutencao/Create.cshtml" });
-        //}
+        //==============================
+        //========= PRODUTOS ===========
+        //==============================
 
-        //public ActionResult ProdutosEdit()
-        //{
-        //    return RedirectToAction("Edit", "Produto", new { view = "~/Views/Manutencao/Edit.cshtml" });
-        //}
-
-        /*
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult DesativarFuncionario([Bind(Include = "idFunc, nome, dataNasc, contacto, rua, numPorta, codPostal, cidade, password, freguesia, estadoConta, distribuicao")] Funcionario funcionario)
+        // GET: Manutencao
+        public ActionResult IndexProduto()
         {
-            funcionario.estadoConta = "desativado";
-            if (ModelState.IsValid)
-            {
-                db.Entry(funcionario).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(funcionario);
+            return View(db.Produtoes.ToList());
         }
-        */
 
         // GET: Manutencao/Details/5
         public ActionResult DetailsProduto(int? id)
@@ -143,7 +117,7 @@ namespace BreadSpread.Controllers
         // POST: Manutencao/Delete/5
         [HttpPost, ActionName("DeleteProduto")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmedProduto(int id)
         {
             Produto produto = db.Produtoes.Find(id);
             db.Produtoes.Remove(produto);
@@ -151,13 +125,110 @@ namespace BreadSpread.Controllers
             return RedirectToAction("IndexProduto");
         }
 
-        protected override void Dispose(bool disposing)
+
+        //==============================
+        //======= FUNCIONARIOS =========
+        //==============================
+
+        // GET: Funcionarios
+        public ActionResult IndexFuncionario()
         {
-            if (disposing)
+            return View(db.Funcionarios.ToList());
+        }
+
+        // GET: Funcionarios/Details/5
+        public ActionResult DetailsFuncionario(string id)
+        {
+            if (id == null)
             {
-                db.Dispose();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            base.Dispose(disposing);
+            Funcionario funcionario = db.Funcionarios.Find(id);
+            if (funcionario == null)
+            {
+                return HttpNotFound();
+            }
+            return View(funcionario);
+        }
+
+        // GET: Funcionarios/Create
+        public ActionResult CreateFuncionario()
+        {
+            return View();
+        }
+
+        // POST: Funcionarios/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateFuncionario([Bind(Include = "idFunc,nome,dataNasc,contacto,rua,numPorta,codPostal,cidade,password,freguesia,estadoConta,distribuicao")] Funcionario funcionario)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Funcionarios.Add(funcionario);
+                db.SaveChanges();
+                return RedirectToAction("IndexFuncionario");
+            }
+
+            return View(funcionario);
+        }
+
+        // GET: Funcionarios/Edit/5
+        public ActionResult EditFuncionario(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Funcionario funcionario = db.Funcionarios.Find(id);
+            if (funcionario == null)
+            {
+                return HttpNotFound();
+            }
+            return View(funcionario);
+        }
+
+        // POST: Funcionarios/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditFuncionario([Bind(Include = "idFunc,nome,dataNasc,contacto,rua,numPorta,codPostal,cidade,password,freguesia,estadoConta,distribuicao")] Funcionario funcionario)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(funcionario).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("IndexFuncionario");
+            }
+            return View(funcionario);
+        }
+
+        // GET: Funcionarios/Delete/5
+        public ActionResult DeleteFuncionario(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Funcionario funcionario = db.Funcionarios.Find(id);
+            if (funcionario == null)
+            {
+                return HttpNotFound();
+            }
+            return View(funcionario);
+        }
+
+        // POST: Funcionarios/Delete/5
+        [HttpPost, ActionName("DeleteFuncionario")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmedFuncionario(string id)
+        {
+            Funcionario funcionario = db.Funcionarios.Find(id);
+            db.Funcionarios.Remove(funcionario);
+            db.SaveChanges();
+            return RedirectToAction("IndexFuncionario");
         }
     }
 }
