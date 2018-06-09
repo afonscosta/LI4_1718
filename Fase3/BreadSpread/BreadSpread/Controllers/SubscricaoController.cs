@@ -13,5 +13,11 @@ namespace BreadSpread.Controllers
         {
             return View();
         }
+
+        public ActionResult AdicionaEncomendas()
+        {
+            string user_authenticated = HttpContext.User.Identity.Name;
+            return Redirect("/Home/Index");
+        }
     }
 }
