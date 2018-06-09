@@ -35,21 +35,39 @@ namespace BreadSpread.Controllers
         public ActionResult AdicionarEncomendas()
         {
 
+            //ciclo que irá adicionar as sucessivas encomendas de planeamento para a semana
+
             return View();
         }
 
+        //ADICIONA UMA ENCOMENDA 
         [HttpPost]
         public void adicionaEnc([Bind(Include =
-                "idCli, dataEnt, custo, estado, idFunc, rua, numPorta, cosPostal, cidade, obs, freguesia, tipoEnc, dataPag, modoPag, fatura")]
+                "idCli, dataEnt, custo, estado, idFunc, rua, numPorta, codPostal, cidade, obs, freguesia, tipoEnc, dataPag, modoPag, fatura")]
             Encomenda encomenda)
         {
 
             //nome de utilizador que tem login feito
             var User_In_Session = User.Identity.Name;
+            encomenda.estado = "pendente";
+
+            //CALCULO DO CUSTO
+            //assumindo que esta var tem uma lista de tuplos com os ids dos produtos e a respetiva quantidade (APENAS ESTÁ A NULL PARA NÃO DAR ERRO)
+            List<Tuple<int, int>> produtos = null;
+
+            double custoEnc = 0;
+            int tamanho_list = produtos.Count;
+            for (int i = 0; i < tamanho_list; i++)
+            {
+                Produto produtoDB = db.Produtoes.Find(produtos[i].Item1);
+                custoEnc += produtoDB.preco;
+            }
+
+            encomenda.custo = custoEnc;
 
             var encomendas = (from m in db.Encomendas
-                              where m.idCli.ToString() == User_In_Session
-                              select m);
+                            where m.idCli.ToString() == User_In_Session
+                            select m);
 
             int lastEncID = encomendas.Max(item => item.idEnc);
 
@@ -57,6 +75,7 @@ namespace BreadSpread.Controllers
             //adicionaProdEnc(produtos);
         }
 
+        //EFETUA A ASSOCIAÇÃO ENTRE OS PRODUTOS E UMA ENCOMENDA
         public void adicionaProdEnc(List<Tuple<int, int>> produtos, int lastEncID)
         {
             int tamanho_list = produtos.Count;
