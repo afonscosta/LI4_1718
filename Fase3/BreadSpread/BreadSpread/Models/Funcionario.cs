@@ -16,7 +16,7 @@ namespace BreadSpread.Models
         }
 
         [Key]
-        public String idFunc { get; set; }
+        public string idFunc { get; set; }
 
         [Required]
         [StringLength(100)]

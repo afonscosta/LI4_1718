@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://getbootstrap.com/docs/4.0/examples/sign-in/ -->
+<html lang="pt">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <link href="~/images/logo.png" rel="icon">
+    <title>Login</title>
+
+    <!-- Bootstrap core CSS
+    <link href="../Login/bootstrap_files/bootstrap.min.css" rel="stylesheet"> -->
+    <!--using online bootstrap-->
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="~/Content/signin.css" rel="stylesheet">
+</head>
+<body class="text-center" cz-shortcut-listen="true">
+         
+	@using (Html.BeginForm("Autentica", "Autenticacao", FormMethod.Post))
+	{
+		@Html.AntiForgeryToken()
+
+	<div class="form-signin">
+		<a href="/Home/Index"> <img alt="" class="mb-4" height="300" src="/images/logo.png" width="300"></a><!--corrigir link-->
+		<h1 class="h3 mb-3 font-weight-normal">@ViewBag.Title</h1>
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+		<div class="form-group">
+			@Html.TextBox("email", null, new { @class = "form-control", placeholder = "bread@spread.com", type = "text" })
+			@Html.ValidationMessage("", new { @class = "text-danger" })
+		</div>
+		<div class="form-group">
+			@Html.TextBox("password", null, new { @class = "form-control", placeholder = "********", type = "password" })
+			@Html.ValidationMessage("", new { @class = "text-danger" })
+		</div>
+		<button type="submit" value="Login" class="btn btn-lg btn-primary btn-block">Login</button>
+		<a class="btn btn-lg btn-primary btn-block" role="button" href="/Autenticacao/RegistarIndex">
+			Registar
+		</a>
+		<p class="mt-5 mb-3 text-muted">
+			© LI4G20
+		</p>
+	</div>
+	}
+</body>
+</html>
