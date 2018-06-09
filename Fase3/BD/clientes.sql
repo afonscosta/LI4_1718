@@ -1,0 +1,118 @@
+USE [BreadSpread]
+GO
+
+INSERT INTO [dbo].[Cliente]
+           ([nome]
+           ,[dataNasc]
+           ,[NIF]
+           ,[sexo]
+           ,[email]
+           ,[rua]
+           ,[numPorta]
+           ,[codPostal]
+           ,[cidade]
+           ,[ratingServico]
+           ,[contacto]
+           ,[freguesia]
+           ,[password]
+           ,[estadoConta]
+           ,[idSub])
+     VALUES
+           ('cliente1'
+           ,'20001021'
+           ,123123123
+           ,'Masculino'
+           ,'email1'
+           ,'rua1'
+           ,1
+           ,'1111-111'
+           ,'cidade1'
+           ,null
+           ,'911111111'
+           ,'freguesia1'
+           ,'202cb962ac59075b964b07152d234b70'
+           ,'ativo'
+           ,NULL),
+
+		   ('cliente2'
+           ,'20001022'
+           ,123123123
+           ,'Masculino'
+           ,'email2'
+           ,'rua2'
+           ,2
+           ,'2222-222'
+           ,'cidade2'
+           ,null
+           ,'922222222'
+           ,'freguesia2'
+           ,'202cb962ac59075b964b07152d234b70'
+           ,'ativo'
+           ,NULL),
+
+		   ('cliente3'
+           ,'20001023'
+           ,123123123
+           ,'Masculino'
+           ,'email3'
+           ,'rua3'
+           ,3
+           ,'3333-333'
+           ,'cidade3'
+           ,null
+           ,'933333333'
+           ,'freguesia3'
+           ,'202cb962ac59075b964b07152d234b70'
+           ,'ativo'
+           ,NULL),
+
+		   ('cliente4'
+           ,'20001024'
+           ,123123123
+           ,'Masculino'
+           ,'email4'
+           ,'rua4'
+           ,4
+           ,'4444-444'
+           ,'cidade4'
+           ,null
+           ,'944444444'
+           ,'freguesia4'
+           ,'202cb962ac59075b964b07152d234b70'
+           ,'ativo'
+           ,NULL),
+
+		   ('cliente5'
+           ,'20001025'
+           ,123123123
+           ,'Masculino'
+           ,'email5'
+           ,'rua5'
+           ,5
+           ,'5555-555'
+           ,'cidade5'
+           ,null
+           ,'955555555'
+           ,'freguesia5'
+           ,'202cb962ac59075b964b07152d234b70'
+           ,'ativo'
+           ,NULL),
+
+		   ('cliente6'
+           ,'20001026'
+           ,123123123
+           ,'Masculino'
+           ,'email6'
+           ,'rua6'
+           ,6
+           ,'6666-666'
+           ,'cidade6'
+           ,null
+           ,'966666666'
+           ,'freguesia6'
+           ,'202cb962ac59075b964b07152d234b70'
+           ,'ativo'
+           ,NULL)
+GO
+
+
