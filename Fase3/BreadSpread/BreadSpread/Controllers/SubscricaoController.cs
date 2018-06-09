@@ -16,12 +16,6 @@ namespace BreadSpread.Controllers
             return View();
         }
 
-<<<<<<< HEAD
-        public ActionResult AdicionaEncomendas()
-        {
-            string user_authenticated = HttpContext.User.Identity.Name;
-            return Redirect("/Home/Index");
-=======
         public ActionResult SubBronze()
         {
             return View(db.Produtoes.ToList());
@@ -35,7 +29,6 @@ namespace BreadSpread.Controllers
         public ActionResult SubOuro()
         {
             return View();
->>>>>>> 8a1ca7895bd6521280df26d3da4d6c1b2536600a
         }
     }
 }
