@@ -30,5 +30,14 @@ namespace BreadSpread.Controllers
         {
             return View();
         }
+
+    
+        public ActionResult AdicionarEncomendas()
+        {
+            //nome de utilizador que tem login feito
+            var User_In_Session = User.Identity.Name;
+
+            return View();
+        }
     }
 }
