@@ -296,6 +296,7 @@
     <Compile Include="Controllers\AutenticacaoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManutencaoController.cs" />
+    <Compile Include="Controllers\SubscricaoController.cs" />
     <Compile Include="Encriptacao\MyHelpers.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -356,6 +357,7 @@
     <Content Include="Views\Manutencao\CreateFuncionario.cshtml" />
     <Content Include="Views\Manutencao\EditFuncionario.cshtml" />
     <Content Include="Views\Manutencao\DeleteFuncionario.cshtml" />
+    <Content Include="Views\Subscricao\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
