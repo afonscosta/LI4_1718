@@ -358,6 +358,9 @@
     <Content Include="Views\Manutencao\EditFuncionario.cshtml" />
     <Content Include="Views\Manutencao\DeleteFuncionario.cshtml" />
     <Content Include="Views\Subscricao\Index.cshtml" />
+    <Content Include="Views\Subscricao\SubBronze.cshtml" />
+    <Content Include="Views\Subscricao\SubPrata.cshtml" />
+    <Content Include="Views\Subscricao\SubOuro.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
