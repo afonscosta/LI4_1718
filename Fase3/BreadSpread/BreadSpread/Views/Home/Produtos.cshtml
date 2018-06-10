@@ -1,4 +1,5 @@
-﻿@model IEnumerable<BreadSpread.Models.Produto>
+﻿@using BreadSpread.Models
+@model IEnumerable<BreadSpread.Models.Produto>
 @{
     Layout = null;
 }
@@ -98,22 +99,32 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
+                                    @{
+                                        var quant = 0; 
+                                        Produto prod = item;
+                                    }
                                     <div class="modal-body">
                                         <img class="card-img-top" src="~/images/bakery.jpg">
                                         @item.ingredientes
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                        <button type="button" class="btn btn-primary">Adicionar ao Carrinho</button>
+                                        @Html.ActionLink("Adicionar ao carrinho", "AdicionarProduto", new { produto = prod, quantidade = quant }, new { @class = "btn btn-primary" })
+                                        <!--button type="button" class="btn btn-primary">Adicionar ao Carrinho</button-->
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <input class="col-2 form-control text-center ml-2" value="2">
-                            <button class="col-9 btn btn-block btn-primary" type="button">
-                                Adicionar ao carrinho
-                            </button>
+                            @Html.TextBoxFor(model => quant, new {@class = "form-control text-center ml-2", placeholder = "Quant", type = "text"})
+                            <div>
+                                @Html.ActionLink("Adicionar ao carrinho", "AdicionarProduto", new { produto = prod, quantidade = quant }, new { @class = "btn btn-primary" })
+                            </div>
+                            <!--input class="col-2 form-control text-center ml-2" value="2"-->
+                            <!--button class="col-9 btn btn-block btn-primary" type="button">
+                            Adicionar ao carrinho
+                            </button-->
+
                         </div>
                     </div>
                 </div>
@@ -155,7 +166,8 @@
                         <ul class="list-unstyled text-small">
                             <li>
                                 <a class="text-muted">
-                                    253 604 448
+                                253 604 448
+                                </a>
                             </li>
                             <a class="text-muted" href="mailto:geral@breadspread.pt">
                                 geral@breadspread.pt

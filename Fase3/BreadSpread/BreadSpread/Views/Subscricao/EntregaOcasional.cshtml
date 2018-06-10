@@ -73,7 +73,7 @@
     </div>
     <!-- NAVBAR END -->
 
-    @using (Html.BeginForm("AdicionarEncomendas", "Subscricao", FormMethod.Post))
+    @using (Html.BeginForm("AdicionaEnc", "Subscricao", FormMethod.Post))
     {
         <div class="form-group col-md-7">
             <!--dar review ao calendar-->
@@ -83,8 +83,28 @@
             </div>
         </div>
 
-        <h4>Selecione a hora</h4>
-        @(Html.Kendo().TimePicker())
+        <div class="row">
+            <div class="input-group mb-3">
+                <div class="input-group col-8">
+                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Selecione a hora">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary dropdown-toggle" name="hora" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
+                        <div class="dropdown-menu">
+                            @for (int i = 7; i < 20; i++)
+                            {
+                                <a class="dropdown-item" href="#"> @Html.DisplayFor(modelItem => " {i}:00") </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group col-4">
+                    <input type="text" name="quantidade" class="form-control" placeholder="Quantidade" aria-label="Quantidade" aria-describedby="product-addon">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-success" type="submit">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     }
 </body>
 </html>
