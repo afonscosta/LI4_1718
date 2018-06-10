@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using BreadSpread.Models;
-using BreadSpread.Controllers;
 
 namespace BreadSpread.Controllers
 {
@@ -133,7 +130,10 @@ namespace BreadSpread.Controllers
         // GET: Funcionarios
         public ActionResult IndexFuncionario()
         {
-            return View(db.Funcionarios.ToList());
+            List<Funcionario> funcs = db.Funcionarios.ToList();
+            List<Funcionario> funcs_filtered = funcs.Where(f => f.estadoConta == "ativo").ToList();
+
+            return View(funcs_filtered);
         }
 
         // GET: Funcionarios/Details/5
@@ -226,7 +226,8 @@ namespace BreadSpread.Controllers
         public ActionResult DeleteConfirmedFuncionario(string id)
         {
             Funcionario funcionario = db.Funcionarios.Find(id);
-            db.Funcionarios.Remove(funcionario);
+            funcionario.estadoConta = "desativado";
+            db.Entry(funcionario).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("IndexFuncionario");
         }

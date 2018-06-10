@@ -29,9 +29,17 @@ namespace BreadSpread.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Encomenda>()
+                .Property(e => e.idFunc)
+                .IsFixedLength();
+
+            modelBuilder.Entity<Encomenda>()
                 .HasMany(e => e.Encomenda_Produto)
                 .WithRequired(e => e.Encomenda)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Funcionario>()
+                .Property(e => e.idFunc)
+                .IsFixedLength();
 
             modelBuilder.Entity<Funcionario>()
                 .Property(e => e.estadoConta)
