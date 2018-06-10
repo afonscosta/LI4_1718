@@ -26,13 +26,11 @@ namespace BreadSpread.Models
         [StringLength(500)]
         public string ingredientes { get; set; }
 
-        //[Required]
         [StringLength(500)]
         public string infoNutricional { get; set; }
 
         public double preco { get; set; }
 
-        //[Required]
         public byte[] imagem { get; set; }
 
         public double peso { get; set; }

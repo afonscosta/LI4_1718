@@ -29,7 +29,9 @@ namespace BreadSpread.Models
         [StringLength(50)]
         public string estado { get; set; }
 
-        public int idFunc { get; set; }
+        [Required]
+        [StringLength(10)]
+        public string idFunc { get; set; }
 
         [Required]
         [StringLength(100)]

@@ -296,6 +296,8 @@
     <Compile Include="Controllers\AutenticacaoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManutencaoController.cs" />
+    <Compile Include="Controllers\PesquisaController.cs" />
+    <Compile Include="Controllers\RealizacaoController.cs" />
     <Compile Include="Encriptacao\MyHelpers.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -342,7 +344,6 @@
     <Content Include="Views\Estafeta\Index.cshtml" />
     <Content Include="Views\Estafeta\Percurso.cshtml" />
     <Content Include="Views\Admin\Produtos.cshtml" />
-    <Content Include="Views\Padeiro\Encomendas.cshtml" />
     <Content Include="Views\Padeiro\Index.cshtml" />
     <Content Include="Views\Padeiro\Producao.cshtml" />
     <Content Include="Views\Manutencao\IndexProduto.cshtml" />
@@ -355,6 +356,17 @@
     <Content Include="Views\Manutencao\CreateFuncionario.cshtml" />
     <Content Include="Views\Manutencao\EditFuncionario.cshtml" />
     <Content Include="Views\Manutencao\DeleteFuncionario.cshtml" />
+    <Content Include="Views\Realizacao\Create.cshtml" />
+    <Content Include="Views\Realizacao\Delete.cshtml" />
+    <Content Include="Views\Realizacao\Details.cshtml" />
+    <Content Include="Views\Realizacao\Edit.cshtml" />
+    <Content Include="Views\Realizacao\Index.cshtml" />
+    <Content Include="Views\Pesquisa\Create.cshtml" />
+    <Content Include="Views\Pesquisa\Delete.cshtml" />
+    <Content Include="Views\Pesquisa\Details.cshtml" />
+    <Content Include="Views\Pesquisa\Edit.cshtml" />
+    <Content Include="Views\Pesquisa\Index.cshtml" />
+    <Content Include="Views\Pesquisa\IndexProducao.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

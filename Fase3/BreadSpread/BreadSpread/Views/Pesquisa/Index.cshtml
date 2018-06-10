@@ -1,0 +1,117 @@
+﻿@model IEnumerable<BreadSpread.Models.Encomenda>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente.nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dataEnt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.custo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idFunc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rua)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numPorta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.codPostal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.obs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.freguesia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipoEnc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dataPag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.modoPag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fatura)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente.nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dataEnt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.custo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idFunc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rua)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numPorta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.codPostal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.obs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.freguesia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipoEnc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dataPag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.modoPag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fatura)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idEnc }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idEnc }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idEnc })
+        </td>
+    </tr>
+}
+
+</table>
