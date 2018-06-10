@@ -26,5 +26,15 @@ namespace BreadSpread.Controllers
         {
             return View(db.Produtoes.ToList());
         }
+
+        public void AdicionarProduto(Produto produto, int quantidade)
+        {
+            Tuple<Produto, int> added = new Tuple<Produto, int>(produto, quantidade);
+
+            List<Tuple<Produto, int>> aux = (List<Tuple<Produto, int>>) Session["Carrinho"];
+            aux.Add(added);
+
+            Session["Carrinho"] = aux;
+        }
     }
 }
