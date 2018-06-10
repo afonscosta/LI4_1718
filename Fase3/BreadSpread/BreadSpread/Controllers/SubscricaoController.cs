@@ -72,7 +72,7 @@ namespace BreadSpread.Controllers
             int lastEncID = encomendas.Max(item => item.idEnc);
 
             //inserir associação entre a encomenda e os produtos
-            //adicionaProdEnc(produtos);
+            adicionaProdEnc(produtos, lastEncID);
         }
 
         //EFETUA A ASSOCIAÇÃO ENTRE OS PRODUTOS E UMA ENCOMENDA
