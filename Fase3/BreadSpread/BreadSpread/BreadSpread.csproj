@@ -361,6 +361,8 @@
     <Content Include="Views\Subscricao\SubBronze.cshtml" />
     <Content Include="Views\Subscricao\SubPrata.cshtml" />
     <Content Include="Views\Subscricao\SubOuro.cshtml" />
+    <Content Include="Views\Subscricao\Carrinho.cshtml" />
+    <Content Include="Views\Subscricao\EntregaOcasional.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
