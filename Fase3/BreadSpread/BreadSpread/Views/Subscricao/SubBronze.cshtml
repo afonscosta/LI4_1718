@@ -1,11 +1,11 @@
 ﻿@using System.Web.WebSockets
 @using BreadSpread.Models
-@model IEnumerable<BreadSpread.Models.Produto>
+@model BreadSpread.Models.ProdutosEncomenda
 
 
 @{
     ViewBag.Title = "Subscrição";
-    ViewBag.Produtos = typeof(List<Tuple<Produto, int>>);
+    ViewBag.Produtos = new List<Tuple<Produto, int>>();
     Layout = null;
 }
 
@@ -124,12 +124,13 @@
                         <h2>Entrega 1</h2>
                         <table class="table table-user-information">
                             <tbody>
-                            @foreach(var item in (System.Collections.IEnumerable) @ViewBag.Produtos) { 
-                                <tr>
-                                    <td>item.Item1</td>
-                                    <td>item.Item2</td>
-                                </tr>
-                            }
+                                @foreach (var item in ViewBag.Produtos)
+                                {
+                                    <tr>
+                                        <td>item.Item1</td>
+                                        <td>item.Item2</td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                         @using (Html.BeginForm("AdicionarProduto", "Subscricao", FormMethod.Post))
@@ -137,15 +138,16 @@
                             <div class="row">
                                 <div class="input-group mb-3">
                                     <div class="input-group col-8">
-                                        <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto", readonly="readonly">
+                                        <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto">
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-secondary dropdown-toggle" name="produto" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
-                                            <div class="dropdown-menu">
-                                                @foreach (var item in Model)
-                                                {
-                                                    <a class="dropdown-item" href="#"> @Html.DisplayFor(modelItem => item.designacao) </a>
-                                                }
-                                            </div>
+                                            @Html.DropDownListFor( model => model.produto_selecionado, new SelectList(
+                                                                            foreach(var item in Model.db_produtos)
+                                                                                new { value = item.idProd, text = item.designacao },
+                                                                            ,
+                                                                        "value",
+                                                                        "text"),
+                                                                    new { @class = "form-control", type = "sexo" })
                                         </div>
                                     </div>
                                     <div class="input-group col-4">
@@ -174,7 +176,7 @@
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
                                         <div class="dropdown-menu">
-                                            @foreach (var item in Model)
+                                            @foreach (var item in Model.db_produtos)
                                                 {
                                                     <a class="dropdown-item" href="#"> @Html.DisplayFor(modelItem => item.designacao) </a>
                                                 }
@@ -207,7 +209,7 @@
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
                                         <div class="dropdown-menu">
-                                            @foreach (var item in Model)
+                                            @foreach (var item in Model.db_produtos)
                                              {
                                                 <a class="dropdown-item" href="#"> @Html.DisplayFor(modelItem => item.designacao) </a>
                                              }
@@ -239,7 +241,7 @@
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
                                         <div class="dropdown-menu">
-                                            @foreach (var item in Model)
+                                            @foreach (var item in Model.db_produtos)
     {
                                         <a class="dropdown-item" href="#"> @Html.DisplayFor(modelItem => item.designacao) </a>
 }
@@ -271,7 +273,7 @@
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
                                         <div class="dropdown-menu">
-                                            @foreach (var item in Model)
+                                            @foreach (var item in Model.db_produtos)
     {
                                         <a class="dropdown-item" href="#"> @Html.DisplayFor(modelItem => item.designacao) </a>
 }

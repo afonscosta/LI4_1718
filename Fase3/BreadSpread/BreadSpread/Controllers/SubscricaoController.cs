@@ -19,7 +19,11 @@ namespace BreadSpread.Controllers
 
         public ActionResult SubBronze()
         {
-            return View(db.Produtoes.ToList());
+            var model_view = new ProdutosEncomenda();
+
+            model_view.db_produtos = db.Produtoes.ToList();
+
+            return View(model_view);
         }
 
         public ActionResult SubPrata()
@@ -30,15 +34,6 @@ namespace BreadSpread.Controllers
         public ActionResult SubOuro()
         {
             return View(db.Produtoes.ToList());
-        }
-
-    
-        public ActionResult AdicionarEncomendas()
-        {
-
-            //ciclo que irá adicionar as sucessivas encomendas de planeamento para a semana
-
-            return View();
         }
 
         //ADICIONA UMA ENCOMENDA 
@@ -93,10 +88,11 @@ namespace BreadSpread.Controllers
             }
         }
 
-
+        [HttpPost]
         public void AdicionarProduto(Produto produto, int quantidade)
         {
-            @ViewBag.Produtos.add(new Tuple<String, int>(produto.designacao, quantidade));
+
+            ViewBag.Produtos.add(new Tuple<String, int>(produto.designacao, quantidade));
         }
     }
 }
