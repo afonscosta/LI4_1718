@@ -20,6 +20,48 @@ namespace BreadSpread.Controllers
             return View("~/Views/Admin/Index.cshtml");
         }
 
+        public ActionResult Perfil()
+        {
+            var User_In_Session = User.Identity.Name;
+
+            var cliente = db.Clientes.Where(c => c.email.Equals(User_In_Session)).ToList();
+
+            if (cliente == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cliente[0]);
+        }
+
+        public ActionResult EditPerfil(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Cliente cliente = db.Clientes.Find(id);
+            if (cliente == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cliente);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPerfil([Bind(Include = "idCli, nome,email,sexo,dataNasc,rua,freguesia,cidade,codPostal,numPorta,contacto,NIF,password")] Cliente cliente)
+        {
+            cliente.estadoConta = "ativo";
+
+            //if (ModelState.IsValid)
+            //{
+                db.Entry(cliente).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Perfil");
+            //}
+            return View(cliente);
+        }
+
         public ActionResult Ocasionais()
         {
             var encomendas = db.Encomendas.Where(e => e.estado.Equals("pendente")).ToList();
