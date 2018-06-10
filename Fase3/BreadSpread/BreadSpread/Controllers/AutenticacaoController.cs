@@ -112,7 +112,7 @@ namespace BreadSpread.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Autentica", "Autenticacao");
+            return RedirectToAction("Index", "Autenticacao");
         }
 
         [HttpPost]

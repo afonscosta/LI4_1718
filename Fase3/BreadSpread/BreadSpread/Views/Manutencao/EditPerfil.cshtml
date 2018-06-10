@@ -275,6 +275,9 @@
 
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
+                                <input type="hidden" name="idCli" value=@Model.idCli />
+                                <input type="hidden" name="estado" value="ativo" />
+                                <input type="hidden" name="password" value=@Model.password />
                                 <input type="submit" value="Alterar" class="btn btn-success btn-lg" />
                                 @Html.ActionLink("Voltar", "Perfil", null, new { @class = "btn btn-lg btn-primary" })
                             </div>

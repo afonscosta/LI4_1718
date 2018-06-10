@@ -365,6 +365,8 @@
     <Content Include="Views\Subscricao\EntregaOcasional.cshtml" />
     <Content Include="Views\Home\ComoFunciona.cshtml" />
     <Content Include="Views\Home\Produtos.cshtml" />
+    <Content Include="Views\Manutencao\EditPerfil.cshtml" />
+    <Content Include="Views\Manutencao\PagaEncomendas.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

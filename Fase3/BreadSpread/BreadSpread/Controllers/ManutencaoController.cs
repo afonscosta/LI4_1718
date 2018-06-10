@@ -33,6 +33,32 @@ namespace BreadSpread.Controllers
             return View(cliente[0]);
         }
 
+        public ActionResult Paga(int id)
+        {
+            Encomenda e = db.Encomendas.Find(id);
+            e.dataPag = DateTime.Now;
+            e.modoPag = "online";
+            db.Entry(e).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Perfil", "Manutencao");
+        }
+
+        public ActionResult DesativaCliente(int id)
+        {
+            Cliente c = db.Clientes.Find(id);
+            c.estadoConta = "desativado";
+            db.Entry(c).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Logout", "Autenticacao");
+        }
+
+        public ActionResult PagaEncomendas(int id)
+        {
+            return View(db.Encomendas.Where(enc => enc.idCli.Equals(id) && enc.estado.Equals("pendente") && enc.dataPag == null).ToList());
+        }
+
         public ActionResult EditPerfil(int? id)
         {
             if (id == null)
@@ -49,10 +75,10 @@ namespace BreadSpread.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditPerfil([Bind(Include = "idCli, nome,email,sexo,dataNasc,rua,freguesia,cidade,codPostal,numPorta,contacto,NIF,password")] Cliente cliente)
+        public ActionResult EditPerfil([Bind(Include = "idCli,nome,email,sexo,dataNasc,rua,freguesia,cidade,codPostal,numPorta,contacto,NIF, estado,password")] Cliente cliente)
         {
             cliente.estadoConta = "ativo";
-
+            //DEIXEI ASSIM PORQUE COM O MODEL STATE NÃO DÁ (COMO ESTÁ INSERE CORRETAMENTE TUDO)
             //if (ModelState.IsValid)
             //{
                 db.Entry(cliente).State = EntityState.Modified;
