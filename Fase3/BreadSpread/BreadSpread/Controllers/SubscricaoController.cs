@@ -36,6 +36,16 @@ namespace BreadSpread.Controllers
             return View(db.Produtoes.ToList());
         }
 
+        public ActionResult Carrinho()
+        {
+            return View();
+        }
+
+        public ActionResult EntregaOcasional()
+        {
+            return View();
+        }
+    
         //ADICIONA UMA ENCOMENDA 
         [HttpPost]
         public void adicionaEnc([Bind(Include =
