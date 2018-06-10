@@ -97,11 +97,11 @@
                                 </div>
                             </div>
                         </td>
-                        <td data-th="Price">1.41€</td>
+                        <td data-th="Price">@item.Item1.preco€</td>
                         <td data-th="Quantity">
                             <input type="number" class="form-control text-center" value="2">
                         </td>
-                        <td data-th="Subtotal" class="text-center">2.82</td>
+                        <td data-th="Subtotal" class="text-center">@(item.Item1.preco* item.Item2)</td>
                         <td class="actions" data-th="">
                             <button class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
                             <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
@@ -128,7 +128,7 @@
         <footer class="pt-4 my-md-5 pt-md-5 border-top">
             <div class="row mb-3">
                 <div class="col-12 col-sm-12 col-md-3">
-                    <img alt="" class="mb-2" height="24" src="./images/logo.png" width="24">
+                    <img alt="" class="mb-2" height="24" src="/images/logo.png" width="24">
                     <small class="d-block mb-3 text-muted">
                         © LI4G20
                     </small>
@@ -154,7 +154,7 @@
                     </h5>
                     <ul class="list-unstyled text-small">
                         <li>
-                            <a class="text-muted" href="comofunciona.html">
+                            <a class="text-muted" href="/Views/Subscricao/Index.cshtml">
                                 Subscrições
                             </a>
                         </li>
