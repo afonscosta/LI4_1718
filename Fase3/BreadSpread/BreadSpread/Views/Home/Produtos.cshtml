@@ -23,7 +23,7 @@
     <link href="~/Content/main.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="~/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body cz-shortcut-listen="true">
     <!-- NAVBAR -->
@@ -37,7 +37,7 @@
             <a class="p-2 text-dark" href="/Home/Produtos">
                 Produtos
             </a>
-            <a class="p-2 text-dark" href="/Subscricao/Index">
+            <a class="p-2 text-dark" href="/Views/Subscricao/Index">
                 Serviços
             </a>
             <a aria-haspopup="true" class="p-2 text-dark dropdown-toggle" data-toggle="dropdown" href="#">
@@ -51,7 +51,7 @@
                     <a class="dropdown-item" href="perfil.html">
                         Perfil Utilizador
                     </a>
-                    <a class="dropdown-item" href="cart.html">
+                    <a class="dropdown-item" href="/Subscricao/Carrinho">
                         Carrinho de Compras
                     </a>
                     <a class="divider"></a>
@@ -62,7 +62,7 @@
             </a>
             <!-- this is the cart-->
             <i class="fa fa-shopping-cart ml-2"></i>
-            <a class="text-dark " href="cart.html">
+            <a class="text-dark " href="/Subscricao/Carrinho">
                 3.24€
             </a>
         </nav>
@@ -100,7 +100,7 @@
                                         </button>
                                     </div>
                                     @{
-                                        var quant = 0; 
+                                        var quant = 0;
                                         Produto prod = item;
                                     }
                                     <div class="modal-body">
@@ -109,7 +109,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                        @Html.ActionLink("Adicionar ao carrinho", "AdicionarProduto", new { produto = prod, quantidade = quant }, new { @class = "btn btn-primary" })
+                                        @Html.ActionLink("Adicionar ao carrinho", "AdicionarProduto", new {produto = prod, quantidade = 1}, new {@class = "btn btn-primary"})
                                         <!--button type="button" class="btn btn-primary">Adicionar ao Carrinho</button-->
                                     </div>
                                 </div>
@@ -117,8 +117,8 @@
                         </div>
                         <div class="row justify-content-center">
                             @Html.TextBoxFor(model => quant, new {@class = "form-control text-center ml-2", placeholder = "Quant", type = "text"})
-                            <div>
-                                @Html.ActionLink("Adicionar ao carrinho", "AdicionarProduto", new { produto = prod, quantidade = quant }, new { @class = "btn btn-primary" })
+                            <div class="input-group-append">
+                                @Html.ActionLink("Adicionar ao carrinho", "AdicionarProduto", new {produto = prod, quantidade = quant}, new {@class = "btn btn-primary"})
                             </div>
                             <!--input class="col-2 form-control text-center ml-2" value="2"-->
                             <!--button class="col-9 btn btn-block btn-primary" type="button">
@@ -131,7 +131,7 @@
 
 
             }
-            </div>
+        </div>
         </div>
         <!--<div class="card mb-4 box-shadow">
                 <img alt="" class="card-img-top" src="~/images/bakery.jpg">
@@ -154,7 +154,7 @@
             <footer class="pt-4 my-md-5 pt-md-5 border-top">
                 <div class="row mb-3">
                     <div class="col-12 col-sm-12 col-md-3">
-                        <img alt="" class="mb-2" height="24" src="./images/logo.png" width="24">
+                        <img alt="" class="mb-2" height="24" src="/images/logo.png" width="24">
                         <small class="d-block mb-3 text-muted">
                             © LI4G20
                         </small>

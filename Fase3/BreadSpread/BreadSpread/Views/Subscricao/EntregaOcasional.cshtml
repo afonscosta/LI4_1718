@@ -90,10 +90,8 @@
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary dropdown-toggle" name="hora" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
                         <div class="dropdown-menu">
-                            @for (int i = 7; i < 20; i++)
-                            {
-                                <a class="dropdown-item" href="#"> @Html.DisplayFor(modelItem => " {i}:00") </a>
-                            }
+                            @Html.DropDownListFor(model => i,
+                                Enumerable.Range(07, 20).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "-- Hour --")
                         </div>
                     </div>
                 </div>
