@@ -10,6 +10,7 @@ namespace BreadSpread.Controllers
     public class SubscricaoController : Controller
     {
         private BSContext db = new BSContext();
+
         // GET: Subscricao
         public ActionResult Index()
         {
@@ -23,12 +24,12 @@ namespace BreadSpread.Controllers
 
         public ActionResult SubPrata()
         {
-            return View();
+            return View(db.Produtoes.ToList());
         }
 
         public ActionResult SubOuro()
         {
-            return View();
+            return View(db.Produtoes.ToList());
         }
 
     
@@ -90,6 +91,12 @@ namespace BreadSpread.Controllers
                 db.SaveChanges();
 
             }
+        }
+
+
+        public void AdicionarProduto(Produto produto, int quantidade)
+        {
+            @ViewBag.Produtos.add(new Tuple<String, int>(produto.designacao, quantidade));
         }
     }
 }

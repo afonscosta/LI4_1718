@@ -1,9 +1,12 @@
-﻿@model IEnumerable<BreadSpread.Models.Produto>
+﻿@using System.Web.WebSockets
+@using BreadSpread.Models
+@model IEnumerable<BreadSpread.Models.Produto>
+
 
 @{
     ViewBag.Title = "Subscrição";
+    ViewBag.Produtos = typeof(List<Tuple<Produto, int>>);
     Layout = null;
-
 }
 
 <!DOCTYPE html>
@@ -15,7 +18,7 @@
     <meta content="" name="description">
     <meta content="" name="author">
     <link href="/images/logo.png" rel="icon">
-    <title>@ViewBag.Title</title>
+    <title>Subscrição Bronze</title>
 
     <!-- Bootstrap core CSS
     <link href="./bootstrap_files/bootstrap.min.css" rel="stylesheet">-->
@@ -96,21 +99,21 @@
                                     </tr>
                                     <tr>
                                         <td>07h00</td>
-                                        <td>
-                                            <button class="btn btn-secondary">Entrega</button>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-secondary">Entrega</button>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-secondary">Entrega</button>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-secondary">Entrega</button>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-secondary">Entrega</button>
-                                        </td>
+                                            <td>
+                                                <button class="btn btn-secondary" name="Entrega" value="1">Entrega 1</button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-secondary" name="Entrega" value="2">Entrega 2</button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-secondary" name="Entrega" value="3">Entrega 3</button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-secondary" name="Entrega" value="4">Entrega 4</button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-secondary" name="Entrega" value="5">Entrega 5</button>
+                                            </td>
                                     </tr>
 
                                 </tbody>
@@ -121,34 +124,39 @@
                         <h2>Entrega 1</h2>
                         <table class="table table-user-information">
                             <tbody>
+                            @foreach(var item in (System.Collections.IEnumerable) @ViewBag.Produtos) { 
                                 <tr>
-                                    <td>Pão com Chouriço</td>
-                                    <td>2</td>
+                                    <td>item.Item1</td>
+                                    <td>item.Item2</td>
                                 </tr>
+                            }
                             </tbody>
                         </table>
-                        <div class="row">
-                            <div class="input-group mb-3">
-                                <div class="input-group col-8">
-                                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
-                                        <div class="dropdown-menu">
-                                            @foreach (var item in Model)
-                                            {
-                                                <a class="dropdown-item" href="#"> @Html.DisplayFor(modelItem => item.designacao) </a>
-                                            }
+                        @using (Html.BeginForm("AdicionarProduto", "Subscricao", FormMethod.Post))
+                        {
+                            <div class="row">
+                                <div class="input-group mb-3">
+                                    <div class="input-group col-8">
+                                        <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto", readonly="readonly">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary dropdown-toggle" name="produto" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
+                                            <div class="dropdown-menu">
+                                                @foreach (var item in Model)
+                                                {
+                                                    <a class="dropdown-item" href="#"> @Html.DisplayFor(modelItem => item.designacao) </a>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="input-group col-4">
+                                        <input type="text" name="quantidade" class="form-control" placeholder="Quantidade" aria-label="Quantidade" aria-describedby="product-addon">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-success" type="button">Adicionar</button>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="input-group col-4">
-                                    <input type="text" class="form-control" placeholder="Quantidade" aria-label="Quantidade" aria-describedby="product-addon">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-success" type="button">Adicionar</button>
-                                    </div>
-                                </div>
                             </div>
-                        </div>
+                        }
                     </div>
                     <div class="mb-4">
                         <h2>Entrega 2</h2>
@@ -162,7 +170,7 @@
                         <div class="row">
                             <div class="input-group mb-3">
                                 <div class="input-group col-8">
-                                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto">
+                                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto", readonly="readonly">
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
                                         <div class="dropdown-menu">
@@ -195,7 +203,7 @@
                         <div class="row">
                             <div class="input-group mb-3">
                                 <div class="input-group col-8">
-                                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto">
+                                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto", readonly="readonly">
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
                                         <div class="dropdown-menu">
@@ -227,7 +235,7 @@
                         <div class="row">
                             <div class="input-group mb-3">
                                 <div class="input-group col-8">
-                                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto">
+                                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto", readonly="readonly">
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
                                         <div class="dropdown-menu">
@@ -259,7 +267,7 @@
                         <div class="row">
                             <div class="input-group mb-3">
                                 <div class="input-group col-8">
-                                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto">
+                                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto", r>
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
                                         <div class="dropdown-menu">
