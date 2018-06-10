@@ -1,0 +1,197 @@
+﻿@model IEnumerable<BreadSpread.Models.Produto>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://getbootstrap.com/docs/4.0/examples/pricing/ -->
+<html lang="pt">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <link href="~/images/logo.png" rel="icon">
+    <title>Produtos</title>
+    <!-- Bootstrap core CSS
+    <link href="./bootstrap_files/bootstrap.min.css" rel="stylesheet">-->
+    <!--using online bootstrap-->
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="~/Content/main.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="~/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+<body cz-shortcut-listen="true">
+    <!-- NAVBAR -->
+    <div class="fixed-top d-flex flex-column flex-sm-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow justify-content-between">
+        <h5 class="my-0 font-weight-normal">
+            <a href="/Home/Index" class="text-dark">
+                BreadSpread
+            </a>
+        </h5>
+        <nav class="my-2 my-md-0 ">
+            <a class="p-2 text-dark" href="/Home/Produtos">
+                Produtos
+            </a>
+            <a class="p-2 text-dark" href="/Subscricao/Index">
+                Serviços
+            </a>
+            <a aria-haspopup="true" class="p-2 text-dark dropdown-toggle" data-toggle="dropdown" href="#">
+                Como funciona
+            </a>
+            <a class="dropdown">
+                <a aria-haspopup="true" class="p-2 text-dark dropdown-toggle" data-toggle="dropdown" href="#" id="dropdownMenuButton">
+                    Conta
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="perfil.html">
+                        Perfil Utilizador
+                    </a>
+                    <a class="dropdown-item" href="cart.html">
+                        Carrinho de Compras
+                    </a>
+                    <a class="divider"></a>
+                    <a class="dropdown-item" href="index.html">
+                        Terminar Sessão
+                    </a>
+                </div>
+            </a>
+            <!-- this is the cart-->
+            <i class="fa fa-shopping-cart ml-2"></i>
+            <a class="text-dark " href="cart.html">
+                3.24€
+            </a>
+        </nav>
+        <!--<a class="btn btn-outline-primary" href="login.html">Login</a>-->
+    </div>
+    <!-- NAVBAR END -->
+
+    <div class="index-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">
+            Produtos
+        </h1>
+        <p class="lead">
+            A BreadSpread tem ao seu dispor um conjunto de produtos com a melhor qualidade do mercado.
+        </p>
+    </div>
+    <!-- Lista de produtos-->
+    <div class="container">
+        <div class="card-deck mb-3 text-center">
+            @foreach (var item in Model)
+            {
+                <div class="card mb-4 box-shadow">
+                    <img alt="" class="card-img-top" src="~/images/bakery.jpg">
+                    <div class="card-body">
+                        <h4 class="card-title" data-toggle="modal" data-target="#pao" aria-hidden="true">
+                            @item.designacao
+                        </h4>
+                        <!-- Modall -->
+                        <div class="modal fade" id="pao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel"> @item.designacao </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img class="card-img-top" src="~/images/bakery.jpg">
+                                        @item.ingredientes
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                        <button type="button" class="btn btn-primary">Adicionar ao Carrinho</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <input class="col-2 form-control text-center ml-2" value="2">
+                            <button class="col-9 btn btn-block btn-primary" type="button">
+                                Adicionar ao carrinho
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+            </div>
+        </div>
+        <!--<div class="card mb-4 box-shadow">
+                <img alt="" class="card-img-top" src="~/images/bakery.jpg">
+                <div class="card-body">
+                    <h1 class="card-title">
+                        Pão
+                    </h1>
+                    <div class="row justify-content-center">
+                        <input class="col-2 form-control text-center ml-2" value="2">
+                        <button class="col-9 btn btn-block btn-primary" type="button">
+                            Adicionar ao carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>-->
+        <!--            FOOTER            -->
+        <div class="container">
+            <footer class="pt-4 my-md-5 pt-md-5 border-top">
+                <div class="row mb-3">
+                    <div class="col-12 col-sm-12 col-md-3">
+                        <img alt="" class="mb-2" height="24" src="./images/logo.png" width="24">
+                        <small class="d-block mb-3 text-muted">
+                            © LI4G20
+                        </small>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-5">
+                        <h5>
+                            Contactos
+                        </h5>
+                        <ul class="list-unstyled text-small">
+                            <li>
+                                <a class="text-muted">
+                                    253 604 448
+                            </li>
+                            <a class="text-muted" href="mailto:geral@breadspread.pt">
+                                geral@breadspread.pt
+                            </a>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                        <h5>
+                            Como funciona
+                        </h5>
+                        <ul class="list-unstyled text-small">
+                            <li>
+                                <a class="text-muted" href="comofunciona.html">
+                                    Subscrições
+                                </a>
+                            </li>
+                            <li>
+                                <a class="text-muted" href="comofunciona.html">
+                                    Entregas ocasionais
+                                </a>
+                            </li>
+                            <li>
+                                <a class="text-muted" href="comofunciona.html">
+                                    Cancelar encomendas
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script crossorigin="anonymous" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" src="https://code.jquery.com/jquery-3.2.1.slim.min.js">
+        </script>
+        <script crossorigin="anonymous" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js">
+        </script>
+        <script crossorigin="anonymous" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
+        </script>
+    </body>
+</html>

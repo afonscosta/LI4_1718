@@ -20,6 +20,63 @@ namespace BreadSpread.Controllers
             return View("~/Views/Admin/Index.cshtml");
         }
 
+        public ActionResult Ocasionais()
+        {
+            var encomendas = db.Encomendas.Where(e => e.estado.Equals("pendente")).ToList();
+            /*var encomendas = (from e in db.Encomendas
+                            where e.estado == "pendente"
+                            select e);*/
+
+            return View(encomendas);
+        }
+
+        public ActionResult AceitarEncomenda(int? idEnc)
+        {
+            if (idEnc == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Encomenda encomenda = db.Encomendas.Find(idEnc);
+            if (encomenda == null)
+            {
+                return HttpNotFound();
+            }
+
+            encomenda.estado = "confirmada";
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(encomenda).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Ocasionais");
+        }
+
+        public ActionResult RecusarEncomenda(int? idEnc)
+        {
+            if (idEnc == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Encomenda encomenda = db.Encomendas.Find(idEnc);
+            if (encomenda == null)
+            {
+                return HttpNotFound();
+            }
+
+            //remoçºao da encomenda em si
+            db.Encomendas.Remove(encomenda);
+
+            //remoçºao de todas as entradas associadas à encomenda a remover
+            var enc_rem = db.Encomenda_Produto.Where(e => e.idEnc == idEnc).ToList();
+            foreach (var m in enc_rem)
+                db.Encomenda_Produto.Remove(m);
+
+            db.SaveChanges();
+
+            return RedirectToAction("Ocasionais");
+        }
+
         //==============================
         //========= PRODUTOS ===========
         //==============================

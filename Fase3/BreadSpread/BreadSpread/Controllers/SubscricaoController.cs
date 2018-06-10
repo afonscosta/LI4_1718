@@ -19,11 +19,11 @@ namespace BreadSpread.Controllers
 
         public ActionResult SubBronze()
         {
-            var model_view = new ProdutosEncomenda();
+            //var model_view = new ProdutosEncomenda();
 
-            model_view.db_produtos = db.Produtoes.ToList();
+            //model_view.db_produtos = db.Produtoes.ToList();
 
-            return View(model_view);
+            return View(db.Produtoes.ToList());
         }
 
         public ActionResult SubPrata()
@@ -88,11 +88,19 @@ namespace BreadSpread.Controllers
             }
         }
 
-        [HttpPost]
-        public void AdicionarProduto(Produto produto, int quantidade)
+ 
+        public ActionResult AdicionarProduto(Produto produto, int quantidade)
         {
+            var encomenda = db.Encomendas.Find(3);
+            var encomendaProduto = new Encomenda_Produto();
+            encomendaProduto.idEnc = 3;
+            encomendaProduto.quant = quantidade;
+            encomendaProduto.idProd = produto.idProd;
+            encomendaProduto.estado = "pendente";
+            db.Encomenda_Produto.Add( encomendaProduto);
+            db.SaveChanges();
 
-            ViewBag.Produtos.add(new Tuple<String, int>(produto.designacao, quantidade));
+            return View("SubBronze");
         }
     }
 }

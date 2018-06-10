@@ -1,6 +1,6 @@
 ﻿@using System.Web.WebSockets
 @using BreadSpread.Models
-@model BreadSpread.Models.ProdutosEncomenda
+@model IEnumerable<BreadSpread.Models.Produto>
 
 
 @{
@@ -99,21 +99,21 @@
                                     </tr>
                                     <tr>
                                         <td>07h00</td>
-                                            <td>
-                                                <button class="btn btn-secondary" name="Entrega" value="1">Entrega 1</button>
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-secondary" name="Entrega" value="2">Entrega 2</button>
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-secondary" name="Entrega" value="3">Entrega 3</button>
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-secondary" name="Entrega" value="4">Entrega 4</button>
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-secondary" name="Entrega" value="5">Entrega 5</button>
-                                            </td>
+                                        <td>
+                                            <button class="btn btn-secondary" name="Entrega" value="1">Entrega 1</button>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-secondary" name="Entrega" value="2">Entrega 2</button>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-secondary" name="Entrega" value="3">Entrega 3</button>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-secondary" name="Entrega" value="4">Entrega 4</button>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-secondary" name="Entrega" value="5">Entrega 5</button>
+                                        </td>
                                     </tr>
 
                                 </tbody>
@@ -124,11 +124,10 @@
                         <h2>Entrega 1</h2>
                         <table class="table table-user-information">
                             <tbody>
-                                @foreach (var item in ViewBag.Produtos)
+                                @foreach (var item in Model)
                                 {
                                     <tr>
-                                        <td>item.Item1</td>
-                                        <td>item.Item2</td>
+                                        <td>@item.designacao</td>
                                     </tr>
                                 }
                             </tbody>
@@ -141,13 +140,13 @@
                                         <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto">
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-secondary dropdown-toggle" name="produto" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
-                                            @Html.DropDownListFor( model => model.produto_selecionado, new SelectList(
-                                                                            foreach(var item in Model.db_produtos)
-                                                                                new { value = item.idProd, text = item.designacao },
-                                                                            ,
-                                                                        "value",
-                                                                        "text"),
-                                                                    new { @class = "form-control", type = "sexo" })
+                                            @*@Html.DropDownListFor( model => model.produto_selecionado, new SelectList(
+                                                        foreach(var item in Model.db_produtos)
+                                                            new { value = item.idProd, text = item.designacao },
+                                                        ,
+                                                    "value",
+                                                    "text"),
+                                                new { @class = "form-control", type = "sexo" })*@
                                         </div>
                                     </div>
                                     <div class="input-group col-4">
@@ -172,22 +171,29 @@
                         <div class="row">
                             <div class="input-group mb-3">
                                 <div class="input-group col-8">
-                                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto", readonly="readonly">
+                                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto" name="nome_produto"
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
-                                        <div class="dropdown-menu">
-                                            @foreach (var item in Model.db_produtos)
-                                                {
-                                                    <a class="dropdown-item" href="#"> @Html.DisplayFor(modelItem => item.designacao) </a>
-                                                }
-
-                                        </div>
+                                        @{
+                                            var prod_s = new Produto();
+                                            var quant = 0;
+                                            var list = new List<Object>();
+                                            foreach (var item in Model)
+                                            {
+                                                list.Add(new { value = item.idProd, text = item.designacao });
+                                            }
+                                        }
+                                        @Html.DropDownListFor( model => prod_s , new SelectList( list,
+                                                                        "value",
+                                                                        "text"),
+                                                                    new { @class = "form-control", type = "produto" })
                                     </div>
                                 </div>
                                 <div class="input-group col-4">
-                                    <input type="text" class="form-control" placeholder="Quantidade" aria-label="Quantidade" aria-describedby="product-addon">
+                                    @Html.TextBoxFor(model => quant, new { @class = "form-control", placeholder = "Quant", type = "text" })
                                     <div class="input-group-append">
-                                        <button class="btn btn-outline-success" type="button">Adicionar</button>
+                                        <td>@Html.ActionLink("Adicionar", "AdicionarProduto", new { produto = prod_s, quantidade = quant }, new { @class = "btn btn-outline-success" })</td>
+                                        <!--<button class="btn btn-outline-success" type="button">Adicionar</button>-->
                                     </div>
                                 </div>
                             </div>
@@ -205,14 +211,14 @@
                         <div class="row">
                             <div class="input-group mb-3">
                                 <div class="input-group col-8">
-                                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto", readonly="readonly">
+                                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto" , readonly="readonly">
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
                                         <div class="dropdown-menu">
-                                            @foreach (var item in Model.db_produtos)
-                                             {
+                                            @foreach (var item in Model)
+                                            {
                                                 <a class="dropdown-item" href="#"> @Html.DisplayFor(modelItem => item.designacao) </a>
-                                             }
+                                            }
                                         </div>
                                     </div>
                                 </div>
@@ -237,14 +243,14 @@
                         <div class="row">
                             <div class="input-group mb-3">
                                 <div class="input-group col-8">
-                                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto", readonly="readonly">
+                                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto" , readonly="readonly">
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
                                         <div class="dropdown-menu">
-                                            @foreach (var item in Model.db_produtos)
-    {
-                                        <a class="dropdown-item" href="#"> @Html.DisplayFor(modelItem => item.designacao) </a>
-}
+                                            @foreach (var item in Model)
+                                            {
+                                                <a class="dropdown-item" href="#"> @Html.DisplayFor(modelItem => item.designacao) </a>
+                                            }
                                         </div>
                                     </div>
                                 </div>
@@ -269,14 +275,14 @@
                         <div class="row">
                             <div class="input-group mb-3">
                                 <div class="input-group col-8">
-                                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto", r>
+                                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto" , r>
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
                                         <div class="dropdown-menu">
-                                            @foreach (var item in Model.db_produtos)
-    {
-                                        <a class="dropdown-item" href="#"> @Html.DisplayFor(modelItem => item.designacao) </a>
-}
+                                            @foreach (var item in Model)
+                                            {
+                                                <a class="dropdown-item" href="#"> @Html.DisplayFor(modelItem => item.designacao) </a>
+                                            }
                                         </div>
                                     </div>
                                 </div>
