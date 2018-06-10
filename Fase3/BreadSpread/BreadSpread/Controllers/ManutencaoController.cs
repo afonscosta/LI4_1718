@@ -130,10 +130,9 @@ namespace BreadSpread.Controllers
         // GET: Funcionarios
         public ActionResult IndexFuncionario()
         {
-            List<Funcionario> funcs = db.Funcionarios.ToList();
-            List<Funcionario> funcs_filtered = funcs.Where(f => f.estadoConta == "ativo").ToList();
+            List<Funcionario> funcs = db.Funcionarios.Where(f => f.estadoConta.Equals("ativo")).ToList();
 
-            return View(funcs_filtered);
+            return View(funcs);
         }
 
         // GET: Funcionarios/Details/5
