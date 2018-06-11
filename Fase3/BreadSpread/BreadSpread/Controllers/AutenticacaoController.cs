@@ -73,6 +73,7 @@ namespace BreadSpread.Controllers
                             if (MyHelpers.VerifyMd5Hash(md5Hash, password, cliente.password))
                             {
                                 FormsAuthentication.SetAuthCookie(cliente.email, false);
+                                Session["Carrinho"] = new List<Tuple<Produto, int>>();
                             }
                             else
                             {
@@ -111,7 +112,7 @@ namespace BreadSpread.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Autentica", "Autenticacao");
+            return RedirectToAction("Index", "Autenticacao");
         }
 
         [HttpPost]

@@ -1,9 +1,12 @@
-﻿@model IEnumerable<BreadSpread.Models.Produto>
+﻿@using System.Web.WebSockets
+@using BreadSpread.Models
+@model IEnumerable<BreadSpread.Models.Produto>
+
 
 @{
     ViewBag.Title = "Subscrição";
+    ViewBag.Produtos = new List<Tuple<Produto, int>>();
     Layout = null;
-
 }
 
 <!DOCTYPE html>
@@ -15,7 +18,7 @@
     <meta content="" name="description">
     <meta content="" name="author">
     <link href="/images/logo.png" rel="icon">
-    <title>@ViewBag.Title</title>
+    <title>Subscrição Bronze</title>
 
     <!-- Bootstrap core CSS
     <link href="./bootstrap_files/bootstrap.min.css" rel="stylesheet">-->
