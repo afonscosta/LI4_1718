@@ -19,7 +19,6 @@ namespace BreadSpread.Models
         public virtual DbSet<Produto> Produtoes { get; set; }
         public virtual DbSet<Slot> Slots { get; set; }
         public virtual DbSet<Subscricao> Subscricaos { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -40,13 +40,13 @@
 		<div class="form-row">
 			<div class="form-group col-md-5">
 				@Html.DropDownListFor( model => model.sexo, new SelectList(
-																		new List<Object>{
-																			new { value = "Masculino" , text = "Masculino"  },
-																			new { value = "Feminino" , text = "Feminino" },
-																			},
-																		"value",
-																		"text"),
-																	new { @class = "form-control", type = "sexo" })
+                                                                        new List<Object>{
+                                                                            new { value = "Masculino" , text = "Masculino"  },
+                                                                            new { value = "Feminino" , text = "Feminino" },
+                                                                            },
+                                                                        "value",
+                                                                        "text"),
+                                                                    new { @class = "form-control", type = "sexo" })
 				@Html.ValidationMessageFor(model => model.sexo, "", new { @class = "text-danger" })
 			</div>
 			<div class="form-group col-md-7">

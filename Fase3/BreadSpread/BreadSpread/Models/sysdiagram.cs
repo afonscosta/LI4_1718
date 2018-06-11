@@ -1,4 +1,4 @@
-namespace BreadSpread.Models
+﻿namespace BreadSpread.Models
 {
     using System;
     using System.Collections.Generic;
