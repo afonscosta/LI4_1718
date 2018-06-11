@@ -369,6 +369,8 @@
     <Content Include="Views\Pesquisa\Index.cshtml" />
     <Content Include="Views\Pesquisa\IndexProducao.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Shared\_BreadstrapOFFLayout.cshtml" />
+    <Content Include="Views\Shared\_BreadstrapONLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
