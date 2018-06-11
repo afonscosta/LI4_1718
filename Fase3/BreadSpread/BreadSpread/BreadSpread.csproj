@@ -387,6 +387,7 @@
     <Compile Include="Controllers\ManutencaoController.cs" />
     <Compile Include="Controllers\PesquisaController.cs" />
     <Compile Include="Controllers\RealizacaoController.cs" />
+    <Compile Include="Controllers\RequisicaoController.cs" />
     <Compile Include="Controllers\SubscricaoController.cs" />
     <Compile Include="Encriptacao\MyHelpers.cs" />
     <Compile Include="Global.asax.cs">
