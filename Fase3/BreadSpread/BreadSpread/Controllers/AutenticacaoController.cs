@@ -73,7 +73,7 @@ namespace BreadSpread.Controllers
                             if (MyHelpers.VerifyMd5Hash(md5Hash, password, cliente.password))
                             {
                                 FormsAuthentication.SetAuthCookie(cliente.email, false);
-                                Session["Carrinho"] = new List<Tuple<Produto, int>>();
+                                Session["Carrinho"] = new List<Tuple<int, int>>();
                             }
                             else
                             {

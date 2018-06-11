@@ -86,8 +86,12 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in (List<Tuple<Produto, int>>) Session["Carrinho"])
+                @using (Html.BeginForm("Finalizar", "Subscricao", FormMethod.Post))
                 {
+                    @Html.AntiForgeryToken()
+                    foreach (var item in (List<Tuple<int, int>>)Session["Carrinho"])
+                    {
+                        
                     <tr>
                         <td data-th="Product">
                             <div class="row">
@@ -101,12 +105,13 @@
                         <td data-th="Quantity">
                             <input type="number" class="form-control text-center" value="2">
                         </td>
-                        <td data-th="Subtotal" class="text-center">@(item.Item1.preco* item.Item2)</td>
+                        <td data-th="Subtotal" class="text-center">@(item.Item1.preco * item.Item2)</td>
                         <td class="actions" data-th="">
                             <button class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
                             <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
                         </td>
                     </tr>
+                    }
                 }
             </tbody>
             <tfoot>

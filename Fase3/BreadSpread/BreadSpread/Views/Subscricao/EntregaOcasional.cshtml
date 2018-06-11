@@ -13,7 +13,7 @@
     <meta content="" name="description">
     <meta content="" name="author">
     <link href="/images/logo.png" rel="icon">
-    <title>Subscrição Bronze</title>
+    <title>Entrega Ocasional</title>
 
     <!-- Bootstrap core CSS
     <link href="./bootstrap_files/bootstrap.min.css" rel="stylesheet">-->
@@ -72,7 +72,7 @@
         <!--<a class="btn btn-outline-primary" href="login.html">Login</a>-->
     </div>
     <!-- NAVBAR END -->
-
+<div class="form-group col-md-7">
     @using (Html.BeginForm("AdicionaEnc", "Subscricao", FormMethod.Post))
     {
         <div class="form-group col-md-7">
@@ -90,8 +90,7 @@
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary dropdown-toggle" name="hora" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
                         <div class="dropdown-menu">
-                            @Html.DropDownListFor(model => i,
-                                Enumerable.Range(07, 20).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "-- Hour --")
+                            @Html.DropDownListFor(Model => Model.dataEnt,Enumerable.Range(07, 21).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }),"-- Hour --")
                         </div>
                     </div>
                 </div>
@@ -104,5 +103,6 @@
             </div>
         </div>
     }
+</div>
 </body>
 </html>

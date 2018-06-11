@@ -27,16 +27,16 @@ namespace BreadSpread.Controllers
             return View(db.Produtoes.ToList());
         }
 
-        public ActionResult AdicionarProduto(Produto produto, int quantidade)
+        public ActionResult AdicionarProduto(int idProd, int quant)
         {
             if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "Autenticacao");
 
             else
             {
-                Tuple<Produto, int> added = new Tuple<Produto, int>(produto, quantidade);
+                Tuple<int, int> added = new Tuple<int, int>(idProd, quant);
 
-                List<Tuple<Produto, int>> aux = (List<Tuple<Produto, int>>)Session["Carrinho"];
+                List<Tuple<int, int>> aux = (List<Tuple<int, int>>)Session["Carrinho"];
                 aux.Add(added);
 
                 Session["Carrinho"] = aux;
