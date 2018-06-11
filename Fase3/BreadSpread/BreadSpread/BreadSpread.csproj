@@ -516,6 +516,12 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Shared\_BreadstrapOFFLayout.cshtml" />
     <Content Include="Views\Shared\_BreadstrapONLayout.cshtml" />
+    <Content Include="Views\Manutencao\EditPerfil.cshtml" />
+    <Content Include="Views\Manutencao\Ocasionais.cshtml" />
+    <Content Include="Views\Manutencao\PagaEncomendas.cshtml" />
+    <Content Include="Views\Manutencao\Perfil.cshtml" />
+    <Content Include="Views\Requisicao\Carrinho.cshtml" />
+    <Content Include="Views\Requisicao\Subscrever.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -33,7 +33,7 @@ namespace BreadSpread.Controllers
         public ActionResult Paga(int id)
         {
             Encomenda e = db.Encomendas.Find(id);
-            e.dataPag = DateTime.Now;
+            e.dataPag = System.DateTime.Now;
             e.modoPag = "online";
             db.Entry(e).State = EntityState.Modified;
             db.SaveChanges();
