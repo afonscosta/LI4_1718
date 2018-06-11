@@ -17,6 +17,131 @@ namespace BreadSpread.Controllers
             return View("~/Views/Admin/Index.cshtml");
         }
 
+        public ActionResult Perfil()
+        {
+            var User_In_Session = User.Identity.Name;
+
+            var cliente = db.Clientes.Where(c => c.email.Equals(User_In_Session)).ToList();
+
+            if (cliente == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cliente[0]);
+        }
+
+        public ActionResult Paga(int id)
+        {
+            Encomenda e = db.Encomendas.Find(id);
+            e.dataPag = DateTime.Now;
+            e.modoPag = "online";
+            db.Entry(e).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Perfil", "Manutencao");
+        }
+
+        public ActionResult DesativaCliente(int id)
+        {
+            Cliente c = db.Clientes.Find(id);
+            c.estadoConta = "desativado";
+            db.Entry(c).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Logout", "Autenticacao");
+        }
+
+        public ActionResult PagaEncomendas(int id)
+        {
+            return View(db.Encomendas.Where(enc => enc.idCli.Equals(id) && enc.estado.Equals("pendente") && enc.dataPag == null).ToList());
+        }
+
+        public ActionResult EditPerfil(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Cliente cliente = db.Clientes.Find(id);
+            if (cliente == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cliente);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPerfil([Bind(Include = "idCli,nome,email,sexo,dataNasc,rua,freguesia,cidade,codPostal,numPorta,contacto,NIF, estado,password")] Cliente cliente)
+        {
+            cliente.estadoConta = "ativo";
+            //DEIXEI ASSIM PORQUE COM O MODEL STATE NÃO DÁ (COMO ESTÁ INSERE CORRETAMENTE TUDO)
+            //if (ModelState.IsValid)
+            //{
+                db.Entry(cliente).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Perfil");
+            //}
+            return View(cliente);
+        }
+
+        public ActionResult Ocasionais()
+        {
+            var encomendas = db.Encomendas.Where(e => e.estado.Equals("pendente")).ToList();
+            /*var encomendas = (from e in db.Encomendas
+                            where e.estado == "pendente"
+                            select e);*/
+
+            return View(encomendas);
+        }
+
+        public ActionResult AceitarEncomenda(int? idEnc)
+        {
+            if (idEnc == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Encomenda encomenda = db.Encomendas.Find(idEnc);
+            if (encomenda == null)
+            {
+                return HttpNotFound();
+            }
+
+            encomenda.estado = "confirmada";
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(encomenda).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Ocasionais");
+        }
+
+        public ActionResult RecusarEncomenda(int? idEnc)
+        {
+            if (idEnc == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Encomenda encomenda = db.Encomendas.Find(idEnc);
+            if (encomenda == null)
+            {
+                return HttpNotFound();
+            }
+
+            //remoçºao da encomenda em si
+            db.Encomendas.Remove(encomenda);
+
+            //remoçºao de todas as entradas associadas à encomenda a remover
+            var enc_rem = db.Encomenda_Produto.Where(e => e.idEnc == idEnc).ToList();
+            foreach (var m in enc_rem)
+                db.Encomenda_Produto.Remove(m);
+
+            db.SaveChanges();
+
+            return RedirectToAction("Ocasionais");
+        }
+
         //==============================
         //========= PRODUTOS ===========
         //==============================
