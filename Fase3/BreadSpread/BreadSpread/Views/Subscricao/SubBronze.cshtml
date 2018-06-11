@@ -85,229 +85,65 @@
                     <h3 class="panel-title">Subscrever Prata</h3>
                 </div>
                 <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-12">
-                            <table class="table table-user-information">
-                                <tbody>
-                                    <tr>
-                                        <td>Hora</td>
-                                        <td>segunda</td>
-                                        <td>terça</td>
-                                        <td>quarta</td>
-                                        <td>quinta</td>
-                                        <td>sexta</td>
-                                    </tr>
-                                    <tr>
-                                        <td>07h00</td>
-                                        <td>
-                                            <button class="btn btn-secondary" name="Entrega" value="1">Entrega 1</button>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-secondary" name="Entrega" value="2">Entrega 2</button>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-secondary" name="Entrega" value="3">Entrega 3</button>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-secondary" name="Entrega" value="4">Entrega 4</button>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-secondary" name="Entrega" value="5">Entrega 5</button>
-                                        </td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <h2>Entrega 1</h2>
-                        <table class="table table-user-information">
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
-                                    <tr>
-                                        <td>@item.designacao</td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                        @using (Html.BeginForm("AdicionarProduto", "Subscricao", FormMethod.Post))
-                        {
-                            <div class="row">
-                                <div class="input-group mb-3">
-                                    <div class="input-group col-8">
-                                        <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary dropdown-toggle" name="produto" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
-                                            @*@Html.DropDownListFor( model => model.produto_selecionado, new SelectList(
-                                                        foreach(var item in Model.db_produtos)
-                                                            new { value = item.idProd, text = item.designacao },
-                                                        ,
-                                                    "value",
-                                                    "text"),
-                                                new { @class = "form-control", type = "sexo" })*@
-                                        </div>
-                                    </div>
-                                    <div class="input-group col-4">
-                                        <input type="text" name="quantidade" class="form-control" placeholder="Quantidade" aria-label="Quantidade" aria-describedby="product-addon">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-success" type="button">Adicionar</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                    </div>
-                    <div class="mb-4">
-                        <h2>Entrega 2</h2>
-                        <table class="table table-user-information">
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    @using (Html.BeginForm("CreateEncomendas", "Subscricao", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
                         <div class="row">
-                            <div class="input-group mb-3">
-                                <div class="input-group col-8">
-                                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto" name="nome_produto"
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
-                                        @{
-                                            var prod_s = new Produto();
-                                            var quant = 0;
-                                            var list = new List<Object>();
-                                            foreach (var item in Model)
-                                            {
-                                                list.Add(new { value = item.idProd, text = item.designacao });
-                                            }
-                                        }
-                                        @Html.DropDownListFor( model => prod_s , new SelectList( list,
-                                                                        "value",
-                                                                        "text"),
-                                                                    new { @class = "form-control", type = "produto" })
-                                    </div>
-                                </div>
-                                <div class="input-group col-4">
-                                    @Html.TextBoxFor(model => quant, new { @class = "form-control", placeholder = "Quant", type = "text" })
-                                    <div class="input-group-append">
-                                        <td>@Html.ActionLink("Adicionar", "AdicionarProduto", new { produto = prod_s, quantidade = quant }, new { @class = "btn btn-outline-success" })</td>
-                                        <!--<button class="btn btn-outline-success" type="button">Adicionar</button>-->
-                                    </div>
-                                </div>
+                            <div class="col-md-12 col-lg-12">
+                                <table class="table table-user-information">
+                                    <tbody>
+                                        <tr>
+                                            <td>Hora</td>
+                                            <td>segunda</td>
+                                            <td>terça</td>
+                                            <td>quarta</td>
+                                            <td>quinta</td>
+                                            <td>sexta</td>
+                                        </tr>
+                                        <tr>
+                                            <td>07h00</td>
+                                            <td>
+                                                <div class="input-group mb-1">
+                                                    <div class="input-group-text">
+                                                        @Html.CheckBox("dia1")
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="input-group mb-1">
+                                                    <div class="input-group-text">
+                                                        @Html.CheckBox("dia2")
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="input-group mb-1">
+                                                    <div class="input-group-text">
+                                                        @Html.CheckBox("dia3")
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="input-group mb-1">
+                                                    <div class="input-group-text">
+                                                        @Html.CheckBox("dia4")
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="input-group mb-1">
+                                                    <div class="input-group-text">
+                                                        @Html.CheckBox("dia5")
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                    </div>
-                    <div class="mb-4">
-                        <h2>Entrega 3</h2>
-                        <table class="table table-user-information">
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="row">
-                            <div class="input-group mb-3">
-                                <div class="input-group col-8">
-                                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto" , readonly="readonly">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
-                                        <div class="dropdown-menu">
-                                            @foreach (var item in Model)
-                                            {
-                                                <a class="dropdown-item" href="#"> @Html.DisplayFor(modelItem => item.designacao) </a>
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="input-group col-4">
-                                    <input type="text" class="form-control" placeholder="Quantidade" aria-label="Quantidade" aria-describedby="product-addon">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-success" type="button">Adicionar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <h2>Entrega 4</h2>
-                        <table class="table table-user-information">
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="row">
-                            <div class="input-group mb-3">
-                                <div class="input-group col-8">
-                                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto" , readonly="readonly">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
-                                        <div class="dropdown-menu">
-                                            @foreach (var item in Model)
-                                            {
-                                                <a class="dropdown-item" href="#"> @Html.DisplayFor(modelItem => item.designacao) </a>
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="input-group col-4">
-                                    <input type="text" class="form-control" placeholder="Quantidade" aria-label="Quantidade" aria-describedby="product-addon">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-success" type="button">Adicionar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <h2>Entrega 5</h2>
-                        <table class="table table-user-information">
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="row">
-                            <div class="input-group mb-3">
-                                <div class="input-group col-8">
-                                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Produto" , r>
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
-                                        <div class="dropdown-menu">
-                                            @foreach (var item in Model)
-                                            {
-                                                <a class="dropdown-item" href="#"> @Html.DisplayFor(modelItem => item.designacao) </a>
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="input-group col-4">
-                                    <input type="text" class="form-control" placeholder="Quantidade" aria-label="Quantidade" aria-describedby="product-addon">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-success" type="button">Adicionar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-between">
-                        <div class="col-3">
-                            <button class="btn btn-lg btn-success btn-block" type="submit">
-                                Confirmar Pedido
-                            </button>
-                        </div>
-                        <div class="col-3">
-                            <button class="btn btn-lg btn-danger btn-block" type="submit">
-                                Cancelar Pedido
-                            </button>
-                        </div>
-                    </div>
-
+                        <button type="submit" value="Entregas" class="btn btn-lg btn-primary btn-block">Registar Entregas</button>
+                    }
                 </div>
             </div>
         </div>
