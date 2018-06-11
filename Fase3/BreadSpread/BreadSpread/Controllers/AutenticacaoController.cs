@@ -98,10 +98,8 @@ namespace BreadSpread.Controllers
             {
                 if (email[0] == 'A' || email[0] == 'a') // Administrador
                     return RedirectToAction("AdminIndex", "Manutencao");
-                    //return RedirectToAction("IndexAdmin", "Manutencao");
                 if (email[0] == 'E' || email[0] == 'e') // Estafeta
-                    return View("~/Views/Estafeta/Index.cshtml");
-                    //return RedirectToAction("Index", "Estafeta");
+                    return RedirectToAction("EstafetaIndex", "Realizacao");
                 if (email[0] == 'P' || email[0] == 'p') // Padeiro
                     return View("~/Views/Padeiro/Index.cshtml");
                     //return RedirectToAction("Index", "Padeiro");

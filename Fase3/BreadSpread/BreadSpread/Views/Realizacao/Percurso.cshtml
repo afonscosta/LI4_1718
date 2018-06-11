@@ -1,6 +1,7 @@
-﻿
+﻿@model IEnumerable<BreadSpread.Models.Encomenda>
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Percurso";
     Layout = null;
 }
 
@@ -38,6 +39,35 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script type='text/javascript'
+            src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap'
+            async defer></script>
+    <script type='text/javascript'>
+        function GetMap() {
+
+            var coordsLat = @Html.Raw(Json.Encode(@ViewBag.coordsLat));
+            var coordsLon = @Html.Raw(Json.Encode(@ViewBag.coordsLon));
+            var labelEncs = @Html.Raw(Json.Encode(@ViewBag.labelEncs));
+
+            var map = new Microsoft.Maps.Map('#myMap', {
+                credentials: 'Arf-w6Z0c3_4-bcaAuGaelwSAFWNaomV1EN1N7PG18GbR5raQUIhfeswUtFi6_Ze',
+                center: new Microsoft.Maps.Location(coordsLat[0], coordsLon[0])
+            });
+
+            var center = map.getCenter();
+
+            for (var i = 0; i < coordsLat.length; i++) {
+                //Create custom Pushpin
+                var pin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(coordsLat[i], coordsLon[i]), {
+                    text: labelEncs[i].toString()
+                });
+
+                //Add the pushpin to the map
+                map.entities.push(pin);
+            }
+        }
+    </script>
+
 </head>
 
 <body>
@@ -47,7 +77,7 @@
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
-                <a class="navbar-brand" href="padeiro.html">BreadSpread</a>
+                <a class="navbar-brand" href="index.html">BreadSpread</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -91,7 +121,7 @@
                         <li class="divider"></li>
                         <li>
                             <a class="text-center" href="#">
-                                <strong>Ver todas as tarefas</strong>
+                                <strong>See All Tasks</strong>
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         </li>
@@ -118,12 +148,15 @@
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu" style="font-size: 2rem;">
+                    <ul class="nav" id="side-menu">
                         <li>
-                            <a href="/Realizacao/PadeiroIndex"><i class="fa fa-dashboard fa-fw"></i>Informação Geral</a>
+                            <a href="estafeta.html"><i class="fa fa-dashboard fa-fw"></i> Informação Geral</a>
                         </li>
                         <li>
-                            <a href="/Pesquisa/IndexProducao"><i class="fa fa-wrench fa-fw"></i>Produção</a>
+                            <a href="estafetapercurso.html"><i class="fa fa-wrench fa-fw"></i> Percurso</a>
+                        </li>
+                        <li>
+                            <a href="estafetaencomendas.html"><i class="fa fa-sitemap fa-fw"></i> Lista de Encomendas</a>
                         </li>
                         <li>
                            <a href="../../breadstrap/index.html"><img alt="" class="mb-2" height="250" src="./images/logo.png"></a>
@@ -138,96 +171,118 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Informação Geral</h1>
+                    <h1 class="page-header">Percurso</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-7">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Produção
-                            <div class="pull-right">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                        Semana
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#">Ano</a>
-                                        </li>
-                                        <li><a href="#">Mês</a>
-                                        </li>
-                                        <li><a href="#">Semana</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Encomendas a entregar
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div id="morris-area-chart"></div>
+                            <div id="myMap" style="position:relative;width:885px;height:500px;"></div>
                         </div>
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
                     
                 </div>
-                <!-- /.col-lg-8 -->
-                <div class="col-lg-4">
+                <!-- /.col-lg-12 -->
+                <div class="col-lg-5">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> Notificações
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Dados da próxima entrega
                         </div>
-                        <!-- /.panel-heading -->
+                        
                         <div class="panel-body">
-                            <div class="list-group">
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-truck fa-fw"></i> Entrega feita
-                                    <span class="pull-right text-muted small"><em>4 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-truck fa-fw"></i> Entrega feita
-                                    <span class="pull-right text-muted small"><em>12 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-truck fa-fw"></i> Entrega feita
-                                    <span class="pull-right text-muted small"><em>27 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-truck fa-fw"></i> Entrega feita
-                                    <span class="pull-right text-muted small"><em>43 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-shopping-cart fa-fw"></i> Pedido de entrega ocasional
-                                    <span class="pull-right text-muted small"><em>11:32 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-truck fa-fw"></i> Início de distribuição
-                                    <span class="pull-right text-muted small"><em>11:13 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-user fa-fw"></i> Nova subscrição
-                                    <span class="pull-right text-muted small"><em>10:57 AM</em>
-                                    </span>
-                                </a>
-                            </div>
-                            <!-- /.list-group -->
-                            <a href="#" class="btn btn-default btn-block">View All Alerts</a>
+                            @using (Html.BeginForm("RegistaEntrega", "Realizacao", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                if (Model.Count() != 0)
+                                {
+                                    <div class="pull-right">
+                                        <input type="hidden" name="idEnc" value=@Model.First().idEnc />
+                                        <input type="submit" value="Entregue" class="btn btn-success btn-lg" />
+                                    </div>
+                                }
+                            }
+
+                            @if (Model.Count() != 0)
+                            {
+                                <h4>@Model.First().Cliente.nome</h4>
+                                <p>@Model.First().rua, nº @Model.First().numPorta, @Model.First().codPostal, @Model.First().freguesia</p>
+                                <p>@Model.First().idEnc</p>
+                                <button type="button" class="btn btn-success btn-lg">Pagar</button>
+                            }
+                            else
+                            {
+                                <h4>Todas as entregas encontram-se realizadas!</h4>
+                            }
+                            @using (Html.BeginForm("CancelaEntrega", "Realizacao", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                if (Model.Count() != 0)
+                                {
+                                    <hr/>
+                                    <div class="form-group">
+                                        <label>Observações</label>
+                                        @Html.TextArea("obs", new { @class = "form-control", @rows = "3" })
+                                    </div>  
+                                    <div class="pull-right">
+                                        <input type="hidden" name="idEnc" value=@Model.First().idEnc />
+                                        <input type="submit" value="Falha" class="btn btn-danger btn-lg" />
+                                    </div>
+                                }
+                            }
                         </div>
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
-                    
                 </div>
-                <!-- /.col-lg-4 -->
+                <!-- /.col-lg-6 -->
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Lista de Entregas do Percurso 
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Morada</th>
+                                            <th>Hora</th>
+                                            <th>Encomenda #</th>
+                                            <th>Estado</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr class="odd gradeX">
+                                                <th>@Html.DisplayFor(modelItem => item.Cliente.nome)</th>
+                                                <th>@Model.First().rua, nº @Model.First().numPorta, @Model.First().codPostal, @Model.First().freguesia</th>
+                                                <td>@Html.DisplayFor(modelItem => item.dataEnt.Hour)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.idEnc)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.estado)</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
             </div>
             <!-- /.row -->
         </div>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -35,6 +36,7 @@ namespace BreadSpread.Controllers
             Encomenda e = db.Encomendas.Find(id);
             e.dataPag = DateTime.Now;
             e.modoPag = "online";
+            e.estado = "confirmada";
             db.Entry(e).State = EntityState.Modified;
             db.SaveChanges();
 
@@ -53,7 +55,10 @@ namespace BreadSpread.Controllers
 
         public ActionResult PagaEncomendas(int id)
         {
-            return View(db.Encomendas.Where(enc => enc.idCli.Equals(id) && enc.estado.Equals("pendente") && enc.dataPag == null).ToList());
+            return View(db.Encomendas.Where(enc => enc.idCli.Equals(id) && 
+                                            (enc.estado.Equals("pendente") || enc.estado.Equals("confirmada")) && 
+                                            enc.dataPag == null)
+                                     .ToList());
         }
 
         public ActionResult EditPerfil(int? id)

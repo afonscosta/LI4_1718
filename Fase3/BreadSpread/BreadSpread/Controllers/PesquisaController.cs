@@ -20,7 +20,7 @@ namespace BreadSpread.Controllers
             var encomendas_hoje = new List<Encomenda_Produto>();
             if (encomendas_hoje.Count() == 0)
             {
-                var encomendas = db.Encomenda_Produto.Where(ep => ep.Encomenda.estado.Equals("confirmada") && ep.estado.Equals("espera")).ToList();
+                var encomendas = db.Encomenda_Produto.Where(ep => ep.Encomenda.estado.Equals("confirmada") && ep.estado.Equals("pendente")).ToList();
                 encomendas_hoje = encomendas.Where(ep => ep.Encomenda.dataEnt.Date == DateTime.Now.Date).ToList();
             }
             return View(encomendas_hoje);

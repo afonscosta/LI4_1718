@@ -1,13 +1,23 @@
 ﻿using System;
-using System.Collections;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Runtime.Serialization.Json;
 using System.Web.Mvc;
 using BreadSpread.Models;
+using BingMapsRESTToolkit;
+using System.IO;
+using System.Text;
+using System.Collections;
 
 namespace BreadSpread.Controllers
 {
+    public class LatLong
+    {
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+    }
+
     public class RealizacaoController : Controller
     {
         private BSContext db = new BSContext();
@@ -15,6 +25,87 @@ namespace BreadSpread.Controllers
         public ActionResult PadeiroIndex()
         {
             return View("~/Views/Padeiro/Index.cshtml");
+        }
+
+        public ActionResult EstafetaIndex()
+        {
+            return View("~/Views/Estafeta/Index.cshtml");
+        }
+
+        public ActionResult RegistaEntrega(int idEnc)
+        {
+            Encomenda enc_db = db.Encomendas.Find(idEnc);
+            enc_db.estado = "entregue";
+            if (ModelState.IsValid)
+            {
+                db.Entry(enc_db).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Percurso");
+        }
+        public ActionResult CancelaEntrega(int idEnc, string obs)
+        {
+            Encomenda enc_db = db.Encomendas.Find(idEnc);
+            enc_db.estado = "falhada";
+            enc_db.obs = obs;
+            if (ModelState.IsValid)
+            {
+                db.Entry(enc_db).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Percurso");
+        }
+
+        public static LatLong Geocode(string address)
+        {
+            string url = "http://dev.virtualearth.net/REST/v1/Locations?query=" + address + "&key=Arf-w6Z0c3_4-bcaAuGaelwSAFWNaomV1EN1N7PG18GbR5raQUIhfeswUtFi6_Ze";
+
+            using (var client = new WebClient())
+            {
+                string response = client.DownloadString(url);
+                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Response));
+                using (var es = new MemoryStream(Encoding.Unicode.GetBytes(response)))
+                {
+                    var mapResponse = (ser.ReadObject(es) as Response); //Response is one of the Bing Maps DataContracts
+                    Location location = (Location)mapResponse.ResourceSets.First().Resources.First();
+                    return new LatLong()
+                    {
+                        Latitude = location.Point.Coordinates[0],
+                        Longitude = location.Point.Coordinates[1]
+                    };
+                }
+            }
+        }
+
+        public ActionResult Percurso()
+        {
+
+            var encomendas = db.Encomendas.Where(e => e.estado.Equals("confecionada") &&
+                                                      e.dataPag != null)
+                                          .ToList();
+            var encomendas_hoje = encomendas.Where(e => e.dataEnt.Date == DateTime.Now.Date).ToList();
+
+            var coordsLat = new ArrayList();
+            var coordsLon = new ArrayList();
+            var labelEncs = new ArrayList();
+
+            foreach(var enc in encomendas_hoje)
+            {
+                LatLong coord = Geocode(enc.Cliente.rua + "," +
+                                        enc.Cliente.numPorta + "," +
+                                        enc.Cliente.freguesia + "," +
+                                        enc.Cliente.codPostal + "," +
+                                        enc.Cliente.cidade + ", Portugal");
+                coordsLat.Add(coord.Latitude);
+                coordsLon.Add(coord.Longitude);
+                labelEncs.Add(enc.idEnc);
+            }
+
+            ViewBag.coordsLat = coordsLat;
+            ViewBag.coordsLon = coordsLon;
+            ViewBag.labelEncs = labelEncs;
+
+            return View(encomendas_hoje);
         }
 
 
@@ -32,8 +123,9 @@ namespace BreadSpread.Controllers
             }
 
             var encomendas = db.Encomenda_Produto.Where(ep => ep.Encomenda.estado.Equals("confirmada") && 
+                                                              ep.Encomenda.dataEnt != null &&
                                                               ep.idEnc == idEnc && 
-                                                              ep.estado.Equals("espera"))
+                                                              ep.estado.Equals("pendente"))
                                                  .ToList();
             var num_encomendas_hoje = encomendas.Where(ep => ep.Encomenda.dataEnt.Date == DateTime.Now.Date ).ToList().Count;
 
