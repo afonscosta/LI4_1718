@@ -20,7 +20,6 @@ namespace BreadSpread.Models
 
         public int idCli { get; set; }
 
-        [Column(TypeName = "date")]
         public DateTime dataEnt { get; set; }
 
         public double custo { get; set; }
@@ -29,7 +28,9 @@ namespace BreadSpread.Models
         [StringLength(50)]
         public string estado { get; set; }
 
-        public int idFunc { get; set; }
+        [Required]
+        [StringLength(10)]
+        public string idFunc { get; set; }
 
         [Required]
         [StringLength(100)]

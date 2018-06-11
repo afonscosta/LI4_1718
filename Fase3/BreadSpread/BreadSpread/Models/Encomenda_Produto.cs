@@ -20,6 +20,10 @@ namespace BreadSpread.Models
 
         public int quant { get; set; }
 
+        [Required]
+        [StringLength(50)]
+        public string estado { get; set; }
+
         public virtual Encomenda Encomenda { get; set; }
 
         public virtual Produto Produto { get; set; }
