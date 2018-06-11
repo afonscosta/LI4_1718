@@ -31,19 +31,7 @@ namespace BreadSpread.Controllers
             return RedirectToAction("CheckProduto", "Realizacao", new { idEnc, idProd });
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+		
         // GET: Pesquisa/Details/5
         public ActionResult Details(int? id)
         {
