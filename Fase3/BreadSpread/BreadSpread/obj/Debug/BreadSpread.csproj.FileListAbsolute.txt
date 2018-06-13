@@ -367,3 +367,6 @@ C:\Users\Marco Silva\Desktop\Repos\LI4_1718\Fase3\BreadSpread\BreadSpread\bin\Bi
 C:\Users\DiogoAfonsoSilvaCost\Desktop\Repos\LI4_1718\Fase3\BreadSpread\BreadSpread\bin\BingMapsRESTToolkit.dll
 C:\Users\DiogoAfonsoSilvaCost\Desktop\Repos\LI4_1718\Fase3\BreadSpread\BreadSpread\bin\BingMapsRESTToolkit.pdb
 C:\Users\DiogoAfonsoSilvaCost\Desktop\Repos\LI4_1718\Fase3\BreadSpread\BreadSpread\bin\BingMapsRESTToolkit.xml
+C:\Users\Daniel Maia\Documents\GitHub\LI4_1718\Fase3\BreadSpread\BreadSpread\bin\BingMapsRESTToolkit.dll
+C:\Users\Daniel Maia\Documents\GitHub\LI4_1718\Fase3\BreadSpread\BreadSpread\bin\BingMapsRESTToolkit.pdb
+C:\Users\Daniel Maia\Documents\GitHub\LI4_1718\Fase3\BreadSpread\BreadSpread\bin\BingMapsRESTToolkit.xml

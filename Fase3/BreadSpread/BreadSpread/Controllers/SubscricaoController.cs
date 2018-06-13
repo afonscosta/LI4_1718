@@ -344,5 +344,40 @@ namespace BreadSpread.Controllers
 
             return View("SubBronze");
         }
+
+        public ActionResult Alterar(int idProd, int? quant, float valor, String tipo)
+        {
+            List<Tuple<int, String, float, int>> carrinho = (List<Tuple<int, String, float, int>>)Session["Carrinho"];
+
+            var index = carrinho.FindIndex(t => t.Item1 == idProd);
+
+            var item = carrinho[index];
+
+            if (tipo == "Alterar")
+            {
+                if (quant == null) quant = 1;
+
+
+                int quantDiff = (int)quant - item.Item4;
+                float valDiff = quantDiff * item.Item3;
+                String s = item.Item2;
+                float preco = item.Item3;
+
+                carrinho[index] = Tuple.Create(idProd, s, preco, (int)quant);
+
+                Session["Carrinho"] = carrinho;
+                Session["Total"] = (float) Math.Round((float)Session["Total"] + valDiff, 2);
+            }
+
+            else
+            {
+                carrinho.Remove(item);
+
+                Session["Total"] = (float) Math.Round((float)Session["Total"] - valor, 2);
+            }
+
+
+            return RedirectToAction("Carrinho", "Subscricao");
+        }
     }
 }
