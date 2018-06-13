@@ -48,27 +48,29 @@
 										</button>
 									</div>
 
-									<div class="modal-body">
-										<img class="card-img-top" src="~/images/bakery.jpg">
-										@item.ingredientes
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-										<!--button type="button" class="btn btn-primary">Adicionar ao Carrinho</button-->
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="row justify-content-center">
-							@Html.TextBox("quant")
-							<div class="input-group-append">
-								<input type="hidden" name="idProd" value=@item.idProd />
-								<input type="submit" value="Adicionar ao carrinho" class="btn btn-primary" />
-							</div>
-							<!--input class="col-2 form-control text-center ml-2" value="2"-->
-							<!--button class="col-9 btn btn-block btn-primary" type="button">
-			Adicionar ao carrinho
-			</button-->
+                            <div class="modal-body">
+                                <img class="card-img-top" src="~/images/bakery.jpg">
+                                @item.ingredientes
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                <!--button type="button" class="btn btn-primary">Adicionar ao Carrinho</button-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    @Html.TextBox("quant")
+                    <div class="input-group-append">
+                        <input type="hidden" name="idProd" value=@item.idProd />
+                        <input type="hidden" name="designacao" value=@item.designacao />
+                        <input type="hidden" name="preco" value=@item.preco />
+                        <input type="submit" value="Adicionar ao carrinho" class="btn btn-primary" />
+                    </div>
+                    <!--input class="col-2 form-control text-center ml-2" value="2"-->
+                    <!--button class="col-9 btn btn-block btn-primary" type="button">
+            Adicionar ao carrinho
+            </button-->
 
 						</div>
 					</div>
