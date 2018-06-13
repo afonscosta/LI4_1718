@@ -1,9 +1,14 @@
 ﻿
 @{
-    Layout = "~/Views/Shared/_BreadstrapONLayout.cshtml";
+	if (!User.Identity.IsAuthenticated)
+	{
+		Layout = "~/Views/Shared/_BreadstrapOFFLayout.cshtml";
+	}
+	else
+	{
+		Layout = "~/Views/Shared/_BreadstrapONLayout.cshtml";
+	}
 }
-
-
 
     <div class="container pt-5">
         <table id="cart" class="table table-hover table-condensed">

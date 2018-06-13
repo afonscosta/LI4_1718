@@ -1,6 +1,13 @@
 ﻿@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_BreadstrapOFFLayout.cshtml";
+	ViewBag.Title = "Index";
+	if (!User.Identity.IsAuthenticated)
+	{
+		Layout = "~/Views/Shared/_BreadstrapOFFLayout.cshtml";
+	}
+	else
+	{
+		Layout = "~/Views/Shared/_BreadstrapONLayout.cshtml";
+	}
 }
 
     <div class="index-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">

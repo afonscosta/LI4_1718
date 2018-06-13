@@ -8,58 +8,61 @@
             <div class="col-xs-12 col-sm-12 col-xs-offset-0 topadd" style="padding-top: 60px;">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h3 class="panel-title">@Model.nome</h3>
+                        <h3 class="panel-title">Perfil de Utilizador</h3>
                     </div>
                     <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-3 col-lg-3" align="center"><img src="~/images/profile.png" class="img-circle" style="height: 200px"></div>
-                            <div class="col-md-9 col-lg-9">
-                                <table class="table table-user-information">
-                                    <tbody>
-                                        <tr>
-                                            <td>e-mail</td>
-                                            <td>@Model.email</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Sexo</td>
-                                            <td>@Model.sexo</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Data de Nascimento</td>
-                                            <td>@Model.dataNasc</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Rua</td>
-                                            <td>@( @Model.rua )</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Freguesia</td>
-                                            <td>@( @Model.freguesia)</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cidade</td>
-                                            <td>@( @Model.cidade )</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Código Postal</td>
-                                            <td>@Model.codPostal</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Número da Porta</td>
-                                            <td>@Model.numPorta</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Telemóvel</td>
-                                            <td>@Model.contacto</td>
-                                        </tr>
-                                        <tr>
-                                            <td>NIF</td>
-                                            <td>@Model.NIF</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+						<div class="row">
+							<div class="col-md-3 col-lg-3" align="center">
+								<img src="~/images/profile.png" class="img-circle" style="height: 200px">
+								<h3 class="panel-title">@Model.nome</h3>
+							</div>
+							<div class="col-md-9 col-lg-9">
+								<table class="table table-user-information">
+									<tbody>
+										<tr>
+											<td>e-mail</td>
+											<td>@Model.email</td>
+										</tr>
+										<tr>
+											<td>Sexo</td>
+											<td>@Model.sexo</td>
+										</tr>
+										<tr>
+											<td>Data de Nascimento</td>
+											<td>@Model.dataNasc</td>
+										</tr>
+										<tr>
+											<td>Rua</td>
+											<td>@Model.rua</td>
+										</tr>
+										<tr>
+											<td>Freguesia</td>
+											<td>@Model.freguesia</td>
+										</tr>
+										<tr>
+											<td>Cidade</td>
+											<td>@Model.cidade</td>
+										</tr>
+										<tr>
+											<td>Código Postal</td>
+											<td>@Model.codPostal</td>
+										</tr>
+										<tr>
+											<td>Número da Porta</td>
+											<td>@Model.numPorta</td>
+										</tr>
+										<tr>
+											<td>Telemóvel</td>
+											<td>@Model.contacto</td>
+										</tr>
+										<tr>
+											<td>NIF</td>
+											<td>@Model.NIF</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
                         <div class="row">
                             <div class="col-3">
                                 @Html.ActionLink("Editar Informação", "EditPerfil", new { id = Model.idCli }, new { @class = "btn btn-success" })

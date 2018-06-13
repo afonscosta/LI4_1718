@@ -1,6 +1,13 @@
 ﻿@{
 	ViewBag.Title = "ComoFunciona";
-	Layout = "~/Views/Shared/_BreadstrapOFFLayout.cshtml";
+	if (!User.Identity.IsAuthenticated)
+	{
+		Layout = "~/Views/Shared/_BreadstrapOFFLayout.cshtml";
+	}
+	else
+	{
+		Layout = "~/Views/Shared/_BreadstrapONLayout.cshtml";
+	}
 }
 
 

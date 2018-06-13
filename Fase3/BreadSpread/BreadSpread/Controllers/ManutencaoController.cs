@@ -40,8 +40,8 @@ namespace BreadSpread.Controllers
             db.Entry(e).State = EntityState.Modified;
             db.SaveChanges();
 
-            return RedirectToAction("Perfil", "Manutencao");
-        }
+			return Redirect(Request.UrlReferrer.ToString());
+		}
 
         public ActionResult DesativaCliente(int id)
         {
