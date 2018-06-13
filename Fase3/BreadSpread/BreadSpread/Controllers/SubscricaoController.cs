@@ -270,20 +270,7 @@ namespace BreadSpread.Controllers
 
         public ActionResult Carrinho()
         {
-            List<Tuple<int, int>> aux = (List<Tuple<int, int>>)Session["Carrinho"];
-
-            List<Tuple<Produto, int>> tuples = new List<Tuple<Produto, int>>();
-
-            foreach(var item in aux)
-            {
-                var query = (from a in db.Produtoes
-                             where item.Item1 == a.idProd
-                             select a).First();
-                tuples.Add(new Tuple<Produto, int>(query, item.Item2));
-            }
-            
-
-            return View(tuples);
+            return View();
         }
 
         public ActionResult EntregaOcasional()
