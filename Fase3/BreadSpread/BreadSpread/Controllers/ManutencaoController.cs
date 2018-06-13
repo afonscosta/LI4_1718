@@ -7,6 +7,7 @@ using System.Net;
 using System.Web.Mvc;
 using BreadSpread.Models;
 using BreadSpread.Controllers;
+using System.Net.Mail;
 
 namespace BreadSpread.Controllers
 {
@@ -38,17 +39,42 @@ namespace BreadSpread.Controllers
             return View(cliente[0]);
         }
 
+        private void Send(Encomenda e)
+        {
+            using (MailMessage mm = new MailMessage("breadspread365@gmail.com", User.Identity.Name))
+            {
+                mm.Subject = "Confirmação de pagamento";
+                mm.Body = "O presente email confirma que a encomenda número " + 
+                           e.idEnc + " foi paga no dia " + e.dataPag + ".";
+                mm.IsBodyHtml = false;
+                using (SmtpClient smtp = new SmtpClient())
+                {
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.EnableSsl = true;
+                    NetworkCredential NetworkCred = new NetworkCredential("breadspread365@gmail.com", "vamosfazerli4");
+                    smtp.UseDefaultCredentials = true;
+                    smtp.Credentials = NetworkCred;
+                    smtp.Port = 587;
+                    smtp.Send(mm);
+                }
+            }
+        }
+
         public ActionResult Paga(int id)
         {
             if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "Autenticacao");
 
             Encomenda e = db.Encomendas.Find(id);
-            e.dataPag = System.DateTime.Now;
+            e.dataPag = DateTime.Now;
             e.modoPag = "online";
             e.estado = "confirmada";
-            db.Entry(e).State = EntityState.Modified;
-            db.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                db.Entry(e).State = EntityState.Modified;
+                db.SaveChanges();
+                Send(e);
+            }
 
 			return Redirect(Request.UrlReferrer.ToString());
 		}

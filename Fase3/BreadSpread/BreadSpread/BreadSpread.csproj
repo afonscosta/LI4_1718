@@ -542,6 +542,7 @@
     <Folder Include="Content\bootstrap\mixins\" />
     <Folder Include="Content\fonts\" />
     <Folder Include="Content\themes\base\images\" />
+    <Folder Include="Views\Email\" />
     <Folder Include="Views\Funcionario\" />
   </ItemGroup>
   <ItemGroup>
