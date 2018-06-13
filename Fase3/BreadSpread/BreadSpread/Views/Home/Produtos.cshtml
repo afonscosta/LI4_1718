@@ -25,7 +25,7 @@
 		<div class="card-deck mb-3 text-center">
 
 			@foreach (var item in Model)
-	{
+            {
 			<div class="card mb-4 box-shadow">
 				@using (Html.BeginForm("AdicionarProduto", "Home", FormMethod.Post))
 				{
@@ -62,9 +62,9 @@
                 <div class="row justify-content-center">
                     @Html.TextBox("quant")
                     <div class="input-group-append">
-                        <input type="hidden" name="idProd" value=@item.idProd />
-                        <input type="hidden" name="designacao" value=@item.designacao />
-                        <input type="hidden" name="preco" value=@item.preco />
+                        <input type="hidden" name="idProd" value="@item.idProd" />
+                        <input type="hidden" name="designacao" value="@item.designacao" />
+                        <input type="hidden" name="preco" value="@item.preco" />
                         <input type="submit" value="Adicionar ao carrinho" class="btn btn-primary" />
                     </div>
                     <!--input class="col-2 form-control text-center ml-2" value="2"-->
