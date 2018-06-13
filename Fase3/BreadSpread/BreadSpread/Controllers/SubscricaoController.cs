@@ -267,7 +267,7 @@ namespace BreadSpread.Controllers
         {
             if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "Autenticacao");
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Subscricao");
         }
 
         public ActionResult SubPrata()
