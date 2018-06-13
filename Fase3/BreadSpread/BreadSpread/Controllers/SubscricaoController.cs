@@ -17,20 +17,28 @@ namespace BreadSpread.Controllers
         // GET: Subscricao
         public ActionResult Index()
         {
+            //if (!User.Identity.IsAuthenticated)
+            //    return RedirectToAction("Index", "Autenticacao");
             return View();
         }
 
         public ActionResult SubBronze()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             return View();
         }
         public ActionResult SubBronzeProdutos()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             return View(db.Produtoes.ToList());
         }
 
         public ActionResult CreateEncomendas(bool dia1, bool dia2, bool dia3, bool dia4, bool dia5)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             TimeSpan hour = new TimeSpan(7, 0, 0);
             DateTime data1 = DateTime.MinValue;
             DateTime data2 = DateTime.MinValue;
@@ -216,6 +224,8 @@ namespace BreadSpread.Controllers
 
         public ActionResult AddProdutos(int num_enc, string produto, int quantidade)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             string[] words = produto.Split('-');
 
             string key_enc = null;
@@ -255,39 +265,36 @@ namespace BreadSpread.Controllers
         }
         public ActionResult RemoveAllEncomendas()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             return RedirectToAction("Index", "Home");
         }
 
         public ActionResult SubPrata()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             return View(db.Produtoes.ToList());
         }
 
         public ActionResult SubOuro()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             return View(db.Produtoes.ToList());
         }
 
         public ActionResult Carrinho()
         {
-            List<Tuple<int, int>> aux = (List<Tuple<int, int>>)Session["Carrinho"];
-
-            List<Tuple<Produto, int>> tuples = new List<Tuple<Produto, int>>();
-
-            foreach(var item in aux)
-            {
-                var query = (from a in db.Produtoes
-                             where item.Item1 == a.idProd
-                             select a).First();
-                tuples.Add(new Tuple<Produto, int>(query, item.Item2));
-            }
-            
-
-            return View(tuples);
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
+            return View();
         }
 
         public ActionResult EntregaOcasional()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             return View();
         }
     
@@ -346,6 +353,8 @@ namespace BreadSpread.Controllers
  
         public ActionResult AdicionarProduto(Produto produto, int quantidade)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             var encomenda = db.Encomendas.Find(3);
             var encomendaProduto = new Encomenda_Produto();
             encomendaProduto.idEnc = 3;
@@ -356,6 +365,41 @@ namespace BreadSpread.Controllers
             db.SaveChanges();
 
             return View("SubBronze");
+        }
+
+        public ActionResult Alterar(int idProd, int? quant, float valor, String tipo)
+        {
+            List<Tuple<int, String, float, int>> carrinho = (List<Tuple<int, String, float, int>>)Session["Carrinho"];
+
+            var index = carrinho.FindIndex(t => t.Item1 == idProd);
+
+            var item = carrinho[index];
+
+            if (tipo == "Alterar")
+            {
+                if (quant == null) quant = 1;
+
+
+                int quantDiff = (int)quant - item.Item4;
+                float valDiff = quantDiff * item.Item3;
+                String s = item.Item2;
+                float preco = item.Item3;
+
+                carrinho[index] = Tuple.Create(idProd, s, preco, (int)quant);
+
+                Session["Carrinho"] = carrinho;
+                Session["Total"] = (float) Math.Round((float)Session["Total"] + valDiff, 2);
+            }
+
+            else
+            {
+                carrinho.Remove(item);
+
+                Session["Total"] = (float) Math.Round((float)Session["Total"] - valor, 2);
+            }
+
+
+            return RedirectToAction("Carrinho", "Subscricao");
         }
     }
 }

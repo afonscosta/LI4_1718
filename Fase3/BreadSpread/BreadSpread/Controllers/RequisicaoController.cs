@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace BreadSpread.Controllers
 {
@@ -11,21 +7,29 @@ namespace BreadSpread.Controllers
         // GET: Requisicao
         public ActionResult Index()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             return View();
         }
 
         public ActionResult Carrinho()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             return View();
         }
 
         public ActionResult Subscrever()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             return View();
         }
 
         public ActionResult Ocasional()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             return View();
         }
     }

@@ -439,6 +439,7 @@
     <Content Include="Views\Estafeta\Index.cshtml" />
     <Content Include="Views\Estafeta\Percurso.cshtml" />
     <Content Include="Views\Admin\Produtos.cshtml" />
+    <Content Include="Views\Padeiro\Encomendas.cshtml" />
     <Content Include="Views\Padeiro\Index.cshtml" />
     <Content Include="Views\Padeiro\Producao.cshtml" />
     <Content Include="Views\Manutencao\IndexProduto.cshtml" />
@@ -506,6 +507,7 @@
     <Content Include="vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="vendor\font-awesome\scss\_variables.scss" />
     <Content Include="Views\Subscricao\SubBronzeProdutos.cshtml" />
+    <Content Include="Views\Manutencao\EditPerfil.cshtml" />
     <Content Include="Views\Realizacao\Create.cshtml" />
     <Content Include="Views\Realizacao\Delete.cshtml" />
     <Content Include="Views\Realizacao\Details.cshtml" />
@@ -541,6 +543,7 @@
     <Folder Include="Content\bootstrap\mixins\" />
     <Folder Include="Content\fonts\" />
     <Folder Include="Content\themes\base\images\" />
+    <Folder Include="Views\Email\" />
     <Folder Include="Views\Funcionario\" />
   </ItemGroup>
   <ItemGroup>

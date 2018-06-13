@@ -17,6 +17,8 @@ namespace BreadSpread.Controllers
         // GET: Pesquisa
         public ActionResult IndexProducao()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             var encomendas_hoje = new List<Encomenda_Produto>();
             if (encomendas_hoje.Count() == 0)
             {
@@ -28,6 +30,8 @@ namespace BreadSpread.Controllers
 
         public ActionResult CheckProduto(int idEnc, int idProd)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             return RedirectToAction("CheckProduto", "Realizacao", new { idEnc, idProd });
         }
 
@@ -35,6 +39,8 @@ namespace BreadSpread.Controllers
         // GET: Pesquisa/Details/5
         public ActionResult Details(int? id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -50,6 +56,8 @@ namespace BreadSpread.Controllers
         // GET: Pesquisa/Create
         public ActionResult Create()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             ViewBag.idCli = new SelectList(db.Clientes, "idCli", "nome");
             return View();
         }
@@ -61,6 +69,8 @@ namespace BreadSpread.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "idEnc,idCli,dataEnt,custo,estado,idFunc,rua,numPorta,codPostal,cidade,obs,freguesia,tipoEnc,dataPag,modoPag,fatura")] Encomenda encomenda)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             if (ModelState.IsValid)
             {
                 db.Encomendas.Add(encomenda);
@@ -75,6 +85,8 @@ namespace BreadSpread.Controllers
         // GET: Pesquisa/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -95,6 +107,8 @@ namespace BreadSpread.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "idEnc,idCli,dataEnt,custo,estado,idFunc,rua,numPorta,codPostal,cidade,obs,freguesia,tipoEnc,dataPag,modoPag,fatura")] Encomenda encomenda)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             if (ModelState.IsValid)
             {
                 db.Entry(encomenda).State = EntityState.Modified;
@@ -109,6 +123,8 @@ namespace BreadSpread.Controllers
         // GET: Pesquisa/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -126,6 +142,8 @@ namespace BreadSpread.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             Encomenda encomenda = db.Encomendas.Find(id);
             db.Encomendas.Remove(encomenda);
             db.SaveChanges();

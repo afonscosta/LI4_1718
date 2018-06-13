@@ -361,6 +361,12 @@ C:\Users\Daniel Maia\Documents\GitHub\LI4_1718\Fase3\BreadSpread\BreadSpread\obj
 C:\Users\Daniel Maia\Documents\GitHub\LI4_1718\Fase3\BreadSpread\BreadSpread\obj\Debug\BreadSpread.csproj.CopyComplete
 C:\Users\Daniel Maia\Documents\GitHub\LI4_1718\Fase3\BreadSpread\BreadSpread\obj\Debug\BreadSpread.dll
 C:\Users\Daniel Maia\Documents\GitHub\LI4_1718\Fase3\BreadSpread\BreadSpread\obj\Debug\BreadSpread.pdb
+C:\Users\Marco Silva\Desktop\Repos\LI4_1718\Fase3\BreadSpread\BreadSpread\bin\BingMapsRESTToolkit.dll
+C:\Users\Marco Silva\Desktop\Repos\LI4_1718\Fase3\BreadSpread\BreadSpread\bin\BingMapsRESTToolkit.pdb
+C:\Users\Marco Silva\Desktop\Repos\LI4_1718\Fase3\BreadSpread\BreadSpread\bin\BingMapsRESTToolkit.xml
 C:\Users\DiogoAfonsoSilvaCost\Desktop\Repos\LI4_1718\Fase3\BreadSpread\BreadSpread\bin\BingMapsRESTToolkit.dll
 C:\Users\DiogoAfonsoSilvaCost\Desktop\Repos\LI4_1718\Fase3\BreadSpread\BreadSpread\bin\BingMapsRESTToolkit.pdb
 C:\Users\DiogoAfonsoSilvaCost\Desktop\Repos\LI4_1718\Fase3\BreadSpread\BreadSpread\bin\BingMapsRESTToolkit.xml
+C:\Users\Daniel Maia\Documents\GitHub\LI4_1718\Fase3\BreadSpread\BreadSpread\bin\BingMapsRESTToolkit.dll
+C:\Users\Daniel Maia\Documents\GitHub\LI4_1718\Fase3\BreadSpread\BreadSpread\bin\BingMapsRESTToolkit.pdb
+C:\Users\Daniel Maia\Documents\GitHub\LI4_1718\Fase3\BreadSpread\BreadSpread\bin\BingMapsRESTToolkit.xml

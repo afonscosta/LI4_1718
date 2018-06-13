@@ -55,10 +55,10 @@
 						</a>
 					</div>
 				</a>
-				<i class="fa fa-shopping-cart ml-2">
-				</i>
-				<a class="text-dark " href="cart.html">
-					0.00€
+				@*<i class="fa fa-shopping-cart ml-2">
+				</i>*@
+				<a class="text-dark fa fa-shopping-cart ml-2" href="/Subscricao/Carrinho">
+					@((float) Session["Total"])€
 				</a>
 			</nav>
 		</div>
@@ -99,17 +99,17 @@
 					</h5>
 					<ul class="list-unstyled text-small">
 						<li>
-							<a class="text-muted" href="comofunciona.html">
+							<a class="text-muted" href="/Home/ComoFunciona">
 								Subscrições
 							</a>
 						</li>
 						<li>
-							<a class="text-muted" href="comofunciona.html">
+							<a class="text-muted" href="/Home/ComoFunciona">
 								Entregas ocasionais
 							</a>
 						</li>
 						<li>
-							<a class="text-muted" href="comofunciona.html">
+							<a class="text-muted" href="/Home/ComoFunciona">
 								Cancelar encomendas
 							</a>
 						</li>
