@@ -60,9 +60,9 @@
 							</div>
 						</div>
                         <div class="row justify-content-center ">
-                            @Html.TextBox("quant", null, new { @class = "col-2 form-control text-center ml-2" })
+                            @Html.TextBox("quant", 1, new { @class = "col-2 form-control text-center ml-2" })
                             <input type="hidden" name="idProd" value=@item.idProd />
-                            <input type="hidden" name="designacao" value=@item.designacao />
+                            <input type="hidden" name="designacao" value="@item.designacao" />
                             <input type="hidden" name="preco" value=@item.preco />
                             <input type="submit" value="Adicionar ao carrinho" class="col-9 btn btn-primary" />
                         </div>

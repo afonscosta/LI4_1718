@@ -299,50 +299,69 @@ namespace BreadSpread.Controllers
         }
     
         //ADICIONA UMA ENCOMENDA 
-        [HttpPost]
-        public void adicionaEnc([Bind(Include =
-                "idCli, dataEnt, custo, estado, idFunc, rua, numPorta, codPostal, cidade, obs, freguesia, tipoEnc, dataPag, modoPag, fatura")]
-            Encomenda encomenda)
+        public ActionResult AdicionaEnc(string hora, string data)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
 
-            //nome de utilizador que tem login feito
-            var User_In_Session = User.Identity.Name;
+            var user_mail = System.Web.HttpContext.Current.User.Identity.Name;
+            var cliente = db.Clientes.Where(c => c.email.Equals(user_mail) && c.estadoConta.Equals("ativo")).ToList()[0];
+
+            Encomenda encomenda = new Encomenda();
+
             encomenda.estado = "pendente";
+            encomenda.custo = (float)Session["Total"];
+            encomenda.idCli = cliente.idCli;
+            encomenda.numPorta = cliente.numPorta;
+            encomenda.rua = cliente.rua;
+            encomenda.codPostal = cliente.codPostal;
+            encomenda.cidade = cliente.cidade;
+            encomenda.idFunc = "E001";
+            encomenda.obs = null;
+            encomenda.freguesia = cliente.freguesia;
+            encomenda.dataPag = null;
+            encomenda.modoPag = null;
+            encomenda.fatura = null;
+            encomenda.tipoEnc = "ocasional";
 
-            //CALCULO DO CUSTO
-            //assumindo que esta var tem uma lista de tuplos com os ids dos produtos e a respetiva quantidade (APENAS ESTÁ A NULL PARA NÃO DAR ERRO)
-            List<Tuple<int, int>> produtos = null;
+            string[] words = data.Split('/');
 
-            double custoEnc = 0;
-            int tamanho_list = produtos.Count;
-            for (int i = 0; i < tamanho_list; i++)
+            string[] hour = hora.Split(':');
+
+            encomenda.dataEnt = new DateTime(Int32.Parse(words[2]), Int32.Parse(words[1]), Int32.Parse(words[0]), Int32.Parse(hour[0]), 0, 0);
+
+            List<Tuple<int, String, float, int>> aux = (List<Tuple<int, String, float, int>>)Session["Carrinho"];
+
+            List<Tuple<int, int>> produtos = new List<Tuple<int, int>>();
+
+            foreach(var item in aux)
             {
-                Produto produtoDB = db.Produtoes.Find(produtos[i].Item1);
-                custoEnc += produtoDB.preco;
+                produtos.Add(new Tuple<int, int>(item.Item1, item.Item4));
             }
 
-            encomenda.custo = custoEnc;
-
-            var encomendas = (from m in db.Encomendas
-                            where m.idCli.ToString() == User_In_Session
-                            select m);
-
-            int lastEncID = encomendas.Max(item => item.idEnc);
+            db.Encomendas.Add(encomenda);
+            db.SaveChanges();
 
             //inserir associação entre a encomenda e os produtos
-            adicionaProdEnc(produtos, lastEncID);
+            adicionaProdEnc(produtos, encomenda.idEnc);
+
+            Session["Carrinho"] = new List<Tuple<int, String, float, int>>();
+            Session["Total"] = 0.0f;
+
+            return RedirectToAction("PagaEncomendas", "Manutencao", new {id = cliente.idCli });
         }
 
         //EFETUA A ASSOCIAÇÃO ENTRE OS PRODUTOS E UMA ENCOMENDA
-        public void adicionaProdEnc(List<Tuple<int, int>> produtos, int lastEncID)
+        public void adicionaProdEnc(List<Tuple<int, int>> produtos, int idEnc)
         {
-            int tamanho_list = produtos.Count;
-            for (int i = 0; i < tamanho_list; i++)
+            
+            foreach (var item in produtos)
             {
                 var enc_prod = new Encomenda_Produto();
-                enc_prod.idEnc = lastEncID;
-                enc_prod.idProd = produtos[i].Item1;
-                enc_prod.quant = produtos[i].Item2;
+                enc_prod.idProd = item.Item1;
+                enc_prod.quant = item.Item2;
+                enc_prod.idEnc = idEnc;
+                enc_prod.estado = "pendente";
 
                 db.Encomenda_Produto.Add(enc_prod);
                 db.SaveChanges();
