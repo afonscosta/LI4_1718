@@ -59,17 +59,10 @@
 								</div>
 							</div>
 						</div>
-						<div class="row justify-content-center">
-							@Html.TextBox("quant")
-							<div class="input-group-append">
-								<input type="hidden" name="idProd" value=@item.idProd />
-								<input type="submit" value="Adicionar ao carrinho" class="btn btn-primary" />
-							</div>
-							<!--input class="col-2 form-control text-center ml-2" value="2"-->
-							<!--button class="col-9 btn btn-block btn-primary" type="button">
-			Adicionar ao carrinho
-			</button-->
-
+						<div class="row justify-content-center ">
+							@Html.TextBox("quant",null,new { @class = "col-2 form-control text-center ml-2" })
+							<input type="hidden" name="idProd" value=@item.idProd />
+							<input type="submit" value="Adicionar ao carrinho" class="col-9 btn btn-primary" />
 						</div>
 					</div>
 				</div>
@@ -79,20 +72,5 @@
 				}
 			</div>
         </div>
-        <!--<div class="card mb-4 box-shadow">
-                <img alt="" class="card-img-top" src="~/images/bakery.jpg">
-                <div class="card-body">
-                    <h1 class="card-title">
-                        Pão
-                    </h1>
-                    <div class="row justify-content-center">
-                        <input class="col-2 form-control text-center ml-2" value="2">
-                        <button class="col-9 btn btn-block btn-primary" type="button">
-                            Adicionar ao carrinho
-                        </button>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </div>-->
+        
         

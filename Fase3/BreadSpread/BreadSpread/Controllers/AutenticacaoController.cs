@@ -99,10 +99,10 @@ namespace BreadSpread.Controllers
                 if (email[0] == 'A' || email[0] == 'a') // Administrador
                     return RedirectToAction("AdminIndex", "Manutencao");
                 if (email[0] == 'E' || email[0] == 'e') // Estafeta
-                    return RedirectToAction("EstafetaIndex", "Realizacao");
-                if (email[0] == 'P' || email[0] == 'p') // Padeiro
-                    return View("~/Views/Padeiro/Index.cshtml");
-                    //return RedirectToAction("Index", "Padeiro");
+                    return RedirectToAction("Percurso", "Realizacao");
+				if (email[0] == 'P' || email[0] == 'p') // Padeiro
+					return RedirectToAction("IndexProducao", "Pesquisa");
+                    
             }
             return RedirectToAction("Index", "Home");
         }

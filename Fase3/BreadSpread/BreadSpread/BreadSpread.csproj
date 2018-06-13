@@ -528,6 +528,7 @@
     <Content Include="Views\Requisicao\Carrinho.cshtml" />
     <Content Include="Views\Requisicao\Subscrever.cshtml" />
     <Content Include="Views\Shared\_EstafetaLayout.cshtml" />
+    <Content Include="Views\Shared\_PadeiroLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
