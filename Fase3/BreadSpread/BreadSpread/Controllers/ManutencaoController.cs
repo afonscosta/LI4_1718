@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using BreadSpread.Models;
+using BreadSpread.Controllers;
 
 namespace BreadSpread.Controllers
 {
@@ -15,11 +16,17 @@ namespace BreadSpread.Controllers
 
         public ActionResult AdminIndex()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
+
             return View("~/Views/Admin/Index.cshtml");
         }
 
         public ActionResult Perfil()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
+
             var User_In_Session = User.Identity.Name;
 
             var cliente = db.Clientes.Where(c => c.email.Equals(User_In_Session)).ToList();
@@ -33,6 +40,9 @@ namespace BreadSpread.Controllers
 
         public ActionResult Paga(int id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
+
             Encomenda e = db.Encomendas.Find(id);
             e.dataPag = System.DateTime.Now;
             e.modoPag = "online";
@@ -45,6 +55,9 @@ namespace BreadSpread.Controllers
 
         public ActionResult DesativaCliente(int id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
+
             Cliente c = db.Clientes.Find(id);
             c.estadoConta = "desativado";
             db.Entry(c).State = EntityState.Modified;
@@ -55,6 +68,11 @@ namespace BreadSpread.Controllers
 
         public ActionResult PagaEncomendas(int id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
+
             return View(db.Encomendas.Where(enc => enc.idCli.Equals(id) && 
                                             (enc.estado.Equals("pendente") || enc.estado.Equals("confirmada")) && 
                                             enc.dataPag == null)
@@ -63,6 +81,8 @@ namespace BreadSpread.Controllers
 
         public ActionResult EditPerfil(int? id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -79,6 +99,8 @@ namespace BreadSpread.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditPerfil([Bind(Include = "idCli,nome,email,sexo,dataNasc,rua,freguesia,cidade,codPostal,numPorta,contacto,NIF, estado,password")] Cliente cliente)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             cliente.estadoConta = "ativo";
             //DEIXEI ASSIM PORQUE COM O MODEL STATE NÃO DÁ (COMO ESTÁ INSERE CORRETAMENTE TUDO)
             //if (ModelState.IsValid)
@@ -92,6 +114,8 @@ namespace BreadSpread.Controllers
 
         public ActionResult Ocasionais()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             var encomendas = db.Encomendas.Where(e => e.estado.Equals("pendente")).ToList();
             /*var encomendas = (from e in db.Encomendas
                             where e.estado == "pendente"
@@ -102,6 +126,8 @@ namespace BreadSpread.Controllers
 
         public ActionResult AceitarEncomenda(int? idEnc)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             if (idEnc == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -124,6 +150,8 @@ namespace BreadSpread.Controllers
 
         public ActionResult RecusarEncomenda(int? idEnc)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             if (idEnc == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -154,12 +182,16 @@ namespace BreadSpread.Controllers
         // GET: Manutencao
         public ActionResult IndexProduto()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             return View(db.Produtoes.ToList());
         }
 
         // GET: Manutencao/Details/5
         public ActionResult DetailsProduto(int? id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -175,6 +207,8 @@ namespace BreadSpread.Controllers
         // GET: Manutencao/Create
         public ActionResult CreateProduto()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             return View();
         }
 
@@ -185,6 +219,8 @@ namespace BreadSpread.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateProduto([Bind(Include = "designacao,ingredientes,infoNutricional,preco,imagem,peso")] Produto produto)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             if (ModelState.IsValid)
             {
                 db.Produtoes.Add(produto);
@@ -198,6 +234,8 @@ namespace BreadSpread.Controllers
         // GET: Manutencao/Edit/5
         public ActionResult EditProduto(int? id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -217,6 +255,8 @@ namespace BreadSpread.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditProduto([Bind(Include = "idProd,designacao,ingredientes,infoNutricional,preco,imagem,peso")] Produto produto)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             if (ModelState.IsValid)
             {
                 db.Entry(produto).State = EntityState.Modified;
@@ -229,6 +269,8 @@ namespace BreadSpread.Controllers
         // GET: Manutencao/Delete/5
         public ActionResult DeleteProduto(int? id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -246,6 +288,8 @@ namespace BreadSpread.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmedProduto(int id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             Produto produto = db.Produtoes.Find(id);
             db.Produtoes.Remove(produto);
             db.SaveChanges();
@@ -260,6 +304,8 @@ namespace BreadSpread.Controllers
         // GET: Funcionarios
         public ActionResult IndexFuncionario()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             List<Funcionario> funcs = db.Funcionarios.Where(f => f.estadoConta.Equals("ativo")).ToList();
 
             return View(funcs);
@@ -268,6 +314,8 @@ namespace BreadSpread.Controllers
         // GET: Funcionarios/Details/5
         public ActionResult DetailsFuncionario(string id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -283,6 +331,8 @@ namespace BreadSpread.Controllers
         // GET: Funcionarios/Create
         public ActionResult CreateFuncionario()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             return View();
         }
 
@@ -293,6 +343,8 @@ namespace BreadSpread.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateFuncionario([Bind(Include = "idFunc,nome,dataNasc,contacto,rua,numPorta,codPostal,cidade,password,freguesia,estadoConta,distribuicao")] Funcionario funcionario)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             if (ModelState.IsValid)
             {
                 db.Funcionarios.Add(funcionario);
@@ -306,6 +358,8 @@ namespace BreadSpread.Controllers
         // GET: Funcionarios/Edit/5
         public ActionResult EditFuncionario(string id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -325,6 +379,8 @@ namespace BreadSpread.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditFuncionario([Bind(Include = "idFunc,nome,dataNasc,contacto,rua,numPorta,codPostal,cidade,password,freguesia,estadoConta,distribuicao")] Funcionario funcionario)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             if (ModelState.IsValid)
             {
                 db.Entry(funcionario).State = EntityState.Modified;
@@ -337,6 +393,9 @@ namespace BreadSpread.Controllers
         // GET: Funcionarios/Delete/5
         public ActionResult DeleteFuncionario(string id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -354,6 +413,8 @@ namespace BreadSpread.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmedFuncionario(string id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Autenticacao");
             Funcionario funcionario = db.Funcionarios.Find(id);
             funcionario.estadoConta = "desativado";
             db.Entry(funcionario).State = EntityState.Modified;
