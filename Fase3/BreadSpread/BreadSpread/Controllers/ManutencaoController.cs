@@ -414,12 +414,6 @@ namespace BreadSpread.Controllers
         {
             if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "Autenticacao");
-            Funcionario f = db.Funcionarios.Find(funcionario.idFunc);
-            if (!funcionario.password.Equals(f.password))
-            {
-                funcionario.password = MyHelpers.HashPassword(funcionario.password);
-            }
-            db.Entry(f).State = EntityState.Detached;
             if (ModelState.IsValid)
             {
                 db.Entry(funcionario).State = EntityState.Modified;
