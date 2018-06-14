@@ -98,7 +98,7 @@ namespace BreadSpread.Controllers
             if (rgx.IsMatch(email)) // É um funcionário
             {
                 if (email[0] == 'A' || email[0] == 'a') // Administrador
-                    return RedirectToAction("AdminIndex", "Manutencao");
+                    return RedirectToAction("IndexProduto", "Manutencao");
                 if (email[0] == 'E' || email[0] == 'e') // Estafeta
                     return RedirectToAction("Percurso", "Realizacao");
 				if (email[0] == 
