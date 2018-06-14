@@ -13,9 +13,9 @@
                             <h3 class="panel-title">Perfil de Utilizador</h3>
                         </div>
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        @Html.HiddenFor(model => model.idCli)
-                        @Html.HiddenFor(model => model.password)
-                        @Html.HiddenFor(model => model.estadoConta)
+                        @*@Html.HiddenFor(model => model.idCli)*@
+                        @*@Html.HiddenFor(model => model.password)*@
+                        @*@Html.HiddenFor(model => model.estadoConta)*@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-3 col-lg-3" align="center">
@@ -142,8 +142,8 @@
                                             <div class="form-group">
                                                 <div class="col-md-offset-2 col-md-10">
                                                     <input type="hidden" name="idCli" value=@Model.idCli />
-                                                    <input type="hidden" name="estado" value="ativo" />
-                                                    <input type="hidden" name="password" value=@Model.password />
+                                                    <input type="hidden" name="estadoConta" value="ativo" />
+                                                    @*<input type="hidden" name="password" value=@Model.password />*@
                                                     <input type="submit" value="Alterar" class="btn btn-success" />
                                                     @Html.ActionLink("Voltar", "Perfil", null, new { @class = "btn btn-primary" })
                                                 </div>

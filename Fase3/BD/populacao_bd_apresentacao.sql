@@ -43,7 +43,7 @@ INSERT INTO [dbo].[Cliente]
            ,'20001022'
            ,123123123
            ,'Masculino'
-           ,'email2'
+           ,'a78034@alunos.uminho.pt'
            ,'Rua do Monte de Baixo'
            ,106
            ,'4710-070'
@@ -59,7 +59,7 @@ INSERT INTO [dbo].[Cliente]
            ,'20001023'
            ,123123123
            ,'Masculino'
-           ,'email3'
+           ,'a77531@alunos.uminho.pt'
            ,'Rua do Monte de Baixo'
            ,133
            ,'4710-070'
@@ -75,7 +75,7 @@ INSERT INTO [dbo].[Cliente]
            ,'20001024'
            ,123123123
            ,'Masculino'
-           ,'email4'
+           ,'a73909@alunos.uminho.pt'
            ,'Rua Padre Casimiro'
            ,30
            ,'4710-070'

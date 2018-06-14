@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using BreadSpread.Models;
 using BreadSpread.Controllers;
 using System.Net.Mail;
+using BreadSpread.Encriptacao;
 
 namespace BreadSpread.Controllers
 {
@@ -123,19 +124,24 @@ namespace BreadSpread.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditPerfil([Bind(Include = "idCli,nome,email,sexo,dataNasc,rua,freguesia,cidade,codPostal,numPorta,contacto,NIF, estado,password")] Cliente cliente)
+        public ActionResult EditPerfil([Bind(Include = "idCli,nome,email,sexo,dataNasc,rua,freguesia,cidade,codPostal,numPorta,contacto,NIF, estadoConta,password")] Cliente cliente)
         {
             if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "Autenticacao");
-            cliente.estadoConta = "ativo";
+            //cliente.estadoConta = "ativo";
+            Cliente c = db.Clientes.Find(cliente.idCli);
+            if (!cliente.password.Equals(c.password))
+            {
+                cliente.password = MyHelpers.HashPassword(cliente.password);
+            }
+            db.Entry(c).State = EntityState.Detached;
             //DEIXEI ASSIM PORQUE COM O MODEL STATE NÃO DÁ (COMO ESTÁ INSERE CORRETAMENTE TUDO)
-            //if (ModelState.IsValid)
-            //{
+            if (ModelState.IsValid)
+            {
                 db.Entry(cliente).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Perfil");
-            //}
-            return View(cliente);
+            }
+            return RedirectToAction("Perfil");
         }
 
         public ActionResult Ocasionais()
@@ -371,6 +377,7 @@ namespace BreadSpread.Controllers
         {
             if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "Autenticacao");
+            funcionario.password = MyHelpers.HashPassword(funcionario.password);
             if (ModelState.IsValid)
             {
                 db.Funcionarios.Add(funcionario);
@@ -407,6 +414,12 @@ namespace BreadSpread.Controllers
         {
             if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "Autenticacao");
+            Funcionario f = db.Funcionarios.Find(funcionario.idFunc);
+            if (!funcionario.password.Equals(f.password))
+            {
+                funcionario.password = MyHelpers.HashPassword(funcionario.password);
+            }
+            db.Entry(f).State = EntityState.Detached;
             if (ModelState.IsValid)
             {
                 db.Entry(funcionario).State = EntityState.Modified;

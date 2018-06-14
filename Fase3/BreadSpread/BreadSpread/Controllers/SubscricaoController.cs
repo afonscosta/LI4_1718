@@ -299,7 +299,7 @@ namespace BreadSpread.Controllers
         }
     
         //ADICIONA UMA ENCOMENDA 
-        public ActionResult AdicionaEnc(string hora, string data)
+        public ActionResult AdicionaEnc(string hora, string dataEnt)
         {
             if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "Autenticacao");
@@ -324,11 +324,10 @@ namespace BreadSpread.Controllers
             encomenda.fatura = null;
             encomenda.tipoEnc = "ocasional";
 
-            string[] words = data.Split('/');
-
+            string[] words = dataEnt.Split('-'); 
             string[] hour = hora.Split(':');
 
-            encomenda.dataEnt = new DateTime(Int32.Parse(words[2]), Int32.Parse(words[1]), Int32.Parse(words[0]), Int32.Parse(hour[0]), 0, 0);
+            encomenda.dataEnt = new DateTime(Int32.Parse(words[0]), Int32.Parse(words[1]), Int32.Parse(words[2]), Int32.Parse(hour[0]), 0, 0);
 
             List<Tuple<int, String, float, int>> aux = (List<Tuple<int, String, float, int>>)Session["Carrinho"];
 
