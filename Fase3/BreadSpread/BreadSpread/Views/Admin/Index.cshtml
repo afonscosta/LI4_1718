@@ -3,102 +3,120 @@
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Informação Geral</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
+<script type='text/javascript'
+		src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap'
+		async defer></script>
+<script type='text/javascript'>
+        function GetMap() {
 
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Vendas
-                            <div class="pull-right">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                        Semana
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#">Ano</a>
-                                        </li>
-                                        <li><a href="#">Mês</a>
-                                        </li>
-                                        <li><a href="#">Semana</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div id="morris-area-chart"></div>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                    
-                </div>
-                <!-- /.col-lg-8 -->
-                <div class="col-lg-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> Notificações
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="list-group">
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-truck fa-fw"></i> Entrega feita
-                                    <span class="pull-right text-muted small"><em>4 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-truck fa-fw"></i> Entrega feita
-                                    <span class="pull-right text-muted small"><em>12 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-truck fa-fw"></i> Entrega feita
-                                    <span class="pull-right text-muted small"><em>27 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-truck fa-fw"></i> Entrega feita
-                                    <span class="pull-right text-muted small"><em>43 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-shopping-cart fa-fw"></i> Pedido de entrega ocasional
-                                    <span class="pull-right text-muted small"><em>11:32 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-truck fa-fw"></i> Início de distribuição
-                                    <span class="pull-right text-muted small"><em>11:13 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-user fa-fw"></i> Nova subscrição
-                                    <span class="pull-right text-muted small"><em>10:57 AM</em>
-                                    </span>
-                                </a>
-                            </div>
-                            <!-- /.list-group -->
-                            <a href="#" class="btn btn-default btn-block">Ver todas as notificações</a>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                    
-                </div>
-                <!-- /.col-lg-4 -->
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /#page-wrapper -->
+            var coordsLat = @Html.Raw(Json.Encode(@ViewBag.coordsLat));
+            var coordsLon = @Html.Raw(Json.Encode(@ViewBag.coordsLon));
+            var labelEncs = @Html.Raw(Json.Encode(@ViewBag.labelEncs));
 
-    
+            var map = new Microsoft.Maps.Map('#myMap', {
+                credentials: 'Arf-w6Z0c3_4-bcaAuGaelwSAFWNaomV1EN1N7PG18GbR5raQUIhfeswUtFi6_Ze',
+                center: new Microsoft.Maps.Location(coordsLat[0], coordsLon[0])
+            });
+
+            var center = map.getCenter();
+
+            for (var i = 0; i < coordsLat.length; i++) {
+                //Create custom Pushpin
+                var pin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(coordsLat[i], coordsLon[i]), {
+                    text: labelEncs[i].toString()
+                });
+
+                //Add the pushpin to the map
+                map.entities.push(pin);
+            }
+        }
+</script>
+
+<div id="page-wrapper">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">Informação Geral</h1>
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
+
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-bar-chart-o fa-fw"></i> Entregas
+				</div>
+				<!-- /.panel-heading -->
+				<div class="panel-body">
+					<div id="myMap" style="position:relative;width:100vw;height:100vh;"></div>
+				</div>
+				<!-- /.panel-body -->
+			</div>
+			<!-- /.panel -->
+
+		</div>
+		<!-- /.col-lg-8 -->
+		@*<div class="col-lg-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-bell fa-fw"></i> Notificações
+				</div>
+				<!-- /.panel-heading -->
+				<div class="panel-body">
+					<div class="list-group">
+						<a href="#" class="list-group-item">
+							<i class="fa fa-truck fa-fw"></i> Entrega feita
+							<span class="pull-right text-muted small">
+								<em>4 minutes ago</em>
+							</span>
+						</a>
+						<a href="#" class="list-group-item">
+							<i class="fa fa-truck fa-fw"></i> Entrega feita
+							<span class="pull-right text-muted small">
+								<em>12 minutes ago</em>
+							</span>
+						</a>
+						<a href="#" class="list-group-item">
+							<i class="fa fa-truck fa-fw"></i> Entrega feita
+							<span class="pull-right text-muted small">
+								<em>27 minutes ago</em>
+							</span>
+						</a>
+						<a href="#" class="list-group-item">
+							<i class="fa fa-truck fa-fw"></i> Entrega feita
+							<span class="pull-right text-muted small">
+								<em>43 minutes ago</em>
+							</span>
+						</a>
+						<a href="#" class="list-group-item">
+							<i class="fa fa-shopping-cart fa-fw"></i> Pedido de entrega ocasional
+							<span class="pull-right text-muted small">
+								<em>11:32 AM</em>
+							</span>
+						</a>
+						<a href="#" class="list-group-item">
+							<i class="fa fa-truck fa-fw"></i> Início de distribuição
+							<span class="pull-right text-muted small">
+								<em>11:13 AM</em>
+							</span>
+						</a>
+						<a href="#" class="list-group-item">
+							<i class="fa fa-user fa-fw"></i> Nova subscrição
+							<span class="pull-right text-muted small">
+								<em>10:57 AM</em>
+							</span>
+						</a>
+					</div>
+					<!-- /.list-group -->
+					<a href="#" class="btn btn-default btn-block">Ver todas as notificações</a>
+				</div>
+				<!-- /.panel-body -->
+			</div>
+			<!-- /.panel -->
+
+		</div>*@
+		<!-- /.col-lg-4 -->
+	</div>
+	<!-- /.row -->
+</div>
+<!-- /#page-wrapper -->

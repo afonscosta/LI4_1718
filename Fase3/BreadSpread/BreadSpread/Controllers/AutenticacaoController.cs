@@ -101,7 +101,8 @@ namespace BreadSpread.Controllers
                     return RedirectToAction("AdminIndex", "Manutencao");
                 if (email[0] == 'E' || email[0] == 'e') // Estafeta
                     return RedirectToAction("Percurso", "Realizacao");
-				if (email[0] == 'P' || email[0] == 'p') // Padeiro
+				if (email[0] == 
+					'P' || email[0] == 'p') // Padeiro
 					return RedirectToAction("IndexProducao", "Pesquisa");
                     
             }
