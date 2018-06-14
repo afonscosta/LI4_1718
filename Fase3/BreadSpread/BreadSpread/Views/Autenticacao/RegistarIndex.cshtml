@@ -49,13 +49,18 @@
                                                                     new { @class = "form-control", type = "sexo" })
 				@Html.ValidationMessageFor(model => model.sexo, "", new { @class = "text-danger" })
 			</div>
-			<div class="form-group col-md-7">
-				<!--dar review ao calendar-->
+            <div class="form-group col-md-7">
+                <div class="date">
+                    @Html.EditorFor(model => model.dataNasc, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                    @Html.ValidationMessageFor(model => model.dataNasc, "", new { @class = "text-danger" })
+                </div>
+            </div>
+			@*<div class="form-group col-md-7">
 				<div class="date" id="datepicker">
 					@Html.TextBoxFor(model => model.dataNasc, new { @class = "form-control", name = "date", placeholder = "DD/MM/YYYY" })
 					@Html.ValidationMessageFor(model => model.dataNasc, "", new { @class = "text-danger" })
 				</div>
-			</div>
+			</div>*@
 		</div>
 		<div class="form-group">
 			@Html.TextBoxFor(model => model.rua, new { @class = "form-control", placeholder = "Rua da Padaria", type = "text" })
@@ -89,14 +94,15 @@
 				@Html.TextBoxFor(model => model.contacto, new { @class = "form-control", placeholder = "987654321", type = "number" })
 				@Html.ValidationMessageFor(model => model.contacto, "", new { @class = "text-danger" })
 			</div></div>
-		<div class="form-row">
+		@*<div class="form-row">
 			<div class="form-group col-md-12 text-left ml-2">
 				@Html.RadioButtonFor(m => m.estadoConta, "Ativo") Li e concordo com os termos e condições
 				@Html.ValidationMessageFor(model => model.estadoConta, "", new { @class = "text-danger" })
 			</div>
-		</div>
+		</div>*@
 		<div class="form-row">
 			<div class="form-group col-md-12">
+                <input type="hidden" name="estadoConta" value="ativo" />
 				<button type="submit" value="Create" class="btn btn-lg btn-primary btn-block">Registar</button>
 			</div>
 		</div>
