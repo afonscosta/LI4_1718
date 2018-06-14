@@ -12,15 +12,22 @@
 	}
 }
 
-    </div>
     <!-- NAVBAR END -->
-<div class="form-group col-md-7">
-    @using (Html.BeginForm("AdicionaEnc", "Subscricao", FormMethod.Post))
+    <div class="index-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">
+            Confirmação dos dados de entrega
+        </h1>
+        <p class="lead">
+            Por favor selecione a data e hora que pretende receber a encomenda.
+        </p>
+    </div>
+    <div class="form-group col-md-7">
+        @using (Html.BeginForm("AdicionaEnc", "Subscricao", FormMethod.Post))
     {
         <div class="form-group col-md-7">
             <!--dar review ao calendar-->
-            <div class="date" id="datepicker">
-                @Html.TextBoxFor(model => model.dataEnt, new { @class = "form-control", name = "date" })
+            <div class="date" name="data">
+                @Html.TextBox("data", "DD/MM/YYYY")
                 @Html.ValidationMessageFor(model => model.dataEnt, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -28,23 +35,22 @@
         <div class="row">
             <div class="input-group mb-3">
                 <div class="input-group col-8">
-                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Selecione a hora">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary dropdown-toggle" name="hora" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</button>
-                        <div class="dropdown-menu">
-                            @Html.DropDownListFor(Model => Model.dataEnt,Enumerable.Range(07, 21).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }),"-- Hour --")
-                        </div>
-                    </div>
+
+                    <select class="custom-select" id="entrega1" name="hora">
+                        <option selected>Hora...</option>
+                        @foreach (var item in Enumerable.Range(7, 14))
+                        {
+                        <option>@Html.DisplayFor(modelItem => item):00</option>
+                        }
+                    </select>
+
                 </div>
                 <div class="input-group col-4">
-                    <input type="text" name="quantidade" class="form-control" placeholder="Quantidade" aria-label="Quantidade" aria-describedby="product-addon">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-success" type="submit">Adicionar</button>
+                        <input class="btn btn-outline-success" type="submit" value="Confirmar">
                     </div>
                 </div>
             </div>
         </div>
-    }
-</div>
-</body>
-</html>
+}
+    </div>

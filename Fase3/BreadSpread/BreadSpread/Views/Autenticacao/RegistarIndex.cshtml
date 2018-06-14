@@ -26,7 +26,7 @@
 		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 		<div class="form-group">
-			@Html.EditorFor(model => model.nome, new { @class = "form-control", placeholder = "Nome", type = "text" })
+			@Html.TextBoxFor(model => model.nome, new { @class = "form-control", placeholder = "Nome", type = "text" })
 			@Html.ValidationMessageFor(model => model.nome, "", new { @class = "text-danger" })
 		</div>
 		<div class="form-group">
@@ -52,7 +52,7 @@
 			<div class="form-group col-md-7">
 				<!--dar review ao calendar-->
 				<div class="date" id="datepicker">
-					@Html.TextBoxFor(model => model.dataNasc, new { @class = "form-control", name = "date" })
+					@Html.TextBoxFor(model => model.dataNasc, new { @class = "form-control", name = "date", placeholder = "DD/MM/YYYY" })
 					@Html.ValidationMessageFor(model => model.dataNasc, "", new { @class = "text-danger" })
 				</div>
 			</div>
