@@ -73,6 +73,8 @@ namespace BreadSpread.Controllers
                             if (MyHelpers.VerifyMd5Hash(md5Hash, password, cliente.password))
                             {
                                 FormsAuthentication.SetAuthCookie(cliente.email, false);
+                                Session["Carrinho"] = new List<Tuple<int, String, float, int>>(); //id, designacao, preco, quantidade
+                                Session["Total"] = 0.0f;
                             }
                             else
                             {
@@ -96,14 +98,13 @@ namespace BreadSpread.Controllers
             if (rgx.IsMatch(email)) // É um funcionário
             {
                 if (email[0] == 'A' || email[0] == 'a') // Administrador
-                    return RedirectToAction("AdminIndex", "Manutencao");
-                    //return RedirectToAction("IndexAdmin", "Manutencao");
+                    return RedirectToAction("IndexProduto", "Manutencao");
                 if (email[0] == 'E' || email[0] == 'e') // Estafeta
-                    return View("~/Views/Estafeta/Index.cshtml");
-                    //return RedirectToAction("Index", "Estafeta");
-                if (email[0] == 'P' || email[0] == 'p') // Padeiro
-                    return View("~/Views/Padeiro/Index.cshtml");
-                    //return RedirectToAction("Index", "Padeiro");
+                    return RedirectToAction("Percurso", "Realizacao");
+				if (email[0] == 
+					'P' || email[0] == 'p') // Padeiro
+					return RedirectToAction("IndexProducao", "Pesquisa");
+                    
             }
             return RedirectToAction("Index", "Home");
         }
@@ -111,7 +112,7 @@ namespace BreadSpread.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Autentica", "Autenticacao");
+            return RedirectToAction("Index", "Autenticacao");
         }
 
         [HttpPost]

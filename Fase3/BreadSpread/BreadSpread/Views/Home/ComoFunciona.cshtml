@@ -1,0 +1,35 @@
+﻿@{
+	ViewBag.Title = "ComoFunciona";
+	if (!User.Identity.IsAuthenticated)
+	{
+		Layout = "~/Views/Shared/_BreadstrapOFFLayout.cshtml";
+	}
+	else
+	{
+		Layout = "~/Views/Shared/_BreadstrapONLayout.cshtml";
+	}
+}
+
+
+<div class="index-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">
+        Como encomendar?
+    </h1>
+    <p><button class="btn btn-lg btn-primary border-primary rounded-circle" type="button">1</button></p>
+    Aqui, como na maioria dos serviços de compras online terá primeiro que fazer login para poder adicionar compras ao carrinho.
+    <p><button class="btn btn-lg btn-primary border-primary rounded-circle" type="button">2</button></p>
+    <p class="lead">
+
+        Escolher Produtos
+    </p>
+    Chegou o momento de escolher os produtos que deseja receber em casa nesta encomenda. Na página de produtos escolha quais quer e em que quantidades deseja receber esses produtos.
+
+    <p><button class="btn btn-lg btn-primary border-primary rounded-circle" type="button">3</button></p>
+    <p class="lead">
+        Terminar encomenda
+    </p>
+    Neste momento apenas tem de se dirigir ao seu carrinho e terminar a encomenda. Assim que o fizer, não se esqueça de efetuar o pagamento na sua conta para que a encomenda seja validada.
+
+
+</div>
+    

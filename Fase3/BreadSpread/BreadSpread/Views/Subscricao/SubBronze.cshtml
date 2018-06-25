@@ -1,0 +1,81 @@
+﻿@using System.Web.WebSockets
+@using BreadSpread.Models
+@model IEnumerable<BreadSpread.Models.Produto>
+
+
+@{
+	ViewBag.Title = "Subscrição";
+	ViewBag.Produtos = new List<Tuple<Produto, int>>();
+	if (!User.Identity.IsAuthenticated)
+	{
+		Layout = "~/Views/Shared/_BreadstrapOFFLayout.cshtml";
+	}
+	else
+	{
+		Layout = "~/Views/Shared/_BreadstrapONLayout.cshtml";
+	}
+}
+
+    </div>
+    <!-- NAVBAR END -->
+
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-xs-offset-0 topadd" style="padding-top: 60px;">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Subscrever Prata</h3>
+                </div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("CreateEncomendas", "Subscricao", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12">
+                                <table class="table table-user-information row-eq-height">
+                                    <tbody>
+                                        <tr>
+                                            <td>Hora</td>
+											<td>2ª feira</td>
+                                            <td>3ª feira</td>
+											<td>4ª feira</td>
+											<td>5ª feira</td>
+											<td>6ª feira</td>
+                                        </tr>
+                                        <tr>
+                                            <td>07h00</td>
+                                            <td>
+                                                <div class="input-group mb-1 center">
+                                                        @Html.CheckBox("dia1")
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="input-group mb-1">
+                                                        @Html.CheckBox("dia2")
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="input-group mb-1">
+                                                        @Html.CheckBox("dia3")
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="input-group mb-1">
+                                                        @Html.CheckBox("dia4")
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="input-group mb-1">
+                                                        @Html.CheckBox("dia5")
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <button type="submit" value="Entregas" class="btn btn-lg btn-primary btn-block">Registar Entregas</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>

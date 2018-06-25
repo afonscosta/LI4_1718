@@ -22,11 +22,9 @@ namespace BreadSpread.Models
         [StringLength(100)]
         public string nome { get; set; }
 
-        [Required]
         [Column(TypeName = "date")]
         public DateTime dataNasc { get; set; }
 
-        [Required]
         public int NIF { get; set; }
 
         [Required]
@@ -41,7 +39,6 @@ namespace BreadSpread.Models
         [StringLength(100)]
         public string rua { get; set; }
 
-        [Required]
         public int numPorta { get; set; }
 
         [Required]

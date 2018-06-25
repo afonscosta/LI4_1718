@@ -19,7 +19,6 @@ namespace BreadSpread.Models
         public virtual DbSet<Produto> Produtoes { get; set; }
         public virtual DbSet<Slot> Slots { get; set; }
         public virtual DbSet<Subscricao> Subscricaos { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -29,9 +28,17 @@ namespace BreadSpread.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Encomenda>()
+                .Property(e => e.idFunc)
+                .IsFixedLength();
+
+            modelBuilder.Entity<Encomenda>()
                 .HasMany(e => e.Encomenda_Produto)
                 .WithRequired(e => e.Encomenda)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Funcionario>()
+                .Property(e => e.idFunc)
+                .IsFixedLength();
 
             modelBuilder.Entity<Funcionario>()
                 .Property(e => e.estadoConta)

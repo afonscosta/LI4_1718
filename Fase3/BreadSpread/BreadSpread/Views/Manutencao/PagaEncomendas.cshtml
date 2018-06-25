@@ -1,0 +1,71 @@
+﻿@model IEnumerable<BreadSpread.Models.Encomenda>
+@{
+	ViewBag.Title = "Pagamento de encomendas";
+	Layout = "~/Views/Shared/_BreadstrapONLayout.cshtml";
+}
+
+
+<div class="index-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+	<h1 class="display-4">
+		Encomendas por Pagar
+	</h1>
+</div>
+<div class="container">
+            
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <!-- /.panel-heading -->
+						<div class="panel-body">
+							<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+								<thead>
+									<tr>
+										<th>Identificador</th>
+										<th>Data</th>
+										<th>Local</th>
+										<th>Produtos(Quantidades)</th>
+										<th>Efetuar Pagamento</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach (var enc in Model)
+			{
+						<tr class="odd gradeA">
+							<td>@enc.idEnc</td>
+							<td>@enc.dataEnt</td>
+							<td>@enc.rua</td>
+							@{
+		string produtos_lista = "";
+							}
+							@foreach (var prod_enc in enc.Encomenda_Produto)
+	{
+		if (prod_enc.idEnc == enc.idEnc)
+		{
+			produtos_lista = String.Concat(produtos_lista, (prod_enc.Produto.designacao + "(" + prod_enc.quant + ");"));
+		}
+	}
+							<td class="center">@produtos_lista</td>
+
+
+							<td>@Html.ActionLink("Pagar", "Paga", new { id = enc.idEnc }, new { @class = "btn btn-success" })</td>
+						</tr>
+}
+
+								</tbody>
+							</table>
+							<!-- /.table-responsive -->
+							<div class="row">
+									<div class="col-11 text-right pl-1 ml-5" >
+										@Html.ActionLink("Voltar", "Perfil", null, new { @class = "btn btn-primary" })
+									</div>
+								</div>
+								<!-- /.panel-body -->
+							</div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+
+        </div>
+        <!-- /#page-wrapper -->

@@ -1,0 +1,177 @@
+﻿@model IEnumerable<BreadSpread.Models.Produto>
+
+@{
+	ViewBag.Title = "Subscrição";
+	if (!User.Identity.IsAuthenticated)
+	{
+		Layout = "~/Views/Shared/_BreadstrapOFFLayout.cshtml";
+	}
+	else
+	{
+		Layout = "~/Views/Shared/_BreadstrapONLayout.cshtml";
+	}
+
+}
+    </div>
+    <!-- NAVBAR END -->
+
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-xs-offset-0 topadd" style="padding-top: 60px;">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Subscrever Prata</h2>
+                </div>
+                <div class="panel-body">
+                    <div class="mb-4">
+                        <h3>Entrega 1</h3>
+                        @using (Html.BeginForm("AddProdutos", "Subscricao", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <div class="input-group mb-3">
+                                    <div class="input-group col-8">
+                                        <select class="custom-select" id="entrega1" name="produto">
+                                            <option selected>Produtos...</option>
+                                            @foreach (var item in Model)
+                                            {
+                                                <option>@Html.DisplayFor(modelItem => item.idProd)-@Html.DisplayFor(modelItem => item.designacao)</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="input-group col-4">
+                                        @Html.TextBox("quantidade")
+                                        <div class="input-group-append">
+                                            <input type="hidden" name="num_enc" value=1 />
+                                            <input type="submit" value="Adicionar" class="btn btn-outline-success" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="mb-4">
+                        <h3>Entrega 2</h3>
+                        @using (Html.BeginForm("AddProdutos", "Subscricao", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <div class="input-group mb-3">
+                                    <div class="input-group col-8">
+                                        <select class="custom-select" id="entrega1" name="produto">
+                                            <option selected>Produtos...</option>
+                                            @foreach (var item in Model)
+                                            {
+                                                <option>@Html.DisplayFor(modelItem => item.idProd)-@Html.DisplayFor(modelItem => item.designacao)</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="input-group col-4">
+                                        @Html.TextBox("quantidade")
+                                        <div class="input-group-append">
+                                            <input type="hidden" name="num_enc" value=2 />
+                                            <input type="submit" value="Adicionar" class="btn btn-outline-success" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="mb-4">
+                        <h3>Entrega 3</h3>
+                        @using (Html.BeginForm("AddProdutos", "Subscricao", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <div class="input-group mb-3">
+                                    <div class="input-group col-8">
+                                        <select class="custom-select" id="entrega1" name="produto">
+                                            <option selected>Produtos...</option>
+                                            @foreach (var item in Model)
+                                            {
+                                                <option>@Html.DisplayFor(modelItem => item.idProd)-@Html.DisplayFor(modelItem => item.designacao)</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="input-group col-4">
+                                        @Html.TextBox("quantidade")
+                                        <div class="input-group-append">
+                                            <input type="hidden" name="num_enc" value=3 />
+                                            <input type="submit" value="Adicionar" class="btn btn-outline-success" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="mb-4">
+                        <h3>Entrega 4</h3>
+                        @using (Html.BeginForm("AddProdutos", "Subscricao", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <div class="input-group mb-3">
+                                    <div class="input-group col-8">
+                                        <select class="custom-select" id="entrega1" name="produto">
+                                            <option selected>Produtos...</option>
+                                            @foreach (var item in Model)
+                                            {
+                                                <option>@Html.DisplayFor(modelItem => item.idProd)-@Html.DisplayFor(modelItem => item.designacao)</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="input-group col-4">
+                                        @Html.TextBox("quantidade")
+                                        <div class="input-group-append">
+                                            <input type="hidden" name="num_enc" value=4 />
+                                            <input type="submit" value="Adicionar" class="btn btn-outline-success" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="mb-4">
+                        <h3>Entrega 5</h3>
+                        @using (Html.BeginForm("AddProdutos", "Subscricao", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <div class="input-group mb-3">
+                                    <div class="input-group col-8">
+                                        <select class="custom-select" id="entrega1" name="produto">
+                                            <option selected>Produtos...</option>
+                                            @foreach (var item in Model)
+                                            {
+                                                <option>@Html.DisplayFor(modelItem => item.idProd)-@Html.DisplayFor(modelItem => item.designacao)</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="input-group col-4">
+                                        @Html.TextBox("quantidade")
+                                        <div class="input-group-append">
+                                            <input type="hidden" name="num_enc" value=5 />
+                                            <input type="submit" value="Adicionar" class="btn btn-outline-success" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="row justify-content-between">
+                        <div class="col-3">
+                            <a class="btn btn-lg btn-success btn-block" role="button" href="/Home/Index">
+                                Confirmar Pedido
+                            </a>
+                        </div>
+                        <div class="col-3">
+                            <a class="btn btn-lg btn-danger btn-block" role="button" href="/Subscricao/RemoveAllEncomendas">
+                                Cancelar Pedido
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
