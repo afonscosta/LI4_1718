@@ -12,4 +12,4 @@ With that in mind, we created 4 different websites, one for each type of client:
 
 The project was developed using just **Microsoft** products. Therefore, we used the **ASP.NET MVC** web application framework developed by Microsoft. For the database (DB), we used the **SQL Server**. Besides that, we used the **ADO.NET Entity Framework** to facilitate the connection between the "model" of the MVC and the actual DB. For the web pages were used the **Bootstrap** library for the visually appealing aspect and the **Razor** view engine to make possible dynamic web pages.
 
-Finally, everything was written using in **C#**, some *javascript*, *CSS*, *HTML*, and that's it! Hope you like it!
+Finally, everything was written in **C#**, some *javascript*, *CSS*, *HTML*, and that's it! Hope you like it!
